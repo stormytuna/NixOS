@@ -25,6 +25,8 @@
       withVencord = true;
     })
     pavucontrol
+    gh
+    github-desktop
   ];
 
   # TODO: Move somewhere else probably
@@ -32,6 +34,9 @@
     enable = true;
     userName = userSettings.username;
     userEmail = userSettings.email;
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   # Dotfiles - most links are set where their config is declared
