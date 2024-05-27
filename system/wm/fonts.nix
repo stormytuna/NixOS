@@ -4,7 +4,7 @@
   fonts = {
     fontDir.enable = true; # Makes symlinks for fonts
 
-    packages = with pkgs; userSettings.fontPackages ++ [
+    packages = with pkgs; userSettings.extraFontPackages ++ [
       (nerdfonts.override { 
         fonts = [
           "Hack"
@@ -18,9 +18,10 @@
     ];
 
     fontconfig.defaultFonts = {
-      serif = userSettings.serifFonts;
-      sansSerif = userSettings.sansSerifFonts;
-      monospace = userSettings.monospaceFonts;
+      serif = [ userSettings.fonts.serif.name] ;
+      sansSerif = [ userSettings.fonts.sansSerif.name ];
+      monospace = [ userSettings.fonts.monospace.name ];
+      emoji = [ userSettings.fonts.emoji.name ];
     };
   };
 }

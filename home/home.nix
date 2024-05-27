@@ -9,6 +9,7 @@
     (./. + "/wm/${userSettings.wm}/${userSettings.wm}.nix") # Chosen window manager
     ./shell/shell.nix
     ./app/gaming.nix # Gaming related stuff (MangoHud, Lutris, etc)
+    ./style/stylix.nix # Styling
   ];
 
   # Username and home directory
@@ -16,7 +17,7 @@
   home.homeDirectory = "/home/stormytuna";
 
   # Cursor theme
-  home.pointerCursor = userSettings.cursorSettings;
+  #home.pointerCursor = userSettings.cursorSettings; # Unneeded as set by stylix
 
   # general packages
   home.packages = with pkgs; [

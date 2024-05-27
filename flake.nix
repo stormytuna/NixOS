@@ -11,6 +11,8 @@
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = inputs @ { self, ... }:
@@ -32,10 +34,7 @@
       userSettings = rec {
         username = "stormytuna";
         email = "stormytuna@outlook.com";
-        dotfilesDir = "~/.nixos";
-
-        # Modular configs
-        waybar.modules = "minimal";
+        dotfilesDir = "/home/${username}/.nixos";
 
         # Software
         wm = "hyprland";
@@ -45,15 +44,34 @@
         editor = "nvim";
         spawnEditor = "exec " + terminal + " -e " + editor;
 
-        # Fonts
-        serifFonts = [ "Crimson" ];
-        sansSerifFonts = [ "Roboto" ];
-        monospaceFonts = [ "Monospice Ne Nerd Font "];
-        fontPackages = with pkgs; [
-          (nerdfonts.override { fonts = [ "Monaspace" ]; })
-          crimson
-          roboto
-        ];
+        # Modular configs
+        waybar.modules = "minimal";
+
+        # Theming
+        colourScheme = "catppuccin-mocha";
+        wallpaper = "bridget";
+        polarity = "dark";
+
+        # Fonts - same layout as stylix, see ./home/style/stylix.nix
+        fonts = {
+          serif = {
+            name = "Crimson";
+            package = pkgs.crimson;
+          };
+          sansSerif = {
+            name = "Roboto";
+            package = pkgs.roboto;
+          };
+          monospace = {
+            name = "Monospice Ne Nerd Font";
+            package = (pkgs.nerdfonts.override { fonts = [ "Monaspace" ]; });
+          };
+          emoji = {
+            name = "Noto Color Emoji";
+            package = pkgs.noto-fonts-emoji;
+          };
+        };
+        extraFontPackages = [];
 
         # Cursor
         cursorSettings = { # Set to `home.pointerCursor`, see that for option info
@@ -82,7 +100,10 @@
   {
     nixosConfigurations.${systemSettings.hostname} = inputs.nixpkgs.lib.nixosSystem {
       system = systemSettings.systemArch;
-      modules = [ ./system/configuration.nix inputs.chaotic.nixosModules.default ];
+      modules = [ 
+        ./system/configuration.nix 
+        inputs.chaotic.nixosModules.default 
+      ];
       specialArgs = {
         inherit pkgs-stable;
         inherit systemSettings;
@@ -92,7 +113,10 @@
 
     homeConfigurations.${userSettings.username} = inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home/home.nix ];
+        modules = [
+          ./home/home.nix
+          inputs.stylix.homeManagerModules.stylix
+        ];
         extraSpecialArgs = {
           inherit pkgs-stable;
           inherit systemSettings;

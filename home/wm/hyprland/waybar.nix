@@ -106,6 +106,5 @@
     };
   };
 
-  home.file.".config/waybar/colors.css".source = ./config/colors.css;
   home.file.".config/waybar/style.css".source = ./config/style.css;
 }
