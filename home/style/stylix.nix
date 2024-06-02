@@ -2,15 +2,20 @@
 
 let
   colourScheme = config.lib.stylix.colors.withHashtag;
+  wallpaperPath = /. + "${userSettings.nixosConfigDir}/theming/wallpapers/${userSettings.wallpaper}.png";
 in
 {
   # TODO: Theme packs!
   # TODO: Post-update scripts for refreshing themes everywhere
 
   stylix.polarity = userSettings.polarity;
-  stylix.image = /. + "${userSettings.dotfilesDir}/theming/wallpapers/${userSettings.wallpaper}.png";
+  stylix.image = wallpaperPath;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${userSettings.colourScheme}.yaml";
   stylix.fonts = userSettings.fonts;
+  stylix.cursor = userSettings.cursorSettings;
+
+  # Linking wallpaper, stylix can't set hyprland wallpaper
+  home.file.".config/hypr/wallpaper.png".source = wallpaperPath;
 
   # Configuring different programs
 

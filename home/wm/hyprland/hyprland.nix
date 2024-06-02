@@ -1,4 +1,4 @@
-{ pkgs, userSettings, inputs, ... }:
+{ pkgs, userSettings, systemSettings, ... }:
 
 {
   imports = [
@@ -29,13 +29,13 @@
       exec-once = "hyprctl setcursor ${userSettings.cursorSettings.name} ${builtins.toString userSettings.cursorSettings.size}";
 
       env = [ 
-        "XKB_DEFAULT_LAYOUT, gb"
+        "XKB_DEFAULT_LAYOUT, ${systemSettings.keymap}"
       ];
 
       input = {
-        kb_layout = "gb";
-        repeat_delay = "150";
-        repeat_rate = "35";
+        kb_layout = "${systemSettings.keymap}";
+        repeat_delay = "300";
+        repeat_rate = "15";
         follow_mouse = "1";
       };
 
@@ -49,12 +49,12 @@
     };
   };
 
-  home.file.".config/hypr/monitors.conf".source = ./config/monitors.conf;
-  home.file.".config/hypr/startup.conf".source = ./config/startup.conf;
-  home.file.".config/hypr/visuals.conf".source = ./config/visuals.conf;
-  home.file.".config/hypr/windowrules.conf".source = ./config/windowrules.conf;
-  home.file.".config/hypr/workspaces.conf".source = ./config/workspaces.conf;
-  home.file.".config/hypr/keybinds.conf".source = ./config/keybinds.conf;
+  home.file.".config/hypr/monitors.conf".source = ../../config/hypr/monitors.conf;
+  home.file.".config/hypr/startup.conf".source = ../../config/hypr/startup.conf;
+  home.file.".config/hypr/visuals.conf".source = ../../config/hypr/visuals.${userSettings.hyprland.visuals}.conf;
+  home.file.".config/hypr/windowrules.conf".source = ../../config/hypr/windowrules.conf;
+  home.file.".config/hypr/workspaces.conf".source = ../../config/hypr/workspaces.conf;
+  home.file.".config/hypr/keybinds.conf".source = ../../config/hypr/keybinds.conf;
 
   home.packages = with pkgs; [
     wl-clipboard

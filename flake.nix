@@ -23,8 +23,8 @@
         hostname = "eva-unit01";
         timezone = "Europe/London";
         locale = "en_GB.UTF-8";
-        keymap = "gb";
-        consoleKeymap = "uk"; # console.keyMap expects "uk", not "gb"... yay
+        keymap = "us";
+        consoleKeymap = "us"; # console.keyMap expects "uk", not "gb"... yay
         bootMode = "uefi"; # uefi OR bios
         bootMountPath = "/boot"; # Mount path for efi boot partition, only used for uefi boot mode
         grubDevice = ""; # Device identifier for grub, only used for bios boot mode
@@ -34,7 +34,8 @@
       userSettings = rec {
         username = "stormytuna";
         email = "stormytuna@outlook.com";
-        dotfilesDir = "/home/${username}/.nixos";
+        nixosConfigDir = "/home/${username}/.nixos";
+        dotfilesDir = "/home/${username}/.config";
 
         # Software
         wm = "hyprland";
@@ -46,6 +47,7 @@
 
         # Modular configs
         waybar.modules = "minimal";
+        hyprland.visuals = "sharp";
 
         # Theming
         colourScheme = "catppuccin-mocha";
@@ -76,7 +78,8 @@
         # Cursor
         cursorSettings = { # Set to `home.pointerCursor`, see that for option info
           package = pkgs.bibata-cursors;
-          name = "Bibata-Original-Ice";
+          name = "Bibata-Modern-Ice";
+          # Bibata-(Modern|Original)-(Amber|Classic|Ice)
           size = 24;
         };
       };
@@ -86,6 +89,10 @@
         config = {
           allowUnfree = true;
           allowUnfreePredicate = (_: true);
+          packageOverrides = pkgs: {
+            nur = inputs.nur;
+            inherit pkgs;
+          };
         };
       };
 
@@ -98,6 +105,7 @@
       };
     in
   {
+    # TODO: Cleanup, I don't like having to use inputs everywhere
     nixosConfigurations.${systemSettings.hostname} = inputs.nixpkgs.lib.nixosSystem {
       system = systemSettings.systemArch;
       modules = [ 
@@ -121,6 +129,7 @@
           inherit pkgs-stable;
           inherit systemSettings;
           inherit userSettings;
+          inherit self;
         };
     };
   };

@@ -12,5 +12,5 @@
   };
 
   # Using chaotic nyx for *actual* bleeding edge mesa package
-  #chaotic.mesa-git.enable = true;
+  chaotic.mesa-git.enable = true;
 }

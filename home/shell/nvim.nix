@@ -75,12 +75,6 @@
         plugin = lsp-rooter-nvim;
         config = toLua "require('lsp-rooter').setup()";
       }
-
-      # Colourscheme # TODO: Make something automated!
-      {
-        plugin = catppuccin-nvim;
-        config = "colorscheme catppuccin";
-      }
     ];
   };
 }

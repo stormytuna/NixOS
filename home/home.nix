@@ -1,4 +1,4 @@
-{ config, pkgs, systemSettings, userSettings, ... }:
+{ config, pkgs, systemSettings, userSettings, lib, ... }:
 
 {
   imports = [
@@ -8,7 +8,7 @@
     (./. + "/shell/${userSettings.editor}.nix") # Chosen editor
     (./. + "/wm/${userSettings.wm}/${userSettings.wm}.nix") # Chosen window manager
     ./shell/shell.nix
-    ./app/gaming.nix # Gaming related stuff (MangoHud, Lutris, etc)
+    ./apps/gaming.nix # Gaming related stuff (MangoHud, Lutris, etc)
     ./style/stylix.nix # Styling
   ];
 

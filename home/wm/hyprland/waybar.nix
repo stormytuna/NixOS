@@ -106,5 +106,5 @@
     };
   };
 
-  home.file.".config/waybar/style.css".source = ./config/style.css;
+  home.file.".config/waybar/style.css".source = ../../config/waybar/style.css;
 }

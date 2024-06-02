@@ -3,8 +3,9 @@
 {
   imports = [
     (./. + "/wm/${userSettings.wm}.nix") # Selected window manager
-    ./app/gaming.nix # Steam + GameMode config
+    ./apps/gaming.nix # Steam + GameMode config
     ./hardware-configuration.nix # Hardware config
+    ./hardware/audio.nix # Audio config
     ./hardware/bluetooth.nix # Bluetooth config
     ./hardware/video.nix # GPU drivers 
   ];

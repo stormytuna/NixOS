@@ -20,8 +20,8 @@
 
     shellAliases = {
       # nixos
-      update-system = "sudo nixos-rebuild switch --flake '/home/stormytuna/.nixos/'";
-      update-home = "home-manager switch --flake '/home/stormytuna/.nixos/'";
+      update-system = "sudo nixos-rebuild switch --flake '/home/stormytuna/.nixos/' --impure";
+      update-home = "home-manager switch --flake '/home/stormytuna/.nixos/' --impure";
       update-flake = "sudo nix flake update /home/stormytuna/.nixos/";
       update-all = "update-flake && update-system && update-home";
       update = "update-system && update-home";
@@ -34,6 +34,7 @@
 
       # nvim
       v = "nvim";
+      qvf = "nvim ~/.nixos/flake.nix";
 
       # git
       ga = "git add *";
@@ -44,7 +45,7 @@
 
       # misc
       cat = "bat";
-      cl = "clear";
+      cl = "clear; fastfetch";
     };
 
     initExtra = ''
@@ -115,7 +116,7 @@
   home.packages = with pkgs; [
     tldr
     thefuck
-    neofetch # TODO: Find a cooler alternative!
+    fastfetch
     ripgrep
     imagemagick
     git
@@ -126,4 +127,7 @@
     bat
     killall
   ];
+
+  # Configs
+  home.file.".config/fastfetch/config.jsonc".source = ../config/fastfetch/fastfetch.jsonc;
 }
