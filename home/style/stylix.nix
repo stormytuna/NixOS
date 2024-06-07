@@ -14,6 +14,11 @@ in
   stylix.fonts = userSettings.fonts;
   stylix.cursor = userSettings.cursorSettings;
 
+  gtk.iconTheme = {
+    package = pkgs.candy-icons;
+    name = "candy-icons";
+  };
+
   # Linking wallpaper, stylix can't set hyprland wallpaper
   home.file.".config/hypr/wallpaper.png".source = wallpaperPath;
 

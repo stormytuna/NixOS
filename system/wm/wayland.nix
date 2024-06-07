@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./pipewire.nix
     ./fonts.nix
+    ./gnome-keyring.nix
   ];
 
   environment.systemPackages = with pkgs; [

@@ -78,7 +78,7 @@
         # Cursor
         cursorSettings = { # Set to `home.pointerCursor`, see that for option info
           package = pkgs.bibata-cursors;
-          name = "Bibata-Modern-Ice";
+          name = "Bibata-Modern-Classic";
           # Bibata-(Modern|Original)-(Amber|Classic|Ice)
           size = 24;
         };

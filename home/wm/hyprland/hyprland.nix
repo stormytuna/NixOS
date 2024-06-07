@@ -34,8 +34,8 @@
 
       input = {
         kb_layout = "${systemSettings.keymap}";
-        repeat_delay = "300";
-        repeat_rate = "15";
+        repeat_delay = "250";
+        repeat_rate = "35";
         follow_mouse = "1";
       };
 

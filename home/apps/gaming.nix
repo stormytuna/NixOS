@@ -5,6 +5,7 @@
     dxvk
     lutris
     heroic
+    qbittorrent # Needed for pirating some stuff
   ];
 
   # MangoHud, toggleable resource display

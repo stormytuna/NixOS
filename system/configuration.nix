@@ -62,10 +62,18 @@
     btop
     fzf
     fd
-    unzip
+    unp
+    unrar
     ripgrep
     imagemagick
     tldr
+    bitwarden
+
+    # TODO: Find a place for these!
+    dotnet-sdk_8 # TODO: Need multiple SDKs
+    omnisharp-roslyn
+    mono
+    msbuild
   ];
 
   # Allow unfree

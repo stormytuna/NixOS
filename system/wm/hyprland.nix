@@ -3,7 +3,6 @@
 {
   imports = [
     ./wayland.nix
-    ./pipewire.nix
   ];
 
   programs.hyprland = {
