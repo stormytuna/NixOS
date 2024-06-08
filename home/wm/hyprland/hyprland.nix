@@ -3,6 +3,7 @@
 {
   imports = [
     ./waybar.nix # Status bar
+    ./rofi.nix # Application runner
     ./../common/swaync.nix # Notification manager
   ];
 
@@ -15,6 +16,7 @@
 
     settings = {
       "$mainMod" = "SUPER";
+      "$term" = userSettings.terminal;
 
       # Imports linked configs, see ./config
       source = [ 
