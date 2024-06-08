@@ -54,7 +54,7 @@
         wallpaper = "bridget";
         polarity = "dark";
 
-        # Fonts - same layout as stylix, see ./home/style/stylix.nix
+        # Fonts - directly passed to stylix, see ./home/style/stylix.nix
         fonts = {
           serif = {
             name = "Crimson";
@@ -65,7 +65,7 @@
             package = pkgs.roboto;
           };
           monospace = {
-            name = "Monospice Ne Nerd Font";
+            name = "Monospice Kr Nerd Font";
             package = (pkgs.nerdfonts.override { fonts = [ "Monaspace" ]; });
           };
           emoji = {
