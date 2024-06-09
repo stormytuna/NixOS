@@ -46,6 +46,7 @@
       # misc
       cat = "bat";
       cl = "clear; fastfetch";
+      neofetch = "fastfetch";
     };
 
     initExtra = ''
@@ -126,6 +127,7 @@
     btop
     bat
     killall
+    gettext # Utility for printing terminal colours
   ];
 
   # Configs

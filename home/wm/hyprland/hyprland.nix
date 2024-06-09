@@ -16,7 +16,7 @@
 
     settings = {
       "$mainMod" = "SUPER";
-      "$term" = userSettings.terminal;
+      "$term" = userSettings.spawnTerm;
 
       # Imports linked configs, see ./config
       source = [ 

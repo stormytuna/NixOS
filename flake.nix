@@ -41,8 +41,9 @@
         wm = "hyprland";
         wmType = if (wm == "hyprland") then "wayland" else "x11";
         browser = "firefox";
-        terminal = "kitty";
+        terminal = "alacritty";
         editor = "nvim";
+        spawnTerm = "alacritty"; # Useful for adding params to every terminal window
         spawnEditor = "exec " + terminal + " -e " + editor;
 
         # Modular configs

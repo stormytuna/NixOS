@@ -5,7 +5,6 @@ let
   wallpaperPath = /. + "${userSettings.nixosConfigDir}/theming/wallpapers/${userSettings.wallpaper}.png";
 in
 {
-  # TODO: Theme packs!
   # TODO: Post-update scripts for refreshing themes everywhere
 
   stylix.polarity = userSettings.polarity;
@@ -46,4 +45,5 @@ in
 
   stylix.targets.mangohud.enable = false; # Not fussed about styling mangohud with it
                                           # plus it fucks my config up
+  stylix.targets.alacritty.enable = false;
 }
