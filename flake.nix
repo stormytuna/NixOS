@@ -66,7 +66,7 @@
             package = pkgs.roboto;
           };
           monospace = {
-            name = "Monospice Kr Nerd Font";
+            name = "MonaspiceKr Nerd Font";
             package = (pkgs.nerdfonts.override { fonts = [ "Monaspace" ]; });
           };
           emoji = {
