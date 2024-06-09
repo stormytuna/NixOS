@@ -1,7 +1,7 @@
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
-    pkgs-stable.spotify
+    spotify
   ];
 }

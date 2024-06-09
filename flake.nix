@@ -24,7 +24,7 @@
         timezone = "Europe/London";
         locale = "en_GB.UTF-8";
         keymap = "us";
-        consoleKeymap = "us"; # console.keyMap expects "uk", not "gb"... yay
+        consoleKeymap = "us"; # console expects a different string for some keymaps
         bootMode = "uefi"; # uefi OR bios
         bootMountPath = "/boot"; # Mount path for efi boot partition, only used for uefi boot mode
         grubDevice = ""; # Device identifier for grub, only used for bios boot mode
