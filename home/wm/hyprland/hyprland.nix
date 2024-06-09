@@ -3,7 +3,7 @@
 {
   imports = [
     ./waybar.nix # Status bar
-    ./rofi.nix # Application runner
+    ./wofi.nix # Application runner
     ./../common/swaync.nix # Notification manager
   ];
 
@@ -60,7 +60,6 @@
 
   home.packages = with pkgs; [
     wl-clipboard
-    wofi # TODO: switch to rofi
     swww # Wallpaper daemon
     clipse # Clipboard history daemon
     grimblast # CLI tool for screenshots
