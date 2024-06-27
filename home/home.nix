@@ -8,7 +8,9 @@
     (./. + "/shell/${userSettings.editor}.nix") # Chosen editor
     (./. + "/wm/${userSettings.wm}/${userSettings.wm}.nix") # Chosen window manager
     ./shell/shell.nix
+    ./shell/starship.nix # Terminal prompt
     ./apps/gaming.nix # Gaming related stuff (MangoHud, Lutris, etc)
+    ./apps/spotify.nix
     ./style/stylix.nix # Styling
   ];
 
@@ -16,18 +18,19 @@
   home.username = "stormytuna";
   home.homeDirectory = "/home/stormytuna";
 
-  # Cursor theme
-  #home.pointerCursor = userSettings.cursorSettings; # Unneeded as set by stylix
-
   # general packages
   home.packages = with pkgs; [
     firefox
     (discord.override {
       withVencord = true;
     })
+    vesktop
     pavucontrol
     gh
     github-desktop
+    jetbrains.rider
+    avalonia-ilspy
+    aseprite
   ];
 
   # TODO: Move somewhere else probably

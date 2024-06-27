@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   home.packages = with pkgs; [
-    spotify
+    #spotify
+    config.nur.repos.nltch.spotify-adblock
   ];
 }
