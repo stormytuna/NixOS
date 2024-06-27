@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
@@ -58,59 +58,6 @@
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
-  };
-
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-
-    settings = {
-      add_newline = false;
-
-      format = lib.concatStrings [
-        "$username $directory"
-        "$git_branch"
-        "$git_status"
-        "$cmd_duration $time"
-        "$line_break"
-        "$character"
-        "$nix_shell"
-      ];
-
-      username = {
-        show_always = true;
-        format = "[$user]($style)";
-        style_user = "blue";
-        style_root = "yellow";
-      };
-
-      git_branch.format = "[$symbol$branch(:$remote_branch)]($style)";
-      git_status = {
-        format = "\\[$ahead_behind$modified$untracked$deleted$stashed$staged$renamed\\]";
-        ahead = "[($count)](green)";
-        behind = "[($count)](red)";
-        deleted = "[✘($count)](red)";
-        diverged = "[($ahead_count)($beind_count)](yellow)";
-        modified = "[⌁($count)](yellow)";
-        renamed = "[($count)](yellow)";
-        stashed = "[⚑($count)](blue)";
-        untracked = "?($count)";
-        up_to_date = "[](green)";
-        staged = "[+($count)](green)";
-      };
-
-      time = {
-        disabled = false;
-        format = "$time";
-      };
-
-      cmd_duration.format = "[$duration]($style) |";
-
-      character = {
-        success_symbol = "[>](bold green)";
-        error_symbol = "[>](bold red)";
-      };
-    };
   };
 
   # TODO: See what packages here can be moved out and configured
