@@ -1,4 +1,4 @@
-{ userSettings, ... }:
+{ userSettings, pkgs, ... }:
 
 {
   # Import our chosen configs
@@ -47,7 +47,7 @@
           };
           scroll-step = 1;
           on-click = "hyprctl dispatch togglespecialworkspace pavucontrol && hyprctl dispatch bringactivetotop";
-          on-click-right = "~/.config/waybar/scripts/audio_changer.py"; # TODO: make own script for this!
+          #on-click-right = "~/.config/waybar/scripts/audio_changer.py"; # TODO: make own script for this!
         };
 
         bluetooth = {

@@ -61,6 +61,7 @@
   home.packages = with pkgs; [
     wl-clipboard
     swww # Wallpaper daemon
+    libnotify # Required to send notifications
     clipse # Clipboard history daemon
     grimblast # CLI tool for screenshots
     playerctl # CLI tool for media control
