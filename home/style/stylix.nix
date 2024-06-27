@@ -5,6 +5,8 @@ let
   wallpaperPath = /. + "${userSettings.nixosConfigDir}/theming/wallpapers/${userSettings.wallpaper}.png";
 in
 {
+  stylix.enable = true;
+
   # TODO: Post-update scripts for refreshing themes everywhere
 
   stylix.polarity = userSettings.polarity;
@@ -13,10 +15,7 @@ in
   stylix.fonts = userSettings.fonts;
   stylix.cursor = userSettings.cursorSettings;
 
-  gtk.iconTheme = {
-    package = pkgs.candy-icons;
-    name = "candy-icons";
-  };
+  gtk.iconTheme = userSettings.iconSettings;
 
   # Linking wallpaper, stylix can't set hyprland wallpaper
   home.file.".config/hypr/wallpaper.png".source = wallpaperPath;
