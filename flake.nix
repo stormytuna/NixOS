@@ -12,6 +12,8 @@
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    nur.url = "github:nix-community/NUR";
+
     stylix.url = "github:danth/stylix";
   };
 
@@ -55,6 +57,14 @@
         wallpaper = "bridget";
         polarity = "dark";
 
+        # Icons
+        iconSettings = {
+          # candy-icons
+          # kora
+          package = pkgs.kora-icon-theme;
+          name = "kora";
+        };
+
         # Fonts - directly passed to stylix, see ./home/style/stylix.nix
         fonts = {
           serif = {
@@ -78,9 +88,10 @@
 
         # Cursor
         cursorSettings = { # Set to `home.pointerCursor`, see that for option info
-          package = pkgs.bibata-cursors;
-          name = "Bibata-Modern-Classic";
-          # Bibata-(Modern|Original)-(Amber|Classic|Ice)
+          # bibata-cursors - Bibata-(Modern|Original)-(Amber|Classic|Ice)
+          # phinger-cursors - phinger-cursors-(dark|light)
+          package = pkgs.phinger-cursors;
+          name = "phinger-cursors-dark";
           size = 24;
         };
       };
@@ -90,6 +101,9 @@
         config = {
           allowUnfree = true;
           allowUnfreePredicate = (_: true);
+          permttedInsecurePackages = [
+            "python-2.7.18.8"
+          ];
           packageOverrides = pkgs: {
             nur = inputs.nur;
             inherit pkgs;
@@ -112,6 +126,7 @@
       modules = [ 
         ./system/configuration.nix 
         inputs.chaotic.nixosModules.default 
+        inputs.nur.nixosModules.nur
       ];
       specialArgs = {
         inherit pkgs-stable;
@@ -125,6 +140,7 @@
         modules = [
           ./home/home.nix
           inputs.stylix.homeManagerModules.stylix
+          inputs.nur.nixosModules.nur
         ];
         extraSpecialArgs = {
           inherit pkgs-stable;
