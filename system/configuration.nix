@@ -18,6 +18,19 @@
   boot.loader.grub.enable = systemSettings.bootMode != "uefi";
   boot.loader.grub.device = systemSettings.grubDevice; # Does nothing if we're using uefi
 
+  # Remove need to type in password for sudo commands
+  security.sudo.extraRules = [
+    {
+      users = [ "stormytuna" ];
+      commands = [ 
+        {
+          command = "ALL";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
   # Networking
   networking.hostName = systemSettings.hostname;
   networking.networkmanager.enable = true; # Easier to use than alternative
