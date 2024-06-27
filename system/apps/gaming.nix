@@ -19,13 +19,26 @@
     };
   };
 
-  # Steam needs to be enabled at system level to enable gamescope
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
-    gamescopeSession.enable = true;
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
+  };
+
+  programs.gamescope = {
+    enable = true;
+    args = [
+      "--output-width 2560"
+      "--output-height 1440"
+      "--nested-width 2560"
+      "--nested-height 1440"
+      "--borderless"
+      "--expose-wayland"
+      "--force-grab-cursor"
+      "--mangoapp" # Preferred to launching mangoscope itself
+    ];
+    package = pkgs.gamescope_git;
   };
 
   # XBox controller drivers
