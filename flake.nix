@@ -40,7 +40,7 @@
         dotfilesDir = "/home/${username}/.config";
 
         # Software
-        wm = "hyprland";
+        wm = "plasma";
         wmType = if (wm == "hyprland") then "wayland" else "x11";
         browser = "firefox";
         terminal = "alacritty";
@@ -90,8 +90,9 @@
         cursorSettings = { # Set to `home.pointerCursor`, see that for option info
           # bibata-cursors - Bibata-(Modern|Original)-(Amber|Classic|Ice)
           # phinger-cursors - phinger-cursors-(dark|light)
-          package = pkgs.phinger-cursors;
-          name = "phinger-cursors-dark";
+          # oreo-cursors-plus
+          package = pkgs.bibata-cursors;
+          name = "Bibata-Modern-Amber";
           size = 24;
         };
       };
@@ -120,34 +121,19 @@
       };
     in
   {
-    # TODO: Cleanup, I don't like having to use inputs everywhere
     nixosConfigurations.${systemSettings.hostname} = inputs.nixpkgs.lib.nixosSystem {
       system = systemSettings.systemArch;
       modules = [ 
-        ./system/configuration.nix 
+        ./configuration.nix 
         inputs.chaotic.nixosModules.default 
         inputs.nur.nixosModules.nur
+        inputs.stylix.nixosModules.stylix
       ];
       specialArgs = {
         inherit pkgs-stable;
         inherit systemSettings;
         inherit userSettings;
       };
-    };
-
-    homeConfigurations.${userSettings.username} = inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home/home.nix
-          inputs.stylix.homeManagerModules.stylix
-          inputs.nur.nixosModules.nur
-        ];
-        extraSpecialArgs = {
-          inherit pkgs-stable;
-          inherit systemSettings;
-          inherit userSettings;
-          inherit self;
-        };
     };
   };
 }

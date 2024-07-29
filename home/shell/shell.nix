@@ -1,12 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 
 {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    dotDir = ".config/zsh"; # already relative to home dir
     history.path = "$HOME/.config/zsh/history";
 
     oh-my-zsh = {
@@ -63,7 +61,7 @@
   # TODO: See what packages here can be moved out and configured
   home.packages = with pkgs; [
     tldr
-    thefuck
+    pkgs-stable.thefuck # Broken on unstable currently
     fastfetch
     ripgrep
     imagemagick

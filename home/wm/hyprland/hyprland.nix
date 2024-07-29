@@ -5,6 +5,7 @@
     ./waybar.nix # Status bar
     ./wofi.nix # Application runner
     ./../common/swaync.nix # Notification manager
+    (./../.. + "/shell/${userSettings.terminal}.nix") # Chosen terminal emulator
   ];
 
   # TODO: Add modular configs
@@ -43,10 +44,6 @@
 
       dwindle = {
         preserve_split = "true";
-      };
-
-      master = {
-        new_is_master = "true";
       };
     };
   };

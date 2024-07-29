@@ -1,0 +1,60 @@
+{ pkgs, ... }:
+
+{
+  imports = [ <home-manager/nixos> ];
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    steam = pkgs.steam.override {
+      # Fixes gamescope not working with steam + undefined symbols in xwayland
+      extraPkgs = pkgs: with pkgs; [
+        xorg.libXcursor
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXScrnSaver
+        libpng
+        libpulseaudio
+        libvorbis
+        stdenv.cc.cc.lib
+        libkrb5
+        keyutils
+      ];
+    };
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+  };
+
+  programs.gamescope = {
+    enable = true;
+    args = [
+      "--output-width 2560"
+      "--output-height 1440"
+      "--nested-width 2560"
+      "--nested-height 1440"
+      "--borderless"
+      "--expose-wayland"
+      "--force-grab-cursor"
+      "--mangoapp" # Preferred to launching mangoscope itself
+    ];
+    package = pkgs.gamescope_git;
+  };
+
+  environment.systemPackages = with pkgs; [
+    lutris
+    heroic
+    wineWowPackages.stable
+    winetricks
+    mangohud
+    vulkan-tools # For vkcube, useful debugging tool
+    dxvk
+  ];
+
+  hardware.xpadneo.enable = true;
+  programs.gamemode.enable = true;
+
+  home-manager.users.stormytuna.home.file.".config/MangoHud/MangoHud.conf".source = ./conf/mangohud/mangohud.conf;
+}

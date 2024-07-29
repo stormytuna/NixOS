@@ -4,7 +4,6 @@
   imports = [
     # TODO: Create central user config for module importing and tweaking settings of modules
     # want to be able to change theme in one location and have everything update, etc
-    (./. + "/shell/${userSettings.terminal}.nix") # Chosen terminal emulator
     (./. + "/shell/${userSettings.editor}.nix") # Chosen editor
     (./. + "/wm/${userSettings.wm}/${userSettings.wm}.nix") # Chosen window manager
     ./shell/shell.nix

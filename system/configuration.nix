@@ -62,6 +62,13 @@
     shell = pkgs.zsh;
   };
 
+  # Delete old images
+  nix.gc = {
+    automatic = true;
+    randomizedDelaySec = "14m";
+    options = "--delete-older-than 10d";
+  };
+
   # We love being POSIX compliant
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
@@ -77,6 +84,7 @@
     fd
     unp
     unrar
+    unzip
     ripgrep
     imagemagick
     tldr

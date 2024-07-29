@@ -38,7 +38,7 @@
       "--force-grab-cursor"
       "--mangoapp" # Preferred to launching mangoscope itself
     ];
-    package = pkgs.gamescope_git;
+    #package = pkgs.gamescope_git; # git version is borked as of 11/07
   };
 
   # XBox controller drivers
