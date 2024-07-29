@@ -8,7 +8,7 @@
     ./apps/apps.nix
     ./dev/csharp.nix
     ./dev/dev.nix
-    #./dev/git.nix
+    ./dev/git.nix
     ./hardware-configuration.nix
     ./hardware/networking.nix
     ./hardware/audio.nix
