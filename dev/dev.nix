@@ -8,4 +8,6 @@
     jetbrains.rider
     avalonia-ilspy
   ];
+
+  programs.adb.enable = true;
 }

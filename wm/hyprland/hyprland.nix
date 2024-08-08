@@ -3,10 +3,10 @@
 {
   imports = [
     <home-manager/nixos>
-    ./wayland.nix
     ./waybar.nix # Status bar
-    ./wofi.nix # Application runner
-    ./../common/swaync.nix # Notification manager
+    ../common/wayland.nix
+    ../common/wofi.nix # Application runner
+    ../common/swaync.nix # Notification manager
     (./../.. + "/shell/${userSettings.terminal}.nix") # Chosen terminal emulator
   ];
 
@@ -25,6 +25,8 @@
   };
 
   programs.nm-applet.enable = true;
+
+  services.xserver.displayManager.sddm.enable = true;
 
   home-manager.users.stormytuna = { ... }:
   {
@@ -60,6 +62,9 @@
           repeat_delay = "250";
           repeat_rate = "35";
           follow_mouse = "1";
+
+          sensitivity = 0.5;
+          accel_profile = "flat";
         };
 
         dwindle = {
@@ -72,7 +77,7 @@
     home.file.".config/hypr/startup.conf".source = ./conf/hyprland/startup.conf;
     home.file.".config/hypr/visuals.conf".source = ./conf/hyprland/visuals.${userSettings.hyprland.visuals}.conf;
     home.file.".config/hypr/windowrules.conf".source = ./conf/hyprland/windowrules.conf;
-    home.file.".config/hypr/workspaces.conf".source = .conf/hyprland/workspaces.conf;
+    home.file.".config/hypr/workspaces.conf".source = ./conf/hyprland/workspaces.conf;
     home.file.".config/hypr/keybinds.conf".source = ./conf/hyprland/keybinds.conf;
 
     home.packages = with pkgs; [

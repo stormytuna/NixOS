@@ -40,8 +40,7 @@
         dotfilesDir = "/home/${username}/.config";
 
         # Software
-        wm = "plasma";
-        wmType = if (wm == "hyprland") then "wayland" else "x11";
+        wm = "hyprland";
         browser = "firefox";
         terminal = "alacritty";
         editor = "nvim";
@@ -49,21 +48,10 @@
         spawnEditor = "exec " + terminal + " -e " + editor;
 
         # Modular configs
-        waybar.modules = "minimal";
+        waybar.modules = "informational";
         hyprland.visuals = "sharp";
 
-        # Theming
-        colourScheme = "catppuccin-mocha";
-        wallpaper = "bridget";
-        polarity = "dark";
-
-        # Icons
-        iconSettings = {
-          # candy-icons
-          # kora
-          package = pkgs.kora-icon-theme;
-          name = "kora";
-        };
+        wmType = if (wm == "hyprland") then "wayland" else "x11";
 
         # Fonts - directly passed to stylix, see ./home/style/stylix.nix
         fonts = {

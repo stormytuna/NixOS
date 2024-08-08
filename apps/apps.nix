@@ -13,5 +13,6 @@
     vesktop
     pavucontrol
     aseprite
+    sidequest
   ];
 }

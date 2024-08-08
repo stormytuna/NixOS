@@ -14,11 +14,5 @@
       key_backward = "Ctrl-p";
       key_submit = "Ctrl-y";
     };
-
-    style = ''
-      * { 
-        font-family: "${userSettings.fonts.monospace.name}";
-      }
-    '';
   };
 }

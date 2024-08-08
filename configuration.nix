@@ -9,6 +9,7 @@
     ./dev/csharp.nix
     ./dev/dev.nix
     ./dev/git.nix
+    ./dev/java.nix
     ./hardware-configuration.nix
     ./hardware/networking.nix
     ./hardware/audio.nix
@@ -70,11 +71,11 @@
   };
 
   # Delete old nixos images
-  nix.gc = {
-    automatic = true;
-    randomizedDelaySec = "14m";
-    options = "--delete-older-than 10d";
-  };
+  #nix.gc = {
+  #  automatic = true;
+  #  randomizedDelaySec = "14m";
+  #  options = "--delete-older-than 10d";
+  #};
 
   # Allow unfree
   nixpkgs.config = {
