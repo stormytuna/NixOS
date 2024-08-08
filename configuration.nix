@@ -4,8 +4,9 @@
   imports = [
     ./home.nix
     (./. + "/wm/${userSettings.wm}/${userSettings.wm}.nix")
-    ./apps/gaming.nix
     ./apps/apps.nix
+    ./apps/gaming.nix
+    ./apps/thunar.nix
     ./dev/csharp.nix
     ./dev/dev.nix
     ./dev/git.nix

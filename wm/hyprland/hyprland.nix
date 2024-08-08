@@ -7,6 +7,7 @@
     ../common/wayland.nix
     ../common/wofi.nix # Application runner
     ../common/swaync.nix # Notification manager
+    ../common/sddm.nix
     (./../.. + "/shell/${userSettings.terminal}.nix") # Chosen terminal emulator
   ];
 
@@ -25,8 +26,6 @@
   };
 
   programs.nm-applet.enable = true;
-
-  services.xserver.displayManager.sddm.enable = true;
 
   home-manager.users.stormytuna = { ... }:
   {
