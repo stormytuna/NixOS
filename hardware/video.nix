@@ -11,6 +11,9 @@
     extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
   };
 
+  # Force radv to be used instead of amdvlk
+  environment.variables.AMD_VULKAN_ICD = "RADV";
+
   # Using chaotic nyx for *actual* bleeding edge mesa package
   chaotic.mesa-git.enable = true;
 }

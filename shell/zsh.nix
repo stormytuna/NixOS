@@ -6,7 +6,6 @@
   # We love being POSIX compliant
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ]; # Required for zsh completions for system packages
 
   home-manager.users.stormytuna.programs.zsh = {
@@ -48,7 +47,7 @@
 
       # misc
       cat = "bat";
-      cl = "clear; fastfetch";
+      cl = "clear";
       neofetch = "fastfetch";
     };
 

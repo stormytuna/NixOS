@@ -21,6 +21,8 @@
     gh
   ];
 
+  users.defaultUserShell = pkgs.zsh;
+
   home-manager.users.stormytuna = { pkgs, ... }:
   {
     programs.zoxide = {

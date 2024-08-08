@@ -1,4 +1,4 @@
-{ userSettings, ... }:
+{ lib, userSettings, ... }:
 
 {
   imports = [ <home-manager/nixos> ];
@@ -14,5 +14,11 @@
       key_backward = "Ctrl-p";
       key_submit = "Ctrl-y";
     };
+
+    style = lib.mkForce ''
+      * { 
+        font-family: "${userSettings.fonts.monospace.name}";
+      }
+    '';
   };
 }
