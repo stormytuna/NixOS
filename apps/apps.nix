@@ -7,9 +7,9 @@
     btop
     bitwarden
     firefox
-    (discord.override {
-     withVencord = true;
-    })
+    #(discord.override {
+    # withVencord = true;
+    #})
     vesktop
     pavucontrol
     aseprite

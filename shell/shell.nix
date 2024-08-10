@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     tldr
-    pkgs-stable.thefuck # Broken on unstable currently
     fastfetch
     ripgrep
     imagemagick
@@ -19,9 +18,8 @@
     unrar
     unzip
     gh
+    nix-output-monitor
   ];
-
-  users.defaultUserShell = pkgs.zsh;
 
   home-manager.users.stormytuna = { pkgs, ... }:
   {

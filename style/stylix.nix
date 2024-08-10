@@ -1,9 +1,11 @@
-{ config, lib, pkgs, userSettings, ... }:
+{ config, lib, pkgs, ... }:
 
   let
     colourScheme = lib.fileContents ../style/current/colourscheme;
 
-    wallpaperPath = ./. + "/wallpapers/${lib.fileContents ../style/current/wallpaper}.png"; 
+    dynamicWallpaperPath = /. + "${config.users.users.stormytuna.home}/Pictures/Wallpapers/${lib.fileContents ../style/current/wallpaper}.png"; 
+    fallbackWallpaperPath = ./fallback-wallpaper.png;
+    wallpaperPath = if builtins.pathExists dynamicWallpaperPath then dynamicWallpaperPath else fallbackWallpaperPath;
 
     icons = lib.fileContents ../style/current/icons;
     iconStrings = lib.strings.splitString " " icons;
@@ -17,13 +19,39 @@
 
   stylix.enable = true;
 
-  # TODO: Post-update scripts for refreshing themes everywhere
-
   stylix.polarity = lib.fileContents ../style/current/polarity;
   stylix.image = wallpaperPath;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${colourScheme}.yaml";
-  stylix.fonts = userSettings.fonts;
-  stylix.cursor = userSettings.cursorSettings;
+
+  stylix.fonts = {
+    serif = {
+      name = "Crimson";
+      package = pkgs.crimson;
+    };
+    sansSerif = {
+      name = "Roboto";
+      package = pkgs.roboto;
+    };
+    monospace = {
+      name = "MonaspiceKr Nerd Font";
+      package = (pkgs.nerdfonts.override { fonts = [ "Monaspace" ]; });
+    };
+    emoji = {
+      name = "Noto Color Emoji";
+      package = pkgs.noto-fonts-emoji;
+    };
+  };
+
+  stylix.cursor = { # Set to `home.pointerCursor`, see that for option info
+    # bibata-cursors - Bibata-(Modern|Original)-(Amber|Classic|Ice)
+    # phinger-cursors - phinger-cursors-(dark|light)
+    # oreo-cursors-plus
+    # volantes-cursors - volantes_cursors volantes_light_cursors
+    package = pkgs.volantes-cursors;
+    name = "volantes_cursors";
+    size = 24;
+  };
+
 
   home-manager.users.stormytuna = { ... }:
   {
@@ -53,7 +81,6 @@
     '';
 
     stylix.targets.mangohud.enable = false;
-    stylix.targets.alacritty.enable = false;
 
     # Linking wallpaper, stylix can't set hyprland wallpaper
     home.file.".config/hypr/wallpaper.png".source = wallpaperPath;

@@ -11,11 +11,12 @@
     ./dev/dev.nix
     ./dev/git.nix
     ./dev/java.nix
-    ./hardware-configuration.nix
-    ./hardware/networking.nix
     ./hardware/audio.nix
     ./hardware/bluetooth.nix
+    ./hardware/networking.nix
+    ./hardware/systemd.nix
     ./hardware/video.nix
+    ./hardware-configuration.nix
     ./shell/zsh.nix
     ./shell/nvim.nix
     ./shell/shell.nix
@@ -69,13 +70,6 @@
       "wheel" # Enable `sudo`
     ];
     shell = pkgs.zsh;
-  };
-
-  # Delete old nixos images
-  nix.gc = {
-    automatic = true;
-    randomizedDelaySec = "14m";
-    options = "--delete-older-than 10d";
   };
 
   # Allow unfree

@@ -62,7 +62,6 @@
           repeat_rate = "35";
           follow_mouse = "1";
 
-          sensitivity = 0.5;
           accel_profile = "flat";
         };
 

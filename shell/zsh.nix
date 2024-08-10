@@ -6,8 +6,10 @@
   # We love being POSIX compliant
   environment.shells = with pkgs; [ zsh ];
   programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   environment.pathsToLink = [ "/share/zsh" ]; # Required for zsh completions for system packages
 
+  # TODO: Finish this!
   home-manager.users.stormytuna.programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -17,16 +19,23 @@
     oh-my-zsh = {
       enable = true;
       plugins = [
+        "alias-finder"
         "colored-man-pages"
         "command-not-found"
         "fancy-ctrl-z"
       ];
+      extraConfig = ''
+        zstyle ':omz:plugins:alias-finder' autoload yes
+        zstyle ':omz:plugins:alias-finder' longer yes
+        zstyle ':omz:plugins:alias-finder' exact yes
+        zstyle ':omz:plugins:alias-finder' cheaper yes
+      '';
     };
 
     shellAliases = {
       # nixos
       update-flake = "sudo nix flake update /home/stormytuna/.nixos/ && update";
-      update = "sudo nixos-rebuild switch --flake '/home/stormytuna/.nixos/' --impure";
+      update = "sudo nixos-rebuild switch --flake '/home/stormytuna/.nixos/' --impure --log-format internal-json -v |& nom --json";
 
       # exa
       ls = "eza";

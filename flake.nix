@@ -42,16 +42,15 @@
         # Software
         wm = "hyprland";
         browser = "firefox";
-        terminal = "alacritty";
+        terminal = "kitty";
         editor = "nvim";
-        spawnTerm = "alacritty"; # Useful for adding params to every terminal window
-        spawnEditor = "exec " + terminal + " -e " + editor;
+        spawnTerm = "kitty"; # Useful for adding params to every terminal window
 
-        # Modular configs
+        # Modular configs # TODO: Rewrite these
         waybar.modules = "informational";
         hyprland.visuals = "sharp";
 
-        wmType = if (wm == "hyprland") then "wayland" else "x11";
+        wmType = if (wm == "hyprland") then "wayland" else "x11"; # TODO: This isnt even true lol
 
         # Fonts - directly passed to stylix, see ./home/style/stylix.nix
         fonts = {
@@ -79,8 +78,9 @@
           # bibata-cursors - Bibata-(Modern|Original)-(Amber|Classic|Ice)
           # phinger-cursors - phinger-cursors-(dark|light)
           # oreo-cursors-plus
-          package = pkgs.bibata-cursors;
-          name = "Bibata-Modern-Amber";
+          # volantes-cursors - volantes_cursors volantes_light_cursors
+          package = pkgs.volantes-cursors;
+          name = "volantes_cursors";
           size = 24;
         };
       };
