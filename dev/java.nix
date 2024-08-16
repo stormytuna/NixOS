@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
-{
-  environment.systemPackages = with pkgs; [ jdk22 jre8 ];
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [jdk22 jre8];
 }

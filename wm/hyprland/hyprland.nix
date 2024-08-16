@@ -1,6 +1,9 @@
-{ pkgs, userSettings, systemSettings, ... }:
-
 {
+  pkgs,
+  userSettings,
+  systemSettings,
+  ...
+}: {
   imports = [
     <home-manager/nixos>
     ./waybar.nix # Status bar
@@ -27,8 +30,7 @@
 
   programs.nm-applet.enable = true;
 
-  home-manager.users.stormytuna = { ... }:
-  {
+  home-manager.users.stormytuna = {...}: {
     # TODO: Add modular configs
     wayland.windowManager.hyprland = {
       enable = true;
@@ -41,7 +43,7 @@
         "$term" = userSettings.spawnTerm;
 
         # Imports linked configs, see ./config
-        source = [ 
+        source = [
           "monitors.conf"
           "startup.conf"
           "visuals.conf"
@@ -52,7 +54,7 @@
 
         exec-once = "hyprctl setcursor ${userSettings.cursorSettings.name} ${builtins.toString userSettings.cursorSettings.size}";
 
-        env = [ 
+        env = [
           "XKB_DEFAULT_LAYOUT, ${systemSettings.keymap}"
         ];
 

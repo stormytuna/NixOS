@@ -1,13 +1,11 @@
-{ pkgs, ... }:
-
-{
-  imports = [ <home-manager/nixos> ];
+{pkgs, ...}: {
+  imports = [<home-manager/nixos>];
 
   # We love being POSIX compliant
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  environment.pathsToLink = [ "/share/zsh" ]; # Required for zsh completions for system packages
+  environment.pathsToLink = ["/share/zsh"]; # Required for zsh completions for system packages
 
   # TODO: Finish this!
   home-manager.users.stormytuna.programs.zsh = {
@@ -35,7 +33,7 @@
     shellAliases = {
       # nixos
       update-flake = "sudo nix flake update /home/stormytuna/.nixos/ && update";
-      update = "sudo nixos-rebuild switch --flake '/home/stormytuna/.nixos/' --impure --log-format internal-json -v |& nom --json";
+      update = "sudo nixos-rebuild switch --flake '/home/stormytuna/.nixos/' --impure --log-format internal-json -v |& nom --json; notify-send 'System update complete!'";
 
       # exa
       ls = "eza";
@@ -65,5 +63,4 @@
       zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
     '';
   };
-
 }

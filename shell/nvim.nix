@@ -1,14 +1,10 @@
-{ pkgs, ... }:
+{pkgs, ...}: {
+  imports = [<home-manager/nixos>];
 
-{
-  imports = [ <home-manager/nixos> ];
-
-  home-manager.users.stormytuna.programs.neovim = 
-  let
+  home-manager.users.stormytuna.programs.neovim = let
     toLua = str: "lua << EOF\n${str}\nEOF\n";
     toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-  in
-  {
+  in {
     enable = true;
     defaultEditor = true;
 
@@ -21,6 +17,7 @@
     extraPackages = with pkgs; [
       lua-language-server
       nil
+      alejandra
     ];
 
     extraLuaConfig = ''

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   services.displayManager.sddm = {
     enable = true;
     theme = "catppuccin-sddm-corners";

@@ -1,24 +1,27 @@
-{ config, pkgs, ... }:
-
 {
-  imports = [ <home-manager/nixos> ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [<home-manager/nixos>];
 
   nixpkgs.config.packageOverrides = pkgs: {
     steam = pkgs.steam.override {
       # Fixes gamescope not working with steam + undefined symbols in xwayland
-      extraPkgs = pkgs: with pkgs; [
-        xorg.libXcursor
-        xorg.libXi
-        xorg.libXinerama
-        xorg.libXScrnSaver
-        libpng
-        libpulseaudio
-        libvorbis
-        stdenv.cc.cc.lib
-        libkrb5
-        keyutils
-        openxr-loader
-      ];
+      extraPkgs = pkgs:
+        with pkgs; [
+          xorg.libXcursor
+          xorg.libXi
+          xorg.libXinerama
+          xorg.libXScrnSaver
+          libpng
+          libpulseaudio
+          libvorbis
+          stdenv.cc.cc.lib
+          libkrb5
+          keyutils
+          openxr-loader
+        ];
     };
   };
 
@@ -26,7 +29,7 @@
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+    extraCompatPackages = with pkgs; [proton-ge-bin];
   };
 
   programs.gamescope = {

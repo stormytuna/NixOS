@@ -1,6 +1,11 @@
-{ pkgs, pkgs-stable, ... }:
+{pkgs, ...}: {
+  imports = [
+    <home-manager/nixos>
+    ./zsh.nix
+    ./nvim.nix
+    ./starship.nix
+  ];
 
-{
   environment.systemPackages = with pkgs; [
     tldr
     fastfetch
@@ -21,8 +26,7 @@
     nix-output-monitor
   ];
 
-  home-manager.users.stormytuna = { pkgs, ... }:
-  {
+  home-manager.users.stormytuna = {pkgs, ...}: {
     programs.zoxide = {
       enable = true;
       enableZshIntegration = true;

@@ -1,27 +1,18 @@
-{ pkgs, systemSettings, userSettings, ... }:
-
 {
+  pkgs,
+  systemSettings,
+  userSettings,
+  ...
+}: {
   imports = [
     ./home.nix
-    (./. + "/wm/${userSettings.wm}/${userSettings.wm}.nix")
-    ./apps/apps.nix
-    ./apps/gaming.nix
-    ./apps/thunar.nix
-    ./dev/csharp.nix
-    ./dev/dev.nix
-    ./dev/git.nix
-    ./dev/java.nix
-    ./hardware/audio.nix
-    ./hardware/bluetooth.nix
-    ./hardware/networking.nix
-    ./hardware/systemd.nix
-    ./hardware/video.nix
     ./hardware-configuration.nix
-    ./shell/zsh.nix
-    ./shell/nvim.nix
+    (./. + "/wm/${userSettings.wm}/${userSettings.wm}.nix") # TODO: Proper modules!
+    ./apps/apps.nix
+    ./dev/dev.nix
+    ./hardware/hardware.nix
     ./shell/shell.nix
-    ./shell/starship.nix
-    ./style/stylix.nix
+    ./style/style.nix
   ];
 
   # Configure bootloader
@@ -35,11 +26,11 @@
   # Remove need to type in password for sudo commands
   security.sudo.extraRules = [
     {
-      users = [ "stormytuna" ];
-      commands = [ 
+      users = ["stormytuna"];
+      commands = [
         {
           command = "ALL";
-          options = [ "NOPASSWD" ];
+          options = ["NOPASSWD"];
         }
       ];
     }
@@ -66,7 +57,7 @@
   # User account
   users.users.${userSettings.username} = {
     isNormalUser = true;
-    extraGroups = [ 
+    extraGroups = [
       "wheel" # Enable `sudo`
     ];
     shell = pkgs.zsh;
@@ -75,13 +66,12 @@
   # Allow unfree
   nixpkgs.config = {
     allowUnfree = true;
-    allowUnfreePredicate = (_: true);
+    allowUnfreePredicate = _: true;
   };
 
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Leave this unchanged for compatibility purposes
   system.stateVersion = "23.11";
 }
-

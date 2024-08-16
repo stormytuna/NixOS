@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   # nix.gc was throwing on rebuilds so just made systemd service
   systemd.services.cleanupgarbage = {
     enable = true;

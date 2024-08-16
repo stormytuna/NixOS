@@ -1,10 +1,11 @@
-{ config, lib, ... }:
-
-let
-  colours = config.lib.stylix.colors.withHashtag;
-in
 {
-  imports = [ <home-manager/nixos> ];
+  config,
+  lib,
+  ...
+}: let
+  colours = config.lib.stylix.colors.withHashtag;
+in {
+  imports = [<home-manager/nixos>];
 
   home-manager.users.stormytuna.programs.starship = {
     enable = true;
@@ -86,10 +87,10 @@ in
         style = "bg:${colours.base02} fg:${colours.base0C}";
       };
 
-     zig = {
+      zig = {
         format = "[ $symbol($version ) ]($style)";
         style = "bg:${colours.base02} fg:${colours.base0C}";
-     };
+      };
 
       cmd_duration = {
         format = "[ took $duration ]($style)";

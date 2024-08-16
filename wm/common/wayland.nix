@@ -1,6 +1,8 @@
-{ pkgs, systemSettings, ... }:
-
 {
+  pkgs,
+  systemSettings,
+  ...
+}: {
   imports = [
     ./fonts.nix
     ./gnome-keyring.nix

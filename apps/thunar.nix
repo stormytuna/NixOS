@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [
@@ -9,7 +7,7 @@
     ];
   };
 
-  environment.systemPackages = [ pkgs.gvfs ];
+  environment.systemPackages = [pkgs.gvfs];
 
   programs.xfconf.enable = true; # Required for configs to be saved
 

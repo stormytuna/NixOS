@@ -1,21 +1,26 @@
-{ config, lib, pkgs, ... }:
-
-  let
-    colourScheme = lib.fileContents ../style/current/colourscheme;
-
-    dynamicWallpaperPath = /. + "${config.users.users.stormytuna.home}/Pictures/Wallpapers/${lib.fileContents ../style/current/wallpaper}.png"; 
-    fallbackWallpaperPath = ./fallback-wallpaper.png;
-    wallpaperPath = if builtins.pathExists dynamicWallpaperPath then dynamicWallpaperPath else fallbackWallpaperPath;
-
-    icons = lib.fileContents ../style/current/icons;
-    iconStrings = lib.strings.splitString " " icons;
-    iconPackageName = builtins.elemAt iconStrings 0;
-    iconName = builtins.elemAt iconStrings 1;
-
-    colours = config.lib.stylix.colors.withHashtag;
-  in
 {
-  imports = [ <home-manager/nixos> ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  colourScheme = lib.fileContents ../style/current/colourscheme;
+
+  dynamicWallpaperPath = /. + "${config.users.users.stormytuna.home}/Pictures/Wallpapers/${lib.fileContents ../style/current/wallpaper}.png";
+  fallbackWallpaperPath = ./fallback-wallpaper.png;
+  wallpaperPath =
+    if builtins.pathExists dynamicWallpaperPath
+    then dynamicWallpaperPath
+    else fallbackWallpaperPath;
+
+  icons = lib.fileContents ../style/current/icons;
+  iconStrings = lib.strings.splitString " " icons;
+  iconPackageName = builtins.elemAt iconStrings 0;
+  iconName = builtins.elemAt iconStrings 1;
+
+  colours = config.lib.stylix.colors.withHashtag;
+in {
+  imports = [<home-manager/nixos>];
 
   stylix.enable = true;
 
@@ -34,7 +39,7 @@
     };
     monospace = {
       name = "MonaspiceKr Nerd Font";
-      package = (pkgs.nerdfonts.override { fonts = [ "Monaspace" ]; });
+      package = pkgs.nerdfonts.override {fonts = ["Monaspace"];};
     };
     emoji = {
       name = "Noto Color Emoji";
@@ -42,26 +47,26 @@
     };
   };
 
-  stylix.cursor = { # Set to `home.pointerCursor`, see that for option info
+  stylix.cursor = {
+    # Set to `home.pointerCursor`, see that for option info
     # bibata-cursors - Bibata-(Modern|Original)-(Amber|Classic|Ice)
     # phinger-cursors - phinger-cursors-(dark|light)
     # oreo-cursors-plus
     # volantes-cursors - volantes_cursors volantes_light_cursors
-    package = pkgs.volantes-cursors;
-    name = "volantes_cursors";
+    # afterglow-cursors-recolored
+    package = pkgs.afterglow-cursors-recolored;
+    name = "Afterglow-Recolored-Original-joris4";
     size = 24;
   };
 
-
-  home-manager.users.stormytuna = { ... }:
-  {
+  home-manager.users.stormytuna = {...}: {
     gtk.iconTheme = {
       package = pkgs.${iconPackageName};
       name = iconName;
     };
 
     stylix.targets.waybar.enable = false; # Stylix has awful waybar styles by default
-      home.file.".config/waybar/colors.css".text = ''
+    home.file.".config/waybar/colors.css".text = ''
       @define-color base00 ${colours.base00};
       @define-color base01 ${colours.base01};
       @define-color base02 ${colours.base02};

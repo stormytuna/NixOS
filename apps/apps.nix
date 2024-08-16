@@ -1,10 +1,16 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./gaming.nix
+    ./thunar.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     config.nur.repos.nltch.spotify-adblock
     qbittorrent
-    btop
     bitwarden
     firefox
     #(discord.override {
@@ -14,5 +20,6 @@
     pavucontrol
     aseprite
     sidequest
+    prismlauncher
   ];
 }

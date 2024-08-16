@@ -1,13 +1,10 @@
-{ userSettings, ... }:
-
-{
-  imports = [ 
+{userSettings, ...}: {
+  imports = [
     <home-manager/nixos>
     (./. + "/waybar.modules.${userSettings.waybar.modules}.nix")
   ];
 
-  home-manager.users.stormytuna = { ... }:
-  {
+  home-manager.users.stormytuna = {...}: {
     programs.waybar = {
       enable = true;
 
@@ -18,7 +15,7 @@
           position = "top";
           mod = "dock";
           height = 30;
-          output = [ "DP-1" ];
+          output = ["DP-1"];
 
           # Module configs
           "custom/shutdown" = {
@@ -48,7 +45,7 @@
             format = "{volume}% {icon} ";
             format-icons = {
               headphone = "";
-              default = [ "" "" "" ];
+              default = ["" "" ""];
             };
             scroll-step = 1;
             on-click = "hyprctl dispatch togglespecialworkspace pavucontrol && hyprctl dispatch bringactivetotop";
@@ -86,7 +83,7 @@
 
           "custom/gpu" = {
             exec = "cat /sys/class/hwmon/hwmon2/device/gpu_busy_percent"; # TODO: Script to automagically find correct device?
-              format = " {}%  ";
+            format = " {}%  ";
             return-type = "";
             interval = 5;
           };

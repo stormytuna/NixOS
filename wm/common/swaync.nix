@@ -1,7 +1,5 @@
-{ ... }:
-
-{
-  imports = [ <home-manager/nixos> ];
+{...}: {
+  imports = [<home-manager/nixos>];
 
   home-manager.users.stormytuna.services.swaync = {
     enable = true;
@@ -70,4 +68,3 @@
     };
   };
 }
-  

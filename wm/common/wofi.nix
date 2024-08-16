@@ -1,9 +1,11 @@
-{ lib, userSettings, ... }:
-
 {
-  imports = [ <home-manager/nixos> ];
+  lib,
+  userSettings,
+  ...
+}: {
+  imports = [<home-manager/nixos>];
 
-  home-manager.users.stormytuna.programs.wofi = { 
+  home-manager.users.stormytuna.programs.wofi = {
     enable = true;
 
     settings = {
@@ -16,7 +18,7 @@
     };
 
     style = lib.mkForce ''
-      * { 
+      * {
         font-family: "${userSettings.fonts.monospace.name}";
       }
     '';
