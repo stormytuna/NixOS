@@ -442,11 +442,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1723723403,
-        "narHash": "sha256-IKWf8JdUOgoTYaWaQ7pFIjfpD6bFvf8V+rKuZRUytro=",
+        "lastModified": 1723824059,
+        "narHash": "sha256-3AebH/B40viTNVJpgiQkfptVe4aRTfyffa8rjUNB0pU=",
         "ref": "refs/heads/main",
-        "rev": "069faa4027d016549ee72afcd7df3b2c1e7ee578",
-        "revCount": 5091,
+        "rev": "c5feee1e357f3c3c59ebe406630601c627807963",
+        "revCount": 5098,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -751,11 +751,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1723685172,
-        "narHash": "sha256-TXrwOBvk9yQnfS9zgyG6jWJA7bK+UVfnSoGX1Gp4/uU=",
+        "lastModified": 1723828248,
+        "narHash": "sha256-Y1zPsSg5t5FWibjooojhJ231u5stC9nYcpeOPrb5F+0=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "e470c879f34c9f3915d7f1fe95c33f9a958f8c10",
+        "rev": "b3f6cf134b9485eeb7fd509670c13c98944b02a3",
         "type": "github"
       },
       "original": {
@@ -878,11 +878,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1723728459,
-        "narHash": "sha256-/REChCgzN10bqe4Nyd+xPHc8jfFM5YxMJvskSNt8164=",
+        "lastModified": 1723825553,
+        "narHash": "sha256-M7w/KcMfA4iQE9dJrCRk/vbBBH2fbuJEeiu1pod7HwI=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "84e0a72d1e17aedc43da8fbe38ef654a36211e46",
+        "rev": "27fff3e7e6d489968a48a2348b712ffaaf04b50b",
         "type": "github"
       },
       "original": {
