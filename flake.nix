@@ -114,10 +114,24 @@
       };
     };
   in {
-    nixosConfigurations.${systemSettings.hostname} = inputs.nixpkgs.lib.nixosSystem {
+    nixosConfigurations.eva-unit01 = inputs.nixpkgs.lib.nixosSystem {
       system = systemSettings.systemArch;
       modules = [
-        ./configuration.nix
+        ./hosts/home-pc/configuration.nix
+        inputs.chaotic.nixosModules.default
+        inputs.nur.nixosModules.nur
+        inputs.stylix.nixosModules.stylix
+      ];
+      specialArgs = {
+        inherit pkgs-stable;
+        inherit systemSettings;
+        inherit userSettings;
+      };
+    };
+    nixosConfigurations.eva-unit02 = inputs.nixpkgs.lib.nixosSystem {
+      system = systemSettings.systemArch;
+      modules = [
+        ./hosts/laptop/configuration.nix
         inputs.chaotic.nixosModules.default
         inputs.nur.nixosModules.nur
         inputs.stylix.nixosModules.stylix
