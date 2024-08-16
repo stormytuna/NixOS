@@ -1,64 +1,71 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
   imports = [<home-manager/nixos>];
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    steam = pkgs.steam.override {
-      # Fixes gamescope not working with steam + undefined symbols in xwayland
-      extraPkgs = pkgs:
-        with pkgs; [
-          xorg.libXcursor
-          xorg.libXi
-          xorg.libXinerama
-          xorg.libXScrnSaver
-          libpng
-          libpulseaudio
-          libvorbis
-          stdenv.cc.cc.lib
-          libkrb5
-          keyutils
-          openxr-loader
-        ];
+  options = {
+    modules.gaming.enable = lib.mkEnableOption "Enables gaming module";
+  };
+
+  config = lib.mkIf config.modules.gaming.enable {
+    nixpkgs.config.packageOverrides = pkgs: {
+      steam = pkgs.steam.override {
+        # Fixes gamescope not working with steam + undefined symbols in xwayland
+        extraPkgs = pkgs:
+          with pkgs; [
+            xorg.libXcursor
+            xorg.libXi
+            xorg.libXinerama
+            xorg.libXScrnSaver
+            libpng
+            libpulseaudio
+            libvorbis
+            stdenv.cc.cc.lib
+            libkrb5
+            keyutils
+            openxr-loader
+          ];
+      };
     };
-  };
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    dedicatedServer.openFirewall = true;
-    extraCompatPackages = with pkgs; [proton-ge-bin];
-  };
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      extraCompatPackages = with pkgs; [proton-ge-bin];
+    };
 
-  programs.gamescope = {
-    enable = true;
-    args = [
-      "--output-width 3840"
-      "--output-height 2160"
-      "--nested-width 3840"
-      "--nested-height 2160"
-      "--borderless"
-      "--expose-wayland"
-      "--force-grab-cursor"
-      "--mangoapp" # Preferred to launching mangoscope itself
+    programs.gamescope = {
+      enable = true;
+      args = [
+        "--output-width 3840"
+        "--output-height 2160"
+        "--nested-width 3840"
+        "--nested-height 2160"
+        "--borderless"
+        "--expose-wayland"
+        "--force-grab-cursor"
+        "--mangoapp" # Preferred to launching mangoscope itself
+      ];
+      package = pkgs.gamescope_git;
+    };
+
+    environment.systemPackages = with pkgs; [
+      lutris
+      heroic
+      wineWowPackages.stable
+      winetricks
+      mangohud
+      vulkan-tools # For vkcube, useful debugging tool
+      dxvk
     ];
-    package = pkgs.gamescope_git;
+
+    hardware.xpadneo.enable = true;
+    programs.gamemode.enable = true;
+
+    home-manager.users.stormytuna.home.file.".config/MangoHud/MangoHud.conf".source = ./conf/mangohud/mangohud.conf;
   };
-
-  environment.systemPackages = with pkgs; [
-    lutris
-    heroic
-    wineWowPackages.stable
-    winetricks
-    mangohud
-    vulkan-tools # For vkcube, useful debugging tool
-    dxvk
-  ];
-
-  hardware.xpadneo.enable = true;
-  programs.gamemode.enable = true;
-
-  home-manager.users.stormytuna.home.file.".config/MangoHud/MangoHud.conf".source = ./conf/mangohud/mangohud.conf;
 }
