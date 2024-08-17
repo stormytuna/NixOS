@@ -1,8 +1,0 @@
-{
-  "file_format_version": "1.0.0",
-  "runtime": {
-    "VALVE_runtime_is_steamvr": true,
-    "libary_path": "/home/stormytuna/.steam/steam/steamapps/common/SteamVR/bin/linux64/vrclient.so",
-    "name": "SteamVR"
-  }
-}

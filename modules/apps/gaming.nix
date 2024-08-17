@@ -7,10 +7,10 @@
   imports = [<home-manager/nixos>];
 
   options = {
-    modules.gaming.enable = lib.mkEnableOption "Enables gaming module";
+    modules.apps.gaming.enable = lib.mkEnableOption "Enables gaming module";
   };
 
-  config = lib.mkIf config.modules.gaming.enable {
+  config = lib.mkIf config.modules.apps.gaming.enable {
     nixpkgs.config.packageOverrides = pkgs: {
       steam = pkgs.steam.override {
         # Fixes gamescope not working with steam + undefined symbols in xwayland

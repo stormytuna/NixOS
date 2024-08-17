@@ -5,15 +5,25 @@
   ...
 }: {
   imports = [
+    ../../modules
     ../../home.nix
     ./hardware-configuration.nix
     (../../. + "/wm/${userSettings.wm}/${userSettings.wm}.nix") # TODO: Proper modules!
-    ../../apps/apps.nix
     ../../dev/dev.nix
     ../../hardware/hardware.nix
     ../../shell/shell.nix
     ../../style/style.nix
   ];
+
+  modules = {
+    apps = {
+      enable = true;
+      discord.enable = true;
+      gaming.enable = true;
+      spotify.enable = true;
+      thunar.enable = true;
+    };
+  };
 
   # Configure bootloader
   # Uses systemd-boot if uefi, grub otherwise
