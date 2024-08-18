@@ -6,28 +6,22 @@
 }: {
   imports = [
     <home-manager/nixos>
+    ./csharp.nix
     ./git.nix
     ./java.nix
-    ./csharp.nix
+    ./neovim.nix
+    ./vscode.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    neovim
-    github-desktop
-    jetbrains.rider
-    avalonia-ilspy
-  ];
+  options = {
+    modules.dev.enable = lib.mkEnableOption "Enables various development options that don't have their own modules";
+  };
 
-  programs.adb.enable = true;
-
-  home-manager.users.stormytuna.programs.vscode = {
-    enable = true;
-    package = pkgs.vscode.fhs;
-    extensions = with pkgs.vscode-extensions; [
-      vscodevim.vim
-      ms-dotnettools.csharp
-      ms-dotnettools.csdevkit
-      ms-dotnettools.vscode-dotnet-runtime
+  config = lib.mkIf config.modules.dev.enable {
+    environment.systemPackages = with pkgs; [
+      github-desktop
     ];
+
+    programs.adb.enable = true;
   };
 }

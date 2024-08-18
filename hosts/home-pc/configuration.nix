@@ -9,7 +9,6 @@
     ../../home.nix
     ./hardware-configuration.nix
     (../../. + "/wm/${userSettings.wm}/${userSettings.wm}.nix") # TODO: Proper modules!
-    ../../dev/dev.nix
     ../../hardware/hardware.nix
     ../../shell/shell.nix
     ../../style/style.nix
@@ -22,6 +21,14 @@
       gaming.enable = true;
       spotify.enable = true;
       thunar.enable = true;
+    };
+    dev = {
+      enable = true;
+      csharp.enable = true;
+      git.enable = true;
+      #java.enable = true;
+      neovim.enable = true;
+      vscode.enable = true;
     };
   };
 
