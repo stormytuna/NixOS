@@ -66,6 +66,6 @@
     hardware.xpadneo.enable = true;
     programs.gamemode.enable = true;
 
-    home-manager.users.stormytuna.home.file.".config/MangoHud/MangoHud.conf".source = ./conf/mangohud/mangohud.conf;
+    home-manager.users.stormytuna.home.file.".config/MangoHud/MangoHud.conf".source = ./conf/mangohud.conf;
   };
 }
