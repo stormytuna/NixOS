@@ -6,9 +6,12 @@
 }: {
   imports = [
     ./discord.nix
+    ./firefox.nix
     ./gaming.nix
     ./spotify.nix
     ./thunar.nix
+    ./vesktop.nix
+    ./zen.nix
   ];
 
   options = {
@@ -19,7 +22,6 @@
     environment.systemPackages = with pkgs; [
       qbittorrent
       bitwarden
-      firefox
       pavucontrol
       aseprite
       sidequest

@@ -135,6 +135,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+-- Setting icons, old ones were not working fsr
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = function(diagnostic)
+      if diagnostic.severity == vim.diagnostic.severity.ERROR then
+        return signs['Error']
+      elseif diagnostic.severity == vim.diagnostic.severity.WARN then
+        return signs['Warning']
+      elseif diagnostic.severity == vim.diagnostic.severity.INFO then
+        return signs['Hint']
+      else
+        return signs['Info']
+      end
+    end,
+  },
+}
+
 -- LSP servers and clients are able to communicate to each other what features they support.
 --  By default, Neovim doesn't support everything that is in the LSP specification.
 --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
@@ -153,8 +171,9 @@ lsp.lua_ls.setup({
       completion = {
         callSnippet = "Replace",
       },
-      -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-      -- diagnostics = { disable = { 'missing-fields' } },
+      diagnostics = {
+        globals = { 'vim' }, -- Disable 'Undefined global `vim`' warning
+      },
     },
   },
 })

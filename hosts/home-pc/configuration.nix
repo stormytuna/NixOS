@@ -1,26 +1,30 @@
 {
+  config,
   pkgs,
   systemSettings,
   userSettings,
   ...
 }: {
   imports = [
-    ../../modules
-    ../../home.nix
+    ./home.nix
     ./hardware-configuration.nix
-    (../../. + "/wm/${userSettings.wm}/${userSettings.wm}.nix") # TODO: Proper modules!
-    ../../hardware/hardware.nix
-    ../../shell/shell.nix
-    ../../style/style.nix
+    ../../modules
   ];
 
   modules = {
     apps = {
       enable = true;
       discord.enable = true;
+      #firefox.enable = true;
       gaming.enable = true;
       spotify.enable = true;
       thunar.enable = true;
+      vesktop.enable = true;
+      zen.enable = true;
+    };
+    desktop = {
+      #gnome.enable = true;
+      hyprland.enable = true;
     };
     dev = {
       enable = true;
@@ -29,6 +33,69 @@
       #java.enable = true;
       neovim.enable = true;
       vscode.enable = true;
+    };
+    hardware = {
+      bluetooth.enable = true;
+      graphics.enable = true;
+      networking.enable = true;
+      networking.hostname = "eva-unit01";
+      pipewire.enable = true;
+    };
+    security = {
+      gnome-keyring.enable = true;
+    };
+    services = {
+      collectNixGarbage = {
+        enable = true;
+      };
+    };
+    shell = {
+      enable = true;
+      alacritty.enable = true;
+      kitty.enable = true;
+      starship.enable = true;
+      zsh.enable = true;
+      zsh.makeDefault = true;
+    };
+    stylix = {
+      enable = true;
+      theming = {
+        wallpaper = /. + "${config.users.users.stormytuna.home}/Pictures/Wallpapers/frieren-tree.png";
+        scheme = "catppuccin-mocha";
+        polarity = "dark";
+      };
+      icons = {
+        package = pkgs.kora-icon-theme;
+        name = "kora";
+      };
+      fonts = {
+        serif = {
+          name = "Crimson";
+          package = pkgs.crimson;
+        };
+        sansSerif = {
+          name = "Roboto";
+          package = pkgs.roboto;
+        };
+        monospace = {
+          name = "MonaspiceKr Nerd Font";
+          package = pkgs.nerdfonts.override {fonts = ["Monaspace"];};
+        };
+        emoji = {
+          name = "Noto Color Emoji";
+          package = pkgs.noto-fonts-emoji;
+        };
+      };
+      cursor = {
+        # bibata-cursors - Bibata-(Modern|Original)-(Amber|Classic|Ice)
+        # phinger-cursors - phinger-cursors-(dark|light)
+        # oreo-cursors-plus
+        # volantes-cursors - volantes_cursors volantes_light_cursors
+        # afterglow-cursors-recolored
+        package = pkgs.afterglow-cursors-recolored;
+        name = "Afterglow-Recolored-Original-joris4";
+        size = 24;
+      };
     };
   };
 

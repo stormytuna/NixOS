@@ -1,10 +1,12 @@
 {...}: {
   imports = [
     ./apps
+    ./desktop
     ./dev
-    #./hardware
-    #./shell
-    #./style
-    #./wm
+    ./hardware
+    ./security
+    ./services
+    ./shell
+    ./style
   ];
 }

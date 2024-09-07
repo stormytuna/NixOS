@@ -17,6 +17,8 @@
     nur.url = "github:nix-community/NUR";
 
     stylix.url = "github:danth/stylix";
+
+    zen-browser.url = "github:MarceColl/zen-browser-flake"; # TODO: Replace when https://github.com/NixOS/nixpkgs/issues/327982 is closed
   };
 
   outputs = inputs @ {self, ...}: let
@@ -126,6 +128,8 @@
         inherit pkgs-stable;
         inherit systemSettings;
         inherit userSettings;
+        zen-browser = inputs.zen-browser;
+        vscode-marketplace = inputs.nix-vscode-extensions.extensions.${systemSettings.systemArch}.vscode-marketplace;
       };
     };
     nixosConfigurations.eva-unit02 = inputs.nixpkgs.lib.nixosSystem {
@@ -140,6 +144,7 @@
         inherit pkgs-stable;
         inherit systemSettings;
         inherit userSettings;
+        vscode-marketplace = inputs.nix-vscode-extensions.extensions.${systemSettings.systemArch}.vscode-marketplace;
       };
     };
   };

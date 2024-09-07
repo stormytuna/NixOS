@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-stable,
   ...
 }: {
   imports = [<home-manager/nixos>];
@@ -45,10 +46,8 @@
         "--output-height 2160"
         "--nested-width 3840"
         "--nested-height 2160"
-        "--borderless"
         "--expose-wayland"
         "--force-grab-cursor"
-        "--mangoapp" # Preferred to launching mangoscope itself
       ];
       package = pkgs.gamescope_git;
     };
@@ -61,6 +60,7 @@
       mangohud
       vulkan-tools # For vkcube, useful debugging tool
       dxvk
+      r2modman
     ];
 
     hardware.xpadneo.enable = true;

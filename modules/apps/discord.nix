@@ -13,10 +13,9 @@
     # TODO: Figure out how to apply krisp patch
 
     environment.systemPackages = with pkgs; [
-      #(discord.override {
-      # withVencord = true;
-      #})
-      vesktop
+      (discord.override {
+        withVencord = true;
+      })
     ];
   };
 }
