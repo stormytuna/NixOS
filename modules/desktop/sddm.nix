@@ -15,9 +15,17 @@ in {
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = cfg.wayland;
-      theme = "catppuccin-sddm-corners";
+      theme = "catppuccin-mocha";
+      package = pkgs.kdePackages.sddm; # Required for catppuccin, not sure why
     };
 
-    environment.systemPackages = [pkgs.catppuccin-sddm-corners];
+    environment.systemPackages = [
+      (pkgs.catppuccin-sddm.override {
+        flavor = "mocha";
+        font = "${config.modules.stylix.fonts.monospace.name}";
+        fontSize = "14";
+        background = "${config.modules.stylix.theming.wallpaper}";
+      })
+    ];
   };
 }
