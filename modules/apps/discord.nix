@@ -9,7 +9,6 @@
   };
 
   config = lib.mkIf config.modules.apps.discord.enable {
-    # TODO: Figure out how to link discord theme with stylix
     # TODO: Figure out how to apply krisp patch
 
     environment.systemPackages = with pkgs; [

@@ -137,9 +137,6 @@ in {
             ", Print, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave area ~/Pictures/Screenshots/Area_$(date +'%Y-%m-%d_%H-%M-%S').png"
             "SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave output ~/Pictures/Screenshots/Output_$(date +'%Y-%m-%d_%H-%M-%S').png"
 
-            # Media
-            # TODO: Make these!
-
             # Emoji picker
             "CTRL SHIFT, E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji"
 

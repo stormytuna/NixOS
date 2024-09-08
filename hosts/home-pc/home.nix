@@ -10,7 +10,7 @@
     home.username = "stormytuna";
     home.homeDirectory = "/home/stormytuna";
 
-    # Extra desktop files # TODO: Move into other file
+    # Extra desktop files
     xdg.desktopEntries.yomihustle = {
       exec = ''
         sh -c "wine ~/Code/YOMIHustle/windows-351-editor-64bit.exe"
