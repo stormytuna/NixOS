@@ -60,7 +60,6 @@ in {
             [
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
               "waybar" # TODO: Optional if we enable it or not
-              #swww-deamon ## swww img ~/.config/hypr/wallpaper.png # TODO: Want to try hyprpaper
               "${pkgs.clipse}/bin/clipse -listen"
               "${pkgs.blueman}/bin/blueman-applet"
               "${pkgs.swaynotificationcenter}/bin/swaync" # TODO: Move to module

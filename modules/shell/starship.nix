@@ -1,4 +1,3 @@
-# TODO: Want to restyle this, not happy with the colours, with lighter background colours the username and path is unreadable
 {
   config,
   lib,
@@ -17,7 +16,6 @@ in {
       enable = true;
       enableZshIntegration = true;
 
-      # TODO: Move some of these into another module
       settings = {
         add_newline = false;
 

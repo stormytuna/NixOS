@@ -132,20 +132,5 @@
         vscode-marketplace = inputs.nix-vscode-extensions.extensions.${systemSettings.systemArch}.vscode-marketplace;
       };
     };
-    nixosConfigurations.eva-unit02 = inputs.nixpkgs.lib.nixosSystem {
-      system = systemSettings.systemArch;
-      modules = [
-        ./hosts/laptop/configuration.nix
-        inputs.chaotic.nixosModules.default
-        inputs.nur.nixosModules.nur
-        inputs.stylix.nixosModules.stylix
-      ];
-      specialArgs = {
-        inherit pkgs-stable;
-        inherit systemSettings;
-        inherit userSettings;
-        vscode-marketplace = inputs.nix-vscode-extensions.extensions.${systemSettings.systemArch}.vscode-marketplace;
-      };
-    };
   };
 }
