@@ -1,8 +1,6 @@
 {
   config,
   pkgs,
-  systemSettings,
-  userSettings,
   ...
 }: {
   imports = [
@@ -100,12 +98,9 @@
   };
 
   # Configure bootloader
-  # Uses systemd-boot if uefi, grub otherwise
-  boot.loader.systemd-boot.enable = systemSettings.bootMode == "uefi";
-  boot.loader.efi.canTouchEfiVariables = systemSettings.bootMode == "uefi";
-  boot.loader.efi.efiSysMountPoint = systemSettings.bootMountPath; # Does nothing if we're using grub
-  boot.loader.grub.enable = systemSettings.bootMode != "uefi";
-  boot.loader.grub.device = systemSettings.grubDevice; # Does nothing if we're using uefi
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot";
 
   # Remove need to type in password for sudo commands
   security.sudo.extraRules = [
@@ -121,25 +116,25 @@
   ];
 
   # Select internationalisation properties.
-  time.timeZone = systemSettings.timezone;
-  i18n.defaultLocale = systemSettings.locale;
+  time.timeZone = "Europe/London";
+  i18n.defaultLocale = "en_GB.UTF-8";
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = systemSettings.locale;
-    LC_IDENTIFICATION = systemSettings.locale;
-    LC_MEASUREMENT = systemSettings.locale;
-    LC_MONETARY = systemSettings.locale;
-    LC_NAME = systemSettings.locale;
-    LC_NUMERIC = systemSettings.locale;
-    LC_PAPER = systemSettings.locale;
-    LC_TELEPHONE = systemSettings.locale;
-    LC_TIME = systemSettings.locale;
+    LC_ADDRESS = "en_GB.UTF-8";
+    LC_IDENTIFICATION = "en_GB.UTF-8";
+    LC_MEASUREMENT = "en_GB.UTF-8";
+    LC_MONETARY = "en_GB.UTF-8";
+    LC_NAME = "en_GB.UTF-8";
+    LC_NUMERIC = "en_GB.UTF-8";
+    LC_PAPER = "en_GB.UTF-8";
+    LC_TELEPHONE = "en_GB.UTF-8";
+    LC_TIME = "en_GB.UTF-8";
   };
 
   # Configure tty keymap
-  console.keyMap = systemSettings.consoleKeymap;
+  console.keyMap = "us";
 
   # User account
-  users.users.${userSettings.username} = {
+  users.users.stormytuna = {
     isNormalUser = true;
     extraGroups = [
       "wheel" # Enable `sudo`
