@@ -6,7 +6,6 @@
   imports = [<home-manager/nixos>];
 
   options = {
-    # TODO: Should this even be here?
     modules.shell.alacritty.enable = lib.mkEnableOption "Enables alacritty and configuration";
   };
 

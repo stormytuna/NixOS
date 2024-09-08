@@ -34,7 +34,9 @@
       unrar
       unzip
       gh
-      nix-output-monitor
+      (nix-output-monitor.overrideAttrs {
+        patches = [../../patches/nix-output-monitor-icons.patch];
+      })
       comma # Runs packages from wherever they are without needing to install properly
     ];
 

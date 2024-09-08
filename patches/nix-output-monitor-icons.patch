@@ -1,0 +1,24 @@
+diff --git a/lib/NOM/Print.hs b/lib/NOM/Print.hs
+index 0d1bf61..1d2be95 100644
+--- a/lib/NOM/Print.hs
++++ b/lib/NOM/Print.hs
+@@ -84,16 +84,16 @@ clock = "⏱"
+ running = "⏵"
+ 
+ -- | U+2714 HEAVY CHECK MARK
+-done = "✔"
++done = "\xF00C"
+ 
+ -- | U+23F8 DOUBLE VERTICAL BAR
+ todo = "⏸"
+ 
+ -- | U+26A0 WARNING SIGN
+-warning = "⚠"
++warning = "\xF071"
+ 
+ -- | U+2205 EMPTY SET
+-average = "∅"
++average = "\xF7E62"
+ 
+ -- | U+2211 N-ARY SUMMATION
+ bigsum = "∑"

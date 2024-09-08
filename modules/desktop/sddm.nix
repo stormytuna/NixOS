@@ -17,7 +17,13 @@ in {
       wayland.enable = cfg.wayland;
       theme = "catppuccin-mocha";
       package = pkgs.kdePackages.sddm; # Required for catppuccin, not sure why
+      setupScript = ''
+      '';
     };
+
+    services.xserver.displayManager.setupCommands = ''
+      xrandr --output HDMI-A-1 --auto --primary
+    '';
 
     environment.systemPackages = [
       (pkgs.catppuccin-sddm.override {

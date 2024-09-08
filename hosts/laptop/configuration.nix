@@ -7,7 +7,6 @@
   imports = [
     ../../home.nix
     ./hardware-configuration.nix
-    (../../. + "/wm/${userSettings.wm}/${userSettings.wm}.nix") # TODO: Proper modules!
     ../../apps/apps.nix
     ../../dev/dev.nix
     ../../hardware/hardware.nix

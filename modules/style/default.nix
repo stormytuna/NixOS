@@ -56,9 +56,6 @@ in {
     stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${cfg.theming.scheme}.yaml";
 
     stylix.fonts = cfg.fonts;
-    fonts.packages = [
-      pkgs.noto-fonts
-    ];
 
     stylix.cursor = cfg.cursor;
 
