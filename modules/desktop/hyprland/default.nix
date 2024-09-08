@@ -59,7 +59,7 @@ in {
           exec-once =
             [
               "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-              #waybar # TODO: Waybar config
+              "waybar" # TODO: Optional if we enable it or not
               #swww-deamon ## swww img ~/.config/hypr/wallpaper.png # TODO: Want to try hyprpaper
               "${pkgs.clipse}/bin/clipse -listen"
               "${pkgs.blueman}/bin/blueman-applet"

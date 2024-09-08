@@ -1,3 +1,4 @@
+# TODO: Make into actual module?
 {
   config,
   lib,
@@ -64,7 +65,6 @@ in {
             };
             scroll-step = 1;
             on-click = "hyprctl dispatch togglespecialworkspace pavucontrol && hyprctl dispatch bringactivetotop";
-            #on-click-right = "~/.config/waybar/scripts/audio_changer.py"; # TODO: make own script for this!
           };
 
           bluetooth = {
@@ -109,8 +109,8 @@ in {
           };
 
           network = {
-            format-ethernet = "{ipaddr}  | {bandwidthDownBytes}   {bandwidthUpBytes}  ";
-            format-wireless = "{ipaddr}  | {bandwidthDownBytes}   {bandwidthUpBytes}  ";
+            format-ethernet = "  {bandwidthDownBytes}   {bandwidthUpBytes}  ";
+            format-wireless = "  {bandwidthDownBytes}   {bandwidthUpBytes}  ";
             interval = 5;
           };
 
@@ -126,7 +126,7 @@ in {
         * {
           font-family: "${config.modules.stylix.fonts.monospace.name}";
           font-weight: bold;
-          font-size: 14px;
+          font-size: 12px;
         }
 
         window#waybar {
