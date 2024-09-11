@@ -6,7 +6,6 @@
 }: let
   cfg = config.modules.hardware.graphics;
 in {
-  # TODO: Option for amd and nvidia specific stuff, this is currently all just amd
   options = {
     modules.hardware.graphics.enable = lib.mkEnableOption "Enables various options for graphics";
   };

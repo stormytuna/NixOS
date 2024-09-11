@@ -44,7 +44,7 @@
     };
     services = {
       collectNixGarbage = {
-        enable = true;
+        #enable = true;
       };
     };
     shell = {
@@ -101,6 +101,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
+
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+    options = "--delete-generations +10";
+  };
 
   # Remove need to type in password for sudo commands
   security.sudo.extraRules = [

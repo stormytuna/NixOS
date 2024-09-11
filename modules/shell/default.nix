@@ -40,7 +40,6 @@
       comma # Runs packages from wherever they are without needing to install properly
     ];
 
-    # TODO: Move into own thing
     home-manager.users.stormytuna = {pkgs, ...}: {
       programs.zoxide = {
         enable = true;
