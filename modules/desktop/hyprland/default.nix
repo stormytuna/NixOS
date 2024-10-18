@@ -136,8 +136,8 @@ in {
             "$mainMod SHIFT, L, movewindow, r"
 
             # Screenshots
-            ", Print, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave area ~/Pictures/Screenshots/Area_$(date +'%Y-%m-%d_%H-%M-%S').png"
-            "SHIFT, Print, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave output ~/Pictures/Screenshots/Output_$(date +'%Y-%m-%d_%H-%M-%S').png"
+            ", Print, exec, ${pkgs.hyprshot}/bin/hyprshot --mode region --output-folder ~/Pictures/Screenshots --freeze"
+            "SHIFT, Print, exec, ${pkgs.hyprshot}/bin/hyprshot --mode output --output-folder ~/Pictures/Screenshots"
 
             # Emoji picker
             "CTRL SHIFT, E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji"
