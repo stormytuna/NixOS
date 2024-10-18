@@ -2,12 +2,14 @@
   config,
   lib,
   pkgs,
+  pkgs-stable,
   ...
 }: {
   imports = [
     ./discord.nix
     ./firefox.nix
     ./gaming.nix
+    ./minecraft-server.nix
     ./spotify.nix
     ./thunar.nix
     ./vesktop.nix
@@ -21,7 +23,7 @@
   config = lib.mkIf config.modules.apps.enable {
     environment.systemPackages = with pkgs; [
       qbittorrent
-      bitwarden
+      pkgs-stable.bitwarden # 2024/10/17 - Was blocking builds for some reason, didnt bother researching
       pavucontrol
       aseprite
       sidequest

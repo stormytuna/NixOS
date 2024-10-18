@@ -1,8 +1,11 @@
 {
   config,
   lib,
+  pkgs,
   ...
-}: {
+}: let
+  sounds = pkgs.callPackage ../../packages/enchanted-sound-theme.nix {};
+in {
   imports = [<home-manager/nixos>];
 
   options = {
@@ -72,6 +75,13 @@
           mpris = {
             image-size = 96;
             image-radius = 12;
+          };
+        };
+        scripts = {
+          play-sound = {
+            exec = "${pkgs.sox}/bin/play ${sounds}/stereo/bell.ogg";
+            app-name = "^(?!.*(vesktop|discord)).*$"; # Don't apply to vesktop or discord
+            urgency = "Normal";
           };
         };
       };

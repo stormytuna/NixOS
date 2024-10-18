@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   pkgs-stable,
@@ -22,6 +23,7 @@ in {
 
       wofi.enable = true;
       waybar.enable = true;
+      swaync.enable = true;
     };
 
     programs.nm-applet.enable = true;
@@ -41,8 +43,9 @@ in {
 
     programs.hyprland = {
       enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       xwayland.enable = true;
-      portalPackage = pkgs-stable.xdg-desktop-portal-hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
 
     home-manager.users.stormytuna = {
@@ -62,7 +65,6 @@ in {
               "waybar" # TODO: Optional if we enable it or not
               "${pkgs.clipse}/bin/clipse -listen"
               "${pkgs.blueman}/bin/blueman-applet"
-              "${pkgs.swaynotificationcenter}/bin/swaync" # TODO: Move to module
               "${pkgs.networkmanagerapplet}/bin/nm-applet"
             ]
             ++ (lib.optionals config.modules.apps.vesktop.enable [
@@ -73,10 +75,10 @@ in {
             ]);
 
           monitor = [
-            "DP-1, 1920x1080@60.0, 0x240, 1.0"
+            "DP-1, 1920x1080@60.0, 0x240, 1"
             "DP-1, transform, 1"
-            "DP-3, 2560x1440@120.02, 4920x361, 1.0"
-            "HDMI-A-1, 3840x2160@119.88, 1080x0, 1.0, bitdepth, 10"
+            "DP-3, 2560x1440@120.02, 4920x361, 1"
+            "HDMI-A-1, 3840x2160@119.88, 1080x0, 1, bitdepth, 10"
           ];
 
           workspace = [

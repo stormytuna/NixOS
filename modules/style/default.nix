@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-stable,
   ...
 }: let
   cfg = config.modules.stylix;
@@ -18,7 +19,7 @@ in {
       type = lib.types.path;
     };
     modules.stylix.theming.scheme = lib.mkOption {
-      default = "catppuccin-mocha";
+      default = "catppuccin-macchiato";
       description = "Base16 schema";
       type = lib.types.str;
     };

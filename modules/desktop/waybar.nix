@@ -30,7 +30,7 @@ in {
           height = 30;
           output = ["DP-1"];
 
-          modules-left = ["tray" "pulseaudio" "bluetooth"];
+          modules-left = ["tray" "pulseaudio"];
           modules-center = ["cpu" "custom/gpu" "memory" "network"];
           modules-right = ["clock"];
 

@@ -19,14 +19,14 @@ in {
         width = "40%";
         height = "30%";
         hide_scroll = true;
-        image_size = 64;
+        image_size = 48;
         insensitive = true;
       };
 
       style = lib.mkForce ''
         * {
           font-family: "${config.modules.stylix.fonts.monospace.name}";
-          font-size: 32px;
+          font-size: 20px;
 
           border-color: "${colours.base02}";
         }

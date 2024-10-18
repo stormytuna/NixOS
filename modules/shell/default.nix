@@ -24,6 +24,7 @@
       imagemagick
       git
       fzf
+      feh
       fd
       eza
       btop

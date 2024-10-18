@@ -15,6 +15,7 @@
       discord.enable = true;
       #firefox.enable = true;
       gaming.enable = true;
+      minecraft-server.enable = true;
       spotify.enable = true;
       thunar.enable = true;
       vesktop.enable = true;
@@ -59,7 +60,7 @@
       enable = true;
       theming = {
         wallpaper = /. + "${config.users.users.stormytuna.home}/Pictures/Wallpapers/frieren-tree.png";
-        scheme = "catppuccin-mocha";
+        scheme = "outrun-dark";
         polarity = "dark";
       };
       icons = {
@@ -104,8 +105,8 @@
 
   nix.gc = {
     automatic = true;
-    dates = "daily";
-    options = "--delete-generations +10";
+    dates = "weekly";
+    options = "--delete-older-than 10d";
   };
 
   # Remove need to type in password for sudo commands

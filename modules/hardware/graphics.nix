@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  pkgs-stable,
   ...
 }: let
   cfg = config.modules.hardware.graphics;
@@ -17,8 +18,8 @@ in {
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
-      extraPackages = with pkgs; [amdvlk];
-      extraPackages32 = with pkgs; [driversi686Linux.amdvlk];
+      extraPackages = with pkgs-stable; [amdvlk];
+      extraPackages32 = with pkgs-stable; [driversi686Linux.amdvlk]; # 2024/10/18 - Was blocking builds, didnt look into it
     };
 
     # Force radv to be used instead of amdvlk

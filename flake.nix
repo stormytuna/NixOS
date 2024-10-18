@@ -27,12 +27,13 @@
 
     nur.url = "github:nix-community/NUR";
 
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix"; # TODO: Revert to regular branch when https://github.com/danth/stylix/pull/589 is merged
 
     zen-browser.url = "github:MarceColl/zen-browser-flake"; # TODO: Replace when https://github.com/NixOS/nixpkgs/issues/327982 is closed
   };
 
   outputs = inputs @ {self, ...}: let
+    inherit (self) outputs;
     pkgs-stable = import inputs.nixpkgs-stable {
       system = "x86_64-linux";
       config = {
@@ -41,6 +42,8 @@
       };
     };
   in {
+    overlays = import ./overlays {inherit inputs outputs;};
+
     nixosConfigurations.eva-unit01 = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -50,6 +53,7 @@
         inputs.stylix.nixosModules.stylix
       ];
       specialArgs = {
+        inherit inputs;
         inherit pkgs-stable;
         zen-browser = inputs.zen-browser;
         vscode-marketplace = inputs.nix-vscode-extensions.extensions."x86_64-linux".vscode-marketplace;
