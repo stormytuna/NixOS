@@ -81,7 +81,7 @@
   # NixOS settings
   nix = {
     settings = {
-      experimental-features = "nix-command flakes"; # Enable flakes
+      experimental-features = "nix-command flakes pipe-operators";
       trusted-users = ["root" "@wheel"]; # Allow user to use substiturers
     };
     nixPath = ["nixpkgs=${inputs.nixpkgs}"]; # nixd expects this
