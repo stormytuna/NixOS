@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./alacritty.nix
+    ./carapace.nix
     ./git.nix
     ./kitty.nix
     ./mangohud.nix

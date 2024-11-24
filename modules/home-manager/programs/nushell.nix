@@ -26,16 +26,30 @@ in {
       # shellAliases option was reordering aliases
       extraConfig = ''
         # NixOS update stuff
-        def ups [] { sudo nixos-rebuild switch --flake ~/.nixos ${nomRedirect} }
-        def uph [] { home-manager switch --flake ~/.nixos ${nomRedirect} }
-        def upa [] { ups; uph }
-        def upf [] { sudo nix flake update --flake ~/.nixos; upa }
-
-        alias cl = clear
+        def update-system [] { sudo nixos-rebuild switch --flake ~/.nixos ${nomRedirect} }
+        def update-home [] { home-manager switch --flake ~/.nixos ${nomRedirect} }
+        def update-flake [] { sudo nix flake update --flake ~/.nixos }
+        def update-all [] { update-flake; update-system; update-home }
 
         # git
+        alias gs = git status
+        alias gc = git commit --message
+        alias ga = git add --all
+        alias gp = git push
+        alias gpl = git pull
+        alias gb = git branch
 
+        # misc stuff
+        def lg [path = "."] { ls $path | sort-by type name --ignore-case | grid --icons --color } # Quick filename view of directory
+        def ll [path = "."] { ls --long $path | sort-by type name --ignore-case | select mode user group type name size created accessed modified }
         alias qvf = nvim ~/.nixos
+        alias cl = clear
+
+        # remove latest things from history file
+        def forget [count = 1] {
+          # double reverse as we want the duplicate entries to appear lower at the list
+          history | get command | reverse | uniq | reverse | drop $count | save ~/.config/nushell/history.txt --force
+        }
       '';
     };
   };

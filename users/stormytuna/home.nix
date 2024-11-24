@@ -24,16 +24,14 @@
       #aseprite.enable = true;
       #bitwarden.enable = true;
       #heroic.enable = true;
-      #lutris.enable = true;
       #prismlauncher.enable = true;
       #qbittorrent.enable = true;
       #r2modman.enable = true;
       #sidequest.enable = true;
-      #vulkan-tools.enable = true;
-      #wine.enable = true;
       alacritty.enable = true;
       bat.enable = true;
       btop.enable = true;
+      carapace.enable = true;
       comma.enable = true;
       fd.enable = true;
       ffmpeg.enable = true;
@@ -41,6 +39,7 @@
       gamemode.enable = true;
       gamescope-cleanup.enable = true;
       git.enable = true;
+      lutris.enable = true;
       mangohud.enable = true;
       neovim.enable = true;
       nix-output-monitor.enable = true;
@@ -52,7 +51,9 @@
       thefuck.enable = true;
       tldr.enable = true;
       vesktop.enable = true;
+      vulkan-tools.enable = true;
       waybar.enable = true;
+      wine.enable = true;
       wofi.enable = true;
       zen-browser.enable = true;
       zoxide.enable = true;
