@@ -8,7 +8,7 @@
   };
 
   config = lib.mkIf config.modules.desktops.sway.enable {
-    # Required to use Sway with home-manager
-    security.polkit.enable = true;
+    security.polkit.enable = true; # Required to use Sway with home-manager
+    programs.dconf.enable = true; # Required for GTK apps and configuration to work
   };
 }

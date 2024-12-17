@@ -14,7 +14,6 @@ in {
   config = lib.mkIf config.modules.programs.neovim.enable {
     programs.neovim = {
       enable = true;
-      defaultEditor = true;
 
       # Extra packages we need for some stuff to work
       extraPackages = with pkgs; [

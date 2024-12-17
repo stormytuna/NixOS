@@ -72,6 +72,7 @@
         ./systems/eva-unit01/configuration.nix
         inputs.stylix.nixosModules.stylix
         inputs.chaotic.nixosModules.default
+        inputs.nur.modules.nixos.default
       ];
       specialArgs = {
         inherit inputs outputs;

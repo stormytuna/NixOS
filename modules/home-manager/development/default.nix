@@ -1,3 +1,6 @@
 {...}: {
-  imports = [./csharp.nix];
+  imports = [
+    ./csharp.nix
+    ./java.nix
+  ];
 }

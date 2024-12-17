@@ -33,10 +33,12 @@
     (wrapDefaultPackage "wine" "Windows compatibility layer")
     # Art programs
     (wrapDefaultPackage "aseprite" "Pixel art spriting software")
+    (wrapDefaultPackage "inkscape" "Vector graphics editor")
     # Other programs
     (wrapDefaultPackage "bitwarden" "Password and secrets manager")
     (wrapDefaultPackage "pavucontrol" "PulseAudio Volume Control, GTK based volume mixer")
     (wrapDefaultPackage "qbittorrent" "Torrenting software")
+    (wrapDefaultPackage "unityhub" "Game engine")
     # Custom scripts
     (wrapScriptPackage "gamescope-cleanup" "Cleans up after gamescope, allowing steam to properly register games as closed")
   ];

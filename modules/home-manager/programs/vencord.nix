@@ -4,19 +4,17 @@
   pkgs,
   ...
 }: let
-  cfg = config.modules.programs.vesktop;
+  cfg = config.modules.programs.vencord;
 in {
-  options.modules.programs.vesktop = {
-    enable = lib.mkEnableOption "Web-based discord client with Vencord built-in";
+  options.modules.programs.vencord = {
+    enable = lib.mkEnableOption "";
     horizontalServerList = lib.mkEnableOption "Use horizontal server width css";
   };
 
-  config = lib.mkIf cfg.enable {
-    # 2024/12/16: unstable package was refusing to build electron fsr
-    home.packages = [pkgs.stable.vesktop];
+  config = lib.mkIf config.modules.programs.vencord.enable {
+    home.packages = [(pkgs.discord.override {withVencord = true;})];
 
-    # More stuff for plugins and themes, etc
-    home.file.".config/vesktop/settings/quickCss.css".text =
+    home.file.".config/discord/settings/quickCss.css".text =
       ''
         @import url("https://minidiscordthemes.github.io/Snippets/ChannelListWidth/main.css");
         @import url("https://minidiscordthemes.github.io/Snippets/MinimalSearchbar/main.css");

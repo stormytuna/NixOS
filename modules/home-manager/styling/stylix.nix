@@ -30,6 +30,26 @@ in {
       default = "dark";
     };
 
+    cursor = {
+      package = lib.mkOption {
+        description = "Cursor package";
+        example = "pkgs.bibata-cursors";
+        type = lib.types.package;
+        default = pkgs.quintom-cursor-theme;
+      };
+      name = lib.mkOption {
+        description = "Cursor name within package";
+        example = "modern";
+        type = lib.types.str;
+        default = "Quintom_Ink";
+      };
+      size = lib.mkOption {
+        description = "Cursor size";
+        example = 32;
+        type = lib.types.int;
+      };
+    };
+
     icons = {
       package = lib.mkOption {
         description = "GTK icon package";
@@ -57,6 +77,8 @@ in {
 
       polarity = cfg.polarity;
 
+      cursor = cfg.cursor;
+
       fonts = {
         # Font faces
         serif = {
@@ -68,8 +90,8 @@ in {
           package = pkgs.noto-fonts;
         };
         monospace = {
-          name = "MonaspiceKr Nerd Font";
-          package = pkgs.nerdfonts.override {fonts = ["Monaspace"];};
+          name = "Hasklug Nerd Font";
+          package = pkgs.nerd-fonts.hasklug;
         };
         emoji = {
           name = "Noto Color Emoji";
@@ -84,6 +106,8 @@ in {
           terminal = 16;
         };
       };
+
+      opacity.terminal = 0.9;
     };
 
     # Application specific config

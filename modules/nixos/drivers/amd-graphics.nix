@@ -10,10 +10,7 @@
 
   config = lib.mkIf config.modules.drivers.amd-graphics.enable {
     # Video drivers
-    services.xserver = {
-      enable = true;
-      videoDrivers = ["amdgpu"];
-    };
+    services.xserver.videoDrivers = ["amdgpu"];
 
     # Graphics acceleration
     hardware.graphics = {

@@ -13,44 +13,53 @@
   # Custom modules
   modules = {
     desktops = {
-      hyprland.enable = true;
+      #gnome.enable = true;
+      #hyprland.enable = true;
       #plasma.enable = true; # TODO: configure plasma with plasma-manager
-      #sway.enable = true;
+      sway.enable = true;
     };
     development = {
       csharp.enable = true;
+      java.enable = true;
     };
     programs = {
-      #aseprite.enable = true;
+      #alacritty.enable = true;
       #bitwarden.enable = true;
       #heroic.enable = true;
       #prismlauncher.enable = true;
-      #qbittorrent.enable = true;
       #r2modman.enable = true;
-      #sidequest.enable = true;
-      alacritty.enable = true;
+      aseprite.enable = true;
       bat.enable = true;
       btop.enable = true;
       carapace.enable = true;
       comma.enable = true;
       fd.enable = true;
       ffmpeg.enable = true;
+      firefox.enable = true;
       fzf.enable = true;
       gamemode.enable = true;
       gamescope-cleanup.enable = true;
       git.enable = true;
+      inkscape.enable = true;
       lutris.enable = true;
       mangohud.enable = true;
       neovim.enable = true;
       nix-output-monitor.enable = true;
       nushell.enable = true;
       pavucontrol.enable = true;
+      qbittorrent.enable = true;
+      rider.enable = true;
       ripgrep.enable = true;
+      sidequest.enable = true;
       spotify.enable = true;
+      spotify.enableAdblock = true;
       starship.enable = true;
       thefuck.enable = true;
       tldr.enable = true;
+      unityhub.enable = true;
+      #vencord.enable = true;
       vesktop.enable = true;
+      vscode.enable = true;
       vulkan-tools.enable = true;
       waybar.enable = true;
       wine.enable = true;
@@ -65,9 +74,14 @@
     styling = {
       stylix = {
         enable = true;
-        wallpaperName = "frieren-tree.png";
-        base16Scheme = "catppuccin-mocha";
+        wallpaperName = "mountain-valley.png";
+        base16Scheme = "atlas";
         polarity = "dark";
+        cursor = {
+          package = pkgs.quintom-cursor-theme;
+          name = "Quintom_Ink";
+          size = 24;
+        };
         icons = {
           package = pkgs.kora-icon-theme;
           name = "kora";
@@ -85,6 +99,14 @@
     ];
     config = {
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "dotnet-core-combined"
+        "dotnet-sdk-6.0.428"
+        "dotnet-sdk-wrapped-6.0.428"
+        "dotnet-runtime-6.0.36"
+        "dotnet-runtime-wrapped-6.0.36"
+        "dotnet-sdk-7.0.410"
+      ];
     };
   };
 

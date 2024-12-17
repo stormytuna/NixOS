@@ -14,15 +14,20 @@
   # Custom modules
   modules = {
     desktops = {
-      hyprland.enable = true;
+      #gnome.enable = true;
+      #hyprland.enable = true;
       #plasma.enable = true;
-      #sway.enable = true;
+      sway.enable = true;
+      #xfce.enable = true;
     };
     drivers = {
       amd-graphics.enable = true;
+      bluetooth.enable = true;
       pipewire.enable = true;
+      xpadneo.enable = true;
     };
     programs = {
+      adb.enable = true;
       gamescope.enable = true;
       steam.enable = true;
       thunar.enable = true;
@@ -32,6 +37,7 @@
     };
     services = {
       blueman.enable = true;
+      #greetd.enable = true;
     };
   };
 
@@ -51,6 +57,15 @@
   # Bootloader config
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Swap memory, was consistently running out of memory
+  zramSwap.enable = true;
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 16 * 1024;
+    }
+  ];
 
   networking = {
     hostName = "eva-unit01";

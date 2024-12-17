@@ -7,6 +7,7 @@
   imports = [
     ./alacritty.nix
     ./carapace.nix
+    ./firefox.nix
     ./git.nix
     ./kitty.nix
     ./mangohud.nix
@@ -14,10 +15,13 @@
     ./neovim.nix
     ./nushell.nix
     ./packages.nix
+    ./rider.nix
     ./spotify.nix
     ./starship.nix
     ./thefuck.nix
+    ./vencord.nix
     ./vesktop.nix
+    ./vscode.nix
     ./waybar.nix
     ./wofi.nix
     ./zen-browser.nix
