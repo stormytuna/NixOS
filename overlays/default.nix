@@ -43,4 +43,7 @@
       config.allowUnfree = true;
     };
   };
+
+  # Nix User Respository
+  nur = inputs.nur.overlays.default;
 }

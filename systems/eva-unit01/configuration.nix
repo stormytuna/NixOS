@@ -37,7 +37,7 @@
     };
     services = {
       blueman.enable = true;
-      #greetd.enable = true;
+      greetd.enable = true;
     };
   };
 
@@ -48,6 +48,7 @@
       outputs.overlays.modifications
       outputs.overlays.scripts
       outputs.overlays.stable-packages
+      outputs.overlays.nur
     ];
     config = {
       allowUnfree = true;

@@ -27,14 +27,14 @@ in {
           height = 30;
           output = ["DP-1"];
 
-          modules-left = ["tray" "pulseaudio"];
+          modules-left = ["custom/shutdown" "tray" "pulseaudio"];
           modules-center = ["cpu" "custom/gpu" "memory" "network"];
           modules-right = ["clock"];
 
           "custom/shutdown" = {
-            exec = "echo ";
+            exec = "echo  ";
             format = "{} ";
-            return-typ = "";
+            return-type = "";
             interval = "once";
             on-click = "${pkgs.wlogout}/bin/wlogout";
           };
@@ -61,7 +61,7 @@ in {
               default = ["" "" ""];
             };
             scroll-step = 1;
-            on-click = "hyprctl dispatch togglespecialworkspace pavucontrol && hyprctl dispatch bringactivetotop";
+            on-click = "pavucontrol";
           };
 
           bluetooth = {
@@ -141,6 +141,7 @@ in {
           color: ${colours.base06};
         }
 
+        ${makeModuleCssStyleString "custom-shutdown" colours.base08}
         ${makeModuleCssStyleString "pulseaudio" colours.base0A}
         ${makeModuleCssStyleString "bluetooth" colours.base0D}
         ${makeModuleCssStyleString "cpu" colours.base0B}

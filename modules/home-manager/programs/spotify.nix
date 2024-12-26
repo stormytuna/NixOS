@@ -14,11 +14,9 @@ in {
   config = lib.mkIf config.modules.programs.spotify.enable {
     home.packages = [
       (
-        pkgs.spotify
-        # TODO: Need to fix spotify adblock
-        #if cfg.enableAdblock
-        #then config.nur.repos.nltch.spotify-adblock
-        #else pkgs.spotify
+        if cfg.enableAdblock
+        then pkgs.nur.repos.nltch.spotify-adblock
+        else pkgs.spotify
       )
     ];
 

@@ -35,7 +35,7 @@
         output = {
           "DP-1" = {
             pos = "0 240";
-            res = "1920x1080@60Hz";
+            res = "1920x1080@144Hz";
             transform = "270";
           };
           "DP-3" = {

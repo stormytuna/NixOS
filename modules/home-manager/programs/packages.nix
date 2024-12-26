@@ -11,11 +11,12 @@
     package = pkg;
     description = desc;
   };
+  # TODO: Builds were failing so just made some packages use stable
   packages = [
     # Gaming
     (wrapDefaultPackage "gamemode" "Optimisations")
     (wrapDefaultPackage "heroic" "Epic Games library")
-    (wrapDefaultPackage "lutris" "Generic games library")
+    (wrapCustomPackage "lutris" pkgs.stable.lutris "Generic games library")
     (wrapDefaultPackage "prismlauncher" "Minecraft launcher")
     (wrapDefaultPackage "r2modman" "Thunderstore modloader, mostly for Unity games modded with BepInEx")
     (wrapDefaultPackage "sidequest" "VR headset sideloading software ")
@@ -38,7 +39,7 @@
     (wrapDefaultPackage "bitwarden" "Password and secrets manager")
     (wrapDefaultPackage "pavucontrol" "PulseAudio Volume Control, GTK based volume mixer")
     (wrapDefaultPackage "qbittorrent" "Torrenting software")
-    (wrapDefaultPackage "unityhub" "Game engine")
+    (wrapCustomPackage "unityhub" pkgs.stable.unityhub "Game engine")
     # Custom scripts
     (wrapScriptPackage "gamescope-cleanup" "Cleans up after gamescope, allowing steam to properly register games as closed")
   ];
