@@ -10,7 +10,15 @@
 
   # TODO: Clipboard history
   config = lib.mkIf config.modules.desktops.sway.enable {
-    home.packages = [pkgs.xdg-desktop-portal]; # Required for waybar # TODO: Move to waybar config?
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+      ];
+      configPackages = with pkgs; [
+        xdg-desktop-portal-wlr
+      ];
+    };
 
     wayland.windowManager.sway = {
       enable = true;
@@ -53,7 +61,7 @@
           {command = "steam -silent";}
           {command = "${pkgs.blueman}/bin/blueman-applet";}
           {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
-          {command = "vesktop";}
+          {command = "sleep 5; ${pkgs.vesktop}/bin/vesktop";} # Sleep to prevent breaking on early startup
         ];
 
         gaps = {

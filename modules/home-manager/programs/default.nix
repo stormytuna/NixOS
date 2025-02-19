@@ -7,9 +7,11 @@
   imports = [
     ./alacritty.nix
     ./carapace.nix
+    ./chromium.nix
     ./firefox.nix
     ./git.nix
     ./kitty.nix
+    ./librewolf.nix
     ./mangohud.nix
     ./minecraft-servers.nix
     ./neovim.nix
@@ -19,6 +21,7 @@
     ./spotify.nix
     ./starship.nix
     ./thefuck.nix
+    ./unp.nix
     ./vencord.nix
     ./vesktop.nix
     ./vscode.nix

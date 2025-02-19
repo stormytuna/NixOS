@@ -41,6 +41,17 @@ in {
           --HSL-server-direction: column; /* Direction of the server list. | OPTIONS: column, column-reverse | DEFAULT: column */
           --HSL-server-alignment: flex-start; /* Alignment of the server list. | OPTIONS: flex-start, center, flex-end | DEFAULT: flex-start */
         }
+
+        /* Adds dropshadow outline to emotes */
+        img.emoji {
+          padding-top: 2px;
+          padding-bottom: 2px;
+          filter:
+            drop-shadow(-1px -1px 0px black)
+            drop-shadow(1px -1px 0px black)
+            drop-shadow(-1px 1px 0px black)
+            drop-shadow(1px 1px 0px black);
+        }
       ''
       + lib.optionalString cfg.horizontalServerList ''
         /* Horizontal server list */

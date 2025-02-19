@@ -13,10 +13,11 @@
   # Custom modules
   modules = {
     desktops = {
+      cosmic.enable = true;
       #gnome.enable = true;
       #hyprland.enable = true;
       #plasma.enable = true; # TODO: configure plasma with plasma-manager
-      sway.enable = true;
+      #sway.enable = true;
     };
     development = {
       csharp.enable = true;
@@ -32,15 +33,18 @@
       bat.enable = true;
       btop.enable = true;
       carapace.enable = true;
+      chromium.enable = true;
       comma.enable = true;
       fd.enable = true;
       ffmpeg.enable = true;
-      firefox.enable = true;
+      #firefox.enable = true;
       fzf.enable = true;
       gamemode.enable = true;
       gamescope-cleanup.enable = true;
       git.enable = true;
-      inkscape.enable = true;
+      gimp.enable = true;
+      #inkscape.enable = true;
+      #librewolf.enable = true;
       lutris.enable = true;
       mangohud.enable = true;
       neovim.enable = true;
@@ -50,11 +54,12 @@
       qbittorrent.enable = true;
       rider.enable = true;
       ripgrep.enable = true;
-      sidequest.enable = true;
+      #sidequest.enable = true;
       spotify.enable = true;
       spotify.enableAdblock = true;
       starship.enable = true;
       thefuck.enable = true;
+      unp.enable = true;
       tldr.enable = true;
       unityhub.enable = true;
       #vencord.enable = true;
@@ -64,7 +69,7 @@
       waybar.enable = true;
       wine.enable = true;
       wofi.enable = true;
-      zen-browser.enable = true;
+      #zen-browser.enable = true;
       zoxide.enable = true;
       zsh.enable = true;
     };
@@ -74,8 +79,8 @@
     styling = {
       stylix = {
         enable = true;
-        wallpaperName = "mountain-valley.png";
-        base16Scheme = "atlas";
+        wallpaperName = "giovanna-guilty-gear.png";
+        base16Scheme = "ocean";
         polarity = "dark";
         cursor = {
           package = pkgs.quintom-cursor-theme;
@@ -83,8 +88,8 @@
           size = 24;
         };
         icons = {
-          package = pkgs.kora-icon-theme;
-          name = "kora";
+          package = pkgs.qogir-icon-theme;
+          name = "Qogir";
         };
       };
     };

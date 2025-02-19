@@ -14,16 +14,18 @@
   # Custom modules
   modules = {
     desktops = {
+      cosmic.enable = true;
       #gnome.enable = true;
       #hyprland.enable = true;
       #plasma.enable = true;
-      sway.enable = true;
+      #sway.enable = true;
       #xfce.enable = true;
     };
     drivers = {
       amd-graphics.enable = true;
       bluetooth.enable = true;
       pipewire.enable = true;
+      qmk.enable = true;
       xpadneo.enable = true;
     };
     programs = {

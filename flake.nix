@@ -5,10 +5,12 @@
     extra-substituters = [
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"
+      "https://cosmic.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
     ];
   };
 
@@ -22,9 +24,6 @@
     hyprland.url = "github:hyprwm/Hyprland?submodules=1";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
 
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     # TODO: Look into what packages chaotic provides
@@ -34,9 +33,14 @@
 
     stylix.url = "github:danth/stylix";
 
-    zen-browser.url = "github:MarceColl/zen-browser-flake"; # TODO: Add to own packages
+    zen-browser.url = "github:0xc000022070/zen-browser-flake"; # TODO: Add to own packages
 
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
+    nvf.url = "github:notashelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = inputs @ {
@@ -72,6 +76,7 @@
         ./systems/eva-unit01/configuration.nix
         inputs.stylix.nixosModules.stylix
         inputs.chaotic.nixosModules.default
+        inputs.nixos-cosmic.nixosModules.default
       ];
       specialArgs = {
         inherit inputs outputs;
@@ -84,7 +89,7 @@
       modules = [
         ./users/stormytuna/home.nix
         inputs.stylix.homeManagerModules.stylix
-        inputs.nixvim.homeManagerModules.nixvim
+        inputs.nvf.homeManagerModules.default
       ];
       extraSpecialArgs = {inherit inputs outputs;};
     };

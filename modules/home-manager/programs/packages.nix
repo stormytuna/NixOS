@@ -31,15 +31,16 @@
     (wrapDefaultPackage "ripgrep" "Recursive directory searching tool")
     (wrapDefaultPackage "tldr" "Short summaries of popular commands")
     (wrapDefaultPackage "vulkan-tools" "Tools to aid Vulkan graphics API development and testing")
-    (wrapDefaultPackage "wine" "Windows compatibility layer")
+    (wrapCustomPackage "wine" pkgs.wineWowPackages.waylandFull "Windows compatibility layer")
     # Art programs
     (wrapDefaultPackage "aseprite" "Pixel art spriting software")
     (wrapDefaultPackage "inkscape" "Vector graphics editor")
+    (wrapDefaultPackage "gimp" "")
     # Other programs
     (wrapDefaultPackage "bitwarden" "Password and secrets manager")
     (wrapDefaultPackage "pavucontrol" "PulseAudio Volume Control, GTK based volume mixer")
     (wrapDefaultPackage "qbittorrent" "Torrenting software")
-    (wrapCustomPackage "unityhub" pkgs.stable.unityhub "Game engine")
+    (wrapDefaultPackage "unityhub" "Game engine")
     # Custom scripts
     (wrapScriptPackage "gamescope-cleanup" "Cleans up after gamescope, allowing steam to properly register games as closed")
   ];

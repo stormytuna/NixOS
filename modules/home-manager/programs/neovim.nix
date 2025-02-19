@@ -12,6 +12,126 @@ in {
   };
 
   config = lib.mkIf config.modules.programs.neovim.enable {
+    /*
+    programs.nvf = {
+      enable = true;
+      settings.vim = {
+        useSystemClipboard = true;
+
+        statusline.lualine.enable = true;
+        telescope.enable = true;
+        autocomplete.nvim-cmp.enable = true;
+
+        autopairs.nvim-autopairs.enable = true;
+
+        git.gitsigns.enable = true;
+
+        filetree.neo-tree.enable = true;
+
+        dashboard.dashboard-nvim.enable = true;
+
+        binds.whichKey.enable = true;
+
+        languages = {
+          enableLSP = true;
+          enableTreesitter = true;
+
+          nix.enable = true;
+          csharp.enable = true;
+          nu.enable = true;
+          clang.enable = true;
+          lua.enable = true;
+        };
+
+        globals = {
+          mapleader = " ";
+          maplocalleader = " ";
+        };
+
+        options = {
+          tabstop = 2;
+          softtabstop = 2;
+          expandtab = true;
+          shiftwidth = 2;
+
+          number = true;
+          relativenumber = true;
+
+          ignorecase = true;
+          smartcase = true;
+          hlsearch = true;
+          inccommand = "split"; # Preview substitutions while typing
+
+          mouse = "a";
+          showmode = false; # Mode is in our statusline, we don't need to show it
+          breakindent = true;
+          undofile = true;
+          cursorline = true;
+          scrolloff = 15;
+        };
+
+        keymaps = [
+          {
+            key = "<Esc>";
+            mode = "n";
+            action = "<cmd>nohlsearch<CR>";
+            desc = "Clear highlighted search";
+          }
+          {
+            key = "[d";
+            mode = "n";
+            action = "vim.diagnostic.goto_prev";
+            lua = true;
+            desc = "Go to previous [D]iagnostic message";
+          }
+          {
+            key = "]d";
+            mode = "n";
+            action = "vim.diagnostic.goto_next";
+            lua = true;
+            desc = "Go to next [D]iagnostic message";
+          }
+          {
+            key = "<leader>e";
+            mode = "n";
+            action = "vim.diagnostic.open_float";
+            lua = true;
+            desc = "Show diagnostic [E]rror messages";
+          }
+          {
+            key = "<leader>q";
+            mode = "n";
+            action = "vim.diagnostic.setloclist";
+            lua = true;
+            desc = "Open diagnostic [Q]uicfix list";
+          }
+          {
+            key = "<C-d>";
+            mode = "n";
+            action = "<C-d>zz";
+            desc = "Center screen when moving page down";
+          }
+          {
+            key = "<C-u>";
+            mode = "n";
+            action = "<C-u>zz";
+            desc = "Center screen when moving page up";
+          }
+        ];
+
+        luaConfigPost = ''
+          -- Highlight when yanking text
+          vim.api.nvim_create_autocmd("TextYankPost", {
+              desc = "Highlight when yanking (copying) text",
+              group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+              callback = function()
+              vim.highlight.on_yank()
+          end,
+        '';
+      };
+    };
+    */
+
     programs.neovim = {
       enable = true;
 
