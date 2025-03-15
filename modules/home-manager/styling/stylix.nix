@@ -135,5 +135,7 @@ in {
     stylix.targets.mangohud.enable = false; # Stylix defaults clash with custom config
 
     stylix.targets.hyprland.enable = false; # Stylix keeps trying to set a nonexistent field
+
+    stylix.targets.nvf.enable = true;
   };
 }

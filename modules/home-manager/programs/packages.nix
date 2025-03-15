@@ -14,12 +14,14 @@
   # TODO: Builds were failing so just made some packages use stable
   packages = [
     # Gaming
+    (wrapDefaultPackage "boilr" "Use steam as generic game launcher")
     (wrapDefaultPackage "gamemode" "Optimisations")
     (wrapDefaultPackage "heroic" "Epic Games library")
     (wrapCustomPackage "lutris" pkgs.stable.lutris "Generic games library")
     (wrapDefaultPackage "prismlauncher" "Minecraft launcher")
     (wrapDefaultPackage "r2modman" "Thunderstore modloader, mostly for Unity games modded with BepInEx")
     (wrapDefaultPackage "sidequest" "VR headset sideloading software ")
+    (wrapDefaultPackage "sgdboop" "Tool to apply assets automatically from SteamGridDB to Steam Library games")
     # CLI tools
     (wrapDefaultPackage "bat" "Alternative to cat for displaying code files")
     (wrapDefaultPackage "btop" "Functional alternative to htop")

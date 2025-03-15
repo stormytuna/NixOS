@@ -13,11 +13,11 @@
   # Custom modules
   modules = {
     desktops = {
-      cosmic.enable = true;
+      #cosmic.enable = true;
       #gnome.enable = true;
       #hyprland.enable = true;
       #plasma.enable = true; # TODO: configure plasma with plasma-manager
-      #sway.enable = true;
+      sway.enable = true;
     };
     development = {
       csharp.enable = true;
@@ -31,6 +31,7 @@
       #r2modman.enable = true;
       aseprite.enable = true;
       bat.enable = true;
+      boilr.enable = true;
       btop.enable = true;
       carapace.enable = true;
       chromium.enable = true;
@@ -55,6 +56,7 @@
       rider.enable = true;
       ripgrep.enable = true;
       #sidequest.enable = true;
+      sgdboop.enable = true;
       spotify.enable = true;
       spotify.enableAdblock = true;
       starship.enable = true;
@@ -79,7 +81,7 @@
     styling = {
       stylix = {
         enable = true;
-        wallpaperName = "giovanna-guilty-gear.png";
+        wallpaperName = "space-blue.png";
         base16Scheme = "ocean";
         polarity = "dark";
         cursor = {

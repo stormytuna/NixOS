@@ -74,7 +74,7 @@
       system = "x86_64-linux";
       modules = [
         ./systems/eva-unit01/configuration.nix
-        inputs.stylix.nixosModules.stylix
+        #inputs.stylix.nixosModules.stylix
         inputs.chaotic.nixosModules.default
         inputs.nixos-cosmic.nixosModules.default
       ];

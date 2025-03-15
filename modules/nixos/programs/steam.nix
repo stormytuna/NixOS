@@ -11,6 +11,7 @@
   config = lib.mkIf config.modules.programs.steam.enable {
     programs.steam = {
       enable = true;
+      protontricks.enable = true;
 
       # Allow online play
       remotePlay.openFirewall = true;

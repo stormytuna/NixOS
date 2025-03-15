@@ -14,11 +14,11 @@
   # Custom modules
   modules = {
     desktops = {
-      cosmic.enable = true;
+      #cosmic.enable = true;
       #gnome.enable = true;
       #hyprland.enable = true;
       #plasma.enable = true;
-      #sway.enable = true;
+      sway.enable = true;
       #xfce.enable = true;
     };
     drivers = {

@@ -20,6 +20,16 @@
       ];
     };
 
+    services.wlsunset = {
+      enable = true;
+      latitude = 53.8;
+      longitude = 1.5;
+    };
+
+    home.packages = with pkgs; [
+      wl-clipboard
+    ];
+
     wayland.windowManager.sway = {
       enable = true;
       xwayland = true;
@@ -61,7 +71,7 @@
           {command = "steam -silent";}
           {command = "${pkgs.blueman}/bin/blueman-applet";}
           {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
-          {command = "sleep 5; ${pkgs.vesktop}/bin/vesktop";} # Sleep to prevent breaking on early startup
+          {command = "sleep 5; ${pkgs.stable.vesktop}/bin/vesktop";} # Sleep to prevent breaking on early startup
         ];
 
         gaps = {
@@ -103,6 +113,7 @@
 
           # Screenshots
           "Print" = "exec ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave area ~/Pictures/Screenshots/Area_$(date +'%Y-%m-%d_%H-%M-%S').png";
+          "shift+print" = "exec ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave output ~/Pictures/Screenshots/Output$(date +'%Y-%m-%d_%H-%M-%S').png";
 
           # Other stuff
           "Mod4+t" = "exec ${pkgs.kitty}/bin/kitty";

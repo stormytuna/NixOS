@@ -12,10 +12,10 @@
     programs.kitty = {
       enable = true;
 
-      settings = {
-        confirm_os_window_close = 0; # Remove annoying "are you sure you want to close?" popup
-        notify_on_cmd_finish = "unfocused";
-      };
+      extraConfig = ''
+        confirm_os_window_close 2
+        notify_on_cmd_finish unfocused
+      '';
     };
   };
 }
