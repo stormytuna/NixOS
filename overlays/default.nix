@@ -1,12 +1,12 @@
 {inputs, ...}: {
   # Import added packages our custom packages
-  additions = final: _prev: import ../pkgs final.pkgs;
+  additions = final: prev: import ../pkgs final.pkgs;
 
   # Apply overrides and modifications to any packages
   modifications = final: prev: {
     # Import developer hyrland packages
-    hyprland = inputs.hyprland.packages.${prev.stdenv.hostPlatform.system}.hyprland;
-    xdg-desktop-portal-hyprland = inputs.hyprland.packages.${prev.stdenv.hostPlatform.system}.hyprland;
+    #hyprland = inputs.hyprland.packages.${prev.stdenv.hostPlatform.system}.hyprland;
+    #xdg-desktop-portal-hyprland = inputs.hyprland.packages.${prev.stdenv.hostPlatform.system}.hyprland;
 
     # Make rider work with unity
     rider = prev.jetbrains.rider.overrideAttrs (attrs: {
@@ -27,23 +27,20 @@
     vscode-extensions = prev.vscode-extensions // inputs.vscode-marketplace;
 
     # Apply patches
-    nix-output-monitor = prev.nix-output-monitor.overrideAttrs {
-      patches = [../patches/nix-output-monitor-icons.patch];
-    };
+    #nix-output-monitor = prev.nix-output-monitor.overrideAttrs {
+    #  patches = [../patches/nix-output-monitor-icons.patch];
+    #};
   };
 
   scripts = final: prev: {
     scripts = import ../scripts final.pkgs;
   };
 
-  # Allow access to stable packages
-  stable-packages = final: prev: {
-    stable = import inputs.nixpkgs-stable {
+  # Allow access to unstable packages
+  unstable-packages = final: prev: {
+    unstable = import inputs.nixpkgs-unstable {
       system = final.system;
       config.allowUnfree = true;
     };
   };
-
-  # Nix User Respository
-  nur = inputs.nur.overlays.default;
 }
