@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./global
+
     ./features/shell
     ./features/styling
 
@@ -17,6 +18,8 @@
     ./features/programs/waybar.nix
     ./features/programs/wofi.nix
     ./features/programs/zen-browser.nix
+
+    ./features/services/swaync.nix
   ];
 
   home = {

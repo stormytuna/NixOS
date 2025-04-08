@@ -1,8 +1,4 @@
-{
-  outputs,
-  pkgs,
-  ...
-}: {
+{outputs, ...}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -12,6 +8,7 @@
 
     ../common/optional/amd-graphics.nix
     ../common/optional/bluetooth.nix
+    ../common/optional/gamemode.nix
     ../common/optional/gamescope.nix
     ../common/optional/pipewire.nix
     ../common/optional/steam.nix
@@ -24,7 +21,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.scripts
-      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
     ];
     config.allowUnfree = true;
   };
@@ -44,6 +41,9 @@
       allowedUDPPorts = [25565];
     };
   };
+
+  # Prevents home-manager builds if using gtk otherwise
+  programs.dconf.enable = true;
 
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";

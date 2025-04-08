@@ -14,7 +14,7 @@ in {
     enable = true;
     autoEnable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-latte.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
     image = ./wallpapers/space-blue.png;
 
@@ -38,7 +38,7 @@ in {
       };
       monospace = {
         name = "Hasklug Nerd Font";
-        package = pkgs.unstable.nerd-fonts.hasklug;
+        package = pkgs.nerd-fonts.hasklug;
       };
       emoji = {
         name = "Noto Color Emoji";

@@ -4,7 +4,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.scripts
-      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
     ];
     config = {
       allowUnfree = true;
@@ -21,6 +21,7 @@
 
   # Disable the silly news notifications
   news.display = "silent";
+
   programs.home-manager.enable = true;
 
   # Reload system units when changing configs

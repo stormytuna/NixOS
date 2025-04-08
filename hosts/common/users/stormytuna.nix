@@ -1,7 +1,9 @@
 {pkgs, ...}: {
   users.users.stormytuna = {
     isNormalUser = true;
-    extraGroups = ["wheel"];
+    extraGroups = [
+      "wheel" # Admin
+    ];
     shell = pkgs.nushell;
   };
 

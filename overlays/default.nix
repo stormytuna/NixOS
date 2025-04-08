@@ -36,9 +36,9 @@
     scripts = import ../scripts final.pkgs;
   };
 
-  # Allow access to unstable packages
-  unstable-packages = final: prev: {
-    unstable = import inputs.nixpkgs-unstable {
+  # Allow access to stable packages
+  stable-packages = final: prev: {
+    stable = import inputs.nixpkgs-stable {
       system = final.system;
       config.allowUnfree = true;
     };
