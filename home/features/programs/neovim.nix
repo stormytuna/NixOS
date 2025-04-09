@@ -1,4 +1,4 @@
-{...}: {
+{lib, ...}: {
   programs.nvf = {
     enable = true;
     settings.vim = {
@@ -30,6 +30,25 @@
         };
       };
 
+      autocomplete.nvim-cmp = {
+        enable = true;
+        sourcePlugins = ["cmp-path"];
+        setupOpts.enabled = lib.generators.mkLuaInline ''
+          function()
+            local disabled = false
+            disabled = disabled or (vim.api.nvim_get_option_value('buftype', { buf = 0 }) == 'prompt')
+            disabled = disabled or (vim.fn.reg_recording() ~= "")
+            disabled = disabled or (vim.fn.reg_executing() ~= "")
+            disabled = disabled or require('cmp.config.context').in_treesitter_capture('comment')
+            return not disabled
+          end
+        '';
+      };
+
+      snippets = {
+        luasnip.enable = true;
+      };
+
       languages = {
         enableLSP = true;
         enableFormat = true;
@@ -57,12 +76,6 @@
 
       telescope = {
         enable = true;
-        mappings = {
-          findFiles = "<leader>sf";
-          liveGrep = "<leader>sg";
-          gitCommits = "<leader>svc";
-          diagnostics = "<leader>sd";
-        };
       };
 
       tabline = {
@@ -74,14 +87,14 @@
         cheatsheet.enable = true;
       };
 
+      utility.motion.leap = {
+        enable = true;
+      };
+
       git = {
         enable = true;
         gitsigns.enable = true;
         gitsigns.codeActions.enable = false;
-      };
-
-      minimap = {
-        codewindow.enable = true;
       };
 
       dashboard.dashboard-nvim = {
@@ -94,12 +107,7 @@
 
       filetree.neo-tree = {
         enable = true;
-        setupOpts = {
-          event_handlers = {
-            event = "file_open_requested";
-            handler = "require(neo-tree.command).execute({action = \"close\"})";
-          };
-        };
+        setupOpts.filesystem.hijack_netrw_behavior = "disabled"; # Don't open when launching nvim with directory
       };
 
       maps.normal."\\" = {

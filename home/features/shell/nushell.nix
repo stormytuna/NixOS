@@ -60,7 +60,7 @@ in {
       # misc stuff
       def lg [path = "."] { ls $path | sort-by type name --ignore-case | grid --icons --color } # Quick filename view of directory
       def ll [path = "."] { ls --long $path | sort-by type name --ignore-case | select mode user group type name size created accessed modified }
-      alias qvf = nvim ~/.nixos
+      def qvf [] { let owd = pwd; cd ~/.nixos; nvim; cd $owd }
       def la [path = "."] { ls --long --all $path | sort-by type name --ignore-case | select mode user group type name size created accessed modified }
       alias cl = clear
 
