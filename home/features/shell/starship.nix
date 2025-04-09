@@ -5,7 +5,6 @@
 }: let
   colours = config.lib.stylix.colors.withHashtag;
 in {
-  # TODO: mix this up, used the same thing for a while
   programs.starship = {
     enable = true;
 
@@ -13,25 +12,26 @@ in {
       add_newline = false;
 
       format = lib.concatStrings [
-        "[ ](bg:${colours.base08})"
+        " "
+        "[◢](fg:${colours.base08})"
         "$username"
-        "[](fg:${colours.base08} bg:${colours.base09})"
+        "[◤](fg:${colours.base08} bg:${colours.base09})"
         "$directory"
-        "[](fg:${colours.base09} bg:${colours.base0A})"
+        "[◤](fg:${colours.base09} bg:${colours.base0A})"
         "$git_branch"
         "$git_status"
-        "[](fg:${colours.base0A} bg:${colours.base0B})"
+        "[◤](fg:${colours.base0A} bg:${colours.base0B})"
         "$dotnet"
         "$golang"
         "$java"
         "$lua"
         "$rust"
         "$zig"
-        "[](fg:${colours.base0B} bg:${colours.base0C})"
+        "[◤](fg:${colours.base0B} bg:${colours.base0C})"
         "$cmd_duration"
-        "[](fg:${colours.base0C} bg:${colours.base0D})"
+        "[◤](fg:${colours.base0C} bg:${colours.base0D})"
         "$status"
-        "[](fg:${colours.base0D})"
+        "[◤](fg:${colours.base0D})"
         "$line_break"
         "$character"
       ];
