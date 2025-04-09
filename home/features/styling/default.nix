@@ -16,7 +16,7 @@ in {
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
-    image = ./wallpapers/space-blue.png;
+    image = ./wallpapers/space-red.png;
 
     polarity = "dark";
 

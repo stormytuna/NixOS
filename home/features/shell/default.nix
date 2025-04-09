@@ -16,7 +16,8 @@
     ripgrep # File `grep`ping tool
     tldr # Short summaries of commands
     vulkan-tools # Tools to aid Vulkan graphics API development and testing
-    wineWowPackages.waylandFull # Windows compatibility layer
+    # https://github.com/NixOS/nixpkgs/issues/397271
+    stable.wineWowPackages.waylandFull # Windows compatibility layer
 
     (unp.override {extraBackends = [unrar-free];}) # Archive unpacking tool
   ];

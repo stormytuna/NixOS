@@ -34,6 +34,8 @@
         {command = "${pkgs.waybar}/bin/waybar";}
       ];
 
+      window.titlebar = false;
+
       output = {
         "DP-1" = {
           pos = "0 240";

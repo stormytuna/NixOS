@@ -12,6 +12,7 @@
     ../common/optional/gamescope.nix
     ../common/optional/pipewire.nix
     ../common/optional/steam.nix
+    ../common/optional/sway.nix
     ../common/optional/thunar.nix
     ../common/optional/xpadneo.nix
   ];
@@ -41,9 +42,6 @@
       allowedUDPPorts = [25565];
     };
   };
-
-  # Prevents home-manager builds if using gtk otherwise
-  programs.dconf.enable = true;
 
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
