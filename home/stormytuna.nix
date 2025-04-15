@@ -33,16 +33,18 @@
     r2modman # Thunderstore modeloader
     sgdboop # Tool to apply assets automatically from SteamGridDB to games in steam library
 
-    jetbrains-toolbox # Was having issues with installing rider so installed it via the toolbox
+    #jetbrains-toolbox # Was having issues with installing rider so installed it via the toolbox
+    jetbrains.rider
 
     aseprite # Pixel art
-    gimp # Image editing
+    gimp-with-plugins # Image editing
 
     bitwarden # Passwords and secrets manager
     pavucontrol # PulseAudio volume controller
     qbittorrent # Torrenting software
     unityhub # Game engine
     obs-studio # FOSS video recording and live streaming software
+    chromium # Web browser for when zen is playing up
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

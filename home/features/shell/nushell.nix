@@ -44,8 +44,8 @@ in {
     # shellAliases option was reordering aliases
     extraConfig = ''
       # NixOS update stuff
-      def update-system [] { sudo nixos-rebuild switch --flake ~/.nixos ${nomRedirect} }
-      def update-home [] { home-manager switch --flake ~/.nixos ${nomRedirect} }
+      def update-system [] { sudo nixos-rebuild switch --flake ~/.nixos --max-jobs 3 ${nomRedirect} }
+      def update-home [] { home-manager switch --flake ~/.nixos --max-jobs 3 ${nomRedirect} }
       def update-flake [] { sudo nix flake update --flake ~/.nixos }
       def update-all [] { update-flake; update-system; update-home }
 
