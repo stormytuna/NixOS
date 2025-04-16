@@ -44,7 +44,9 @@
     qbittorrent # Torrenting software
     unityhub # Game engine
     obs-studio # FOSS video recording and live streaming software
-    chromium # Web browser for when zen is playing up
+    # stable because chromium takes years to build and frequently blocks builds when not in cache
+    stable.chromium # Web browser for when zen is playing up
+    premid # Discord RP for browser based videos, music, etc
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
