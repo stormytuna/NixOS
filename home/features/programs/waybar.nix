@@ -21,9 +21,9 @@ in {
         height = 30;
         output = ["DP-1"];
 
-        modules-left = ["custom/shutdown" "tray" "pulseaudio"];
-        modules-center = ["cpu" "custom/gpu" "memory" "network"];
-        modules-right = ["clock"];
+        modules-left = ["tray" "pulseaudio" "custom/notifications"];
+        modules-center = [];
+        modules-right = ["cpu" "custom/gpu" "memory" "clock"];
 
         "custom/shutdown" = {
           exec = "echo  ";
@@ -90,13 +90,17 @@ in {
         "custom/gpu" = {
           exec = "cat /sys/class/hwmon/hwmon*/device/gpu_busy_percent";
           format = " {}% 󰝤 ";
-          return-type = "";
           interval = 5;
         };
 
         memory = {
           format = " {}%  ";
           interval = 5;
+          tooltip-format = ''
+            {used:0.1f}GB used
+            {total:0.1f}GB total
+            {swapUsed:0.1f}GB swap
+          '';
         };
 
         network = {
@@ -107,8 +111,8 @@ in {
 
         clock = {
           interval = 1;
-          format = "{:%Y-%m-%d | %H:%M:%S}";
-          max-length = 25;
+          format = "{:%a %d %b %Y | %H:%M:%S}";
+          max-length = 50;
         };
       };
     };
@@ -143,6 +147,7 @@ in {
       ${makeModuleCssStyleString "memory" colours.base0A}
       ${makeModuleCssStyleString "network" colours.base09}
       ${makeModuleCssStyleString "clock" colours.base08}
+      ${makeModuleCssStyleString "custom-notifications" colours.base0C}
     '';
   };
 }

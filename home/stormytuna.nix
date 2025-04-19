@@ -47,6 +47,19 @@
     # stable because chromium takes years to build and frequently blocks builds when not in cache
     stable.chromium # Web browser for when zen is playing up
     premid # Discord RP for browser based videos, music, etc
+    calibre # e-book software
+
+    # PS4 emulator, overriding to use a modern version for FSR
+    (shadps4.overrideAttrs (prev: {
+      version = "git";
+      src = fetchFromGitHub {
+        owner = "shadps4-emu";
+        repo = "shadPS4";
+        rev = "aa8dab5371777105a3112498faa821d79aa3cab4";
+        hash = "sha256-TfxHdBFeEdhXkkShAGcHObDP0bQzvitNjFs4JfX1yaI=";
+        fetchSubmodules = true;
+      };
+    }))
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

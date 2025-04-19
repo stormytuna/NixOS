@@ -106,8 +106,8 @@
         "Mod4+q" = "kill";
         "Mod4+g" = "fullscreen toggle";
         "Mod4+b" = "floating toggle";
-        "Mod4+alt+control+shift+x" = "exit";
-        "Mod4+alt+control+shift+c" = "${pkgs.waybar}/bin/waybar";
+        "Mod4+alt+control+shift+x" = "${pkgs.wlogout}/bin/wlogout";
+        "Mod4+alt+control+shift+c" = "exec pkill waybar || ${pkgs.waybar}/bin/waybar";
       };
 
       workspaceOutputAssign = [
