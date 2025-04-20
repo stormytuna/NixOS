@@ -48,6 +48,7 @@
     stable.chromium # Web browser for when zen is playing up
     premid # Discord RP for browser based videos, music, etc
     calibre # e-book software
+    ryujinx # Switch emulator
 
     # PS4 emulator, overriding to use a modern version for FSR
     (shadps4.overrideAttrs (prev: {
