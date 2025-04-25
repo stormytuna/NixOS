@@ -158,7 +158,6 @@
         "1" = [{class = "^discord$";} {class = "^vesktop";}];
 
         # Move games to gaming workspace
-        # TODO: also make it fullscreen them, elden ring has an issue with being in borderless windowed
         "5" = [
           {app_id = "^gamescope$";}
         ];
