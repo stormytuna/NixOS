@@ -9,6 +9,7 @@
         command = ''
           ${pkgs.stable.greetd.tuigreet}/bin/tuigreet --time --cmd "sway"
         '';
+        user = "stormytuna";
       };
     };
   };

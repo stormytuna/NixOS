@@ -8,6 +8,7 @@
 
     ../common/optional/amd-graphics.nix
     ../common/optional/bluetooth.nix
+    ../common/optional/flatpak.nix
     ../common/optional/gamemode.nix
     ../common/optional/gamescope.nix
     ../common/optional/pipewire.nix

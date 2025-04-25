@@ -14,8 +14,9 @@
     nvf.url = "github:notashelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     stylix.url = "github:danth/stylix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
@@ -56,6 +57,7 @@
           ./home/stormytuna.nix
           inputs.stylix.homeManagerModules.stylix
           inputs.nvf.homeManagerModules.default
+          inputs.spicetify-nix.homeManagerModules.default
         ];
       };
     };

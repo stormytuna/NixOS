@@ -3,5 +3,5 @@
   inputs,
   ...
 }: {
-  home.packages = [inputs.zen-browser.packages.${pkgs.system}.twilight];
+  home.packages = [inputs.zen-browser.packages.${pkgs.system}.beta];
 }
