@@ -82,8 +82,6 @@
         "Mod4+shift+d" = "move container to workspace 5; workspace 5";
         "Mod4+shift+f" = "move container to workspace 6; workspace 6";
 
-        # TODO: scratchpads
-
         # Move focus
         "Mod4+h" = "focus left";
         "Mod4+j" = "focus down";
