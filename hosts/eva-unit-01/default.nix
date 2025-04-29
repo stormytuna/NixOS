@@ -8,9 +8,9 @@
 
     ../common/optional/amd-graphics.nix
     ../common/optional/bluetooth.nix
-    ../common/optional/flatpak.nix
     ../common/optional/gamemode.nix
     ../common/optional/gamescope.nix
+    #../common/optional/hyprland.nix
     ../common/optional/pipewire.nix
     ../common/optional/steam.nix
     ../common/optional/sway.nix

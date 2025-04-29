@@ -5,10 +5,12 @@
     ./features/shell
     ./features/styling
 
+    #./features/desktops/hyprland.nix
     ./features/desktops/sway.nix
 
     ./features/development/csharp.nix
 
+    ./features/programs/eww.nix
     ./features/programs/kitty.nix
     ./features/programs/mangohud.nix
     ./features/programs/neovim.nix
@@ -19,7 +21,9 @@
     ./features/programs/wofi.nix
     ./features/programs/zen-browser.nix
 
-    ./features/services/swaync.nix
+    ./features/services/dunst.nix
+    #./features/services/swaync.nix
+    ./features/services/wlsunset.nix
   ];
 
   home = {

@@ -6,11 +6,14 @@
     enable = true;
     settings = {
       default_session = {
-        command = ''
-          ${pkgs.stable.greetd.tuigreet}/bin/tuigreet --time --cmd "sway"
-        '';
+        command = "sway";
         user = "stormytuna";
       };
     };
+  };
+
+  programs.sway = {
+    enable = true;
+    package = pkgs.swayfx;
   };
 }

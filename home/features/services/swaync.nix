@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  home.packages = [pkgs.libnotify]; # Nice to have on path
+
   services.swaync = {
     enable = true;
 

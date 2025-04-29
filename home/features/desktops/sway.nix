@@ -1,14 +1,13 @@
-{pkgs, ...}: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   xdg.portal = {
     enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-wlr];
     configPackages = [pkgs.xdg-desktop-portal-wlr];
-  };
-
-  services.wlsunset = {
-    enable = true;
-    latitude = 53.8;
-    longitude = 1.5;
   };
 
   home.packages = with pkgs; [
@@ -19,6 +18,9 @@
     enable = true;
     xwayland = true;
     wrapperFeatures.gtk = true; # Fix issues with GTK 3 apps
+
+    package = pkgs.swayfx;
+    checkConfig = false; # Required for swayfx package
 
     config = {
       up = "k";
@@ -54,14 +56,14 @@
 
       startup = [
         {command = "steam -silent";}
-        {command = "${pkgs.blueman}/bin/blueman-applet";}
-        {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";}
-        {command = "sleep 5 && ${pkgs.vesktop}/bin/vesktop";} # Sleep to prevent breaking on early startup
+        {command = "${pkgs.blueman}/bin/blueman-applet";} # TODO: make this optional, use blueman package from option
+        {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";} # TODO: optional
+        {command = "sleep 5 && ${pkgs.vesktop}/bin/vesktop";} # Sleep to prevent breaking on early startup TODO: optional
       ];
 
       gaps = {
-        outer = 8;
-        inner = 4;
+        outer = 12;
+        inner = 8;
         smartGaps = false;
       };
 
@@ -160,6 +162,60 @@
           {app_id = "^gamescope$";}
         ];
       };
+
+      # Remove stupid next window indicator border line
+      colors = lib.mkForce (with config.lib.stylix.colors.withHashtag; let
+        text = base05;
+        urgent = base08;
+        focused = base0D;
+        unfocused = base03;
+        background = base00;
+        clear = "#ffffff00";
+      in {
+        inherit background;
+        urgent = {
+          inherit background text;
+          indicator = urgent;
+          border = urgent;
+          childBorder = urgent;
+        };
+        focused = {
+          inherit background text;
+          indicator = focused;
+          border = focused;
+          childBorder = focused;
+        };
+        focusedInactive = {
+          inherit background text;
+          indicator = unfocused;
+          border = clear;
+          childBorder = clear;
+        };
+        unfocused = {
+          inherit background text;
+          indicator = unfocused;
+          border = clear;
+          childBorder = clear;
+        };
+        placeholder = {
+          inherit background text;
+          indicator = unfocused;
+          border = clear;
+          childBorder = clear;
+        };
+      });
     };
+
+    # SwayFX config here as above modules aren't configured to take any random attribute set
+    extraConfig = ''
+      blur enable
+      blur_passes 3
+      blur_radius 1
+
+      corner_radius 10
+
+      shadows enable
+      shadow_blur_radius 40
+    '';
   };
 }

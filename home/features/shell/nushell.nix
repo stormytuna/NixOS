@@ -1,6 +1,4 @@
-{pkgs, ...}: let
-  nomRedirect = "out+err>| ${pkgs.nix-output-monitor}/bin/nom";
-in {
+{pkgs, ...}: {
   programs.nushell = {
     enable = true;
 
@@ -44,8 +42,19 @@ in {
     # shellAliases option was reordering aliases
     extraConfig = ''
       # NixOS update stuff
-      def update-system [] { sudo nixos-rebuild switch --flake ~/.nixos --max-jobs 3 ${nomRedirect} }
-      def update-home [] { home-manager switch --flake ~/.nixos --max-jobs 3 ${nomRedirect} }
+      def update-system [] {
+        cd ~/.nixos
+        git add .
+        nh os switch . -- --max-jobs 3
+        cd -
+      }
+
+      def update-home [] {
+        cd ~/.nixos
+        git add .
+        nh home switch . -- --max-jobs 3
+      }
+
       def update-flake [] { sudo nix flake update --flake ~/.nixos }
       def update-all [] { update-flake; update-system; update-home }
 
