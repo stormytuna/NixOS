@@ -1,5 +1,6 @@
-{pkgs, ...}: {
+{...}: {
   programs.nushell = {
+    # TODO: is it possible to show past few commands when searching history with up arrow?
     enable = true;
 
     configFile.text = ''
@@ -36,6 +37,8 @@
           }
         ]
       }
+
+      $env.CARAPACE_MATCH = 1 # Makes carapace completions case insentitive
     '';
 
     # Using extraConfig to insert aliases at end of config

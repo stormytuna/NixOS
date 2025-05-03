@@ -15,6 +15,7 @@
     ../common/optional/steam.nix
     ../common/optional/sway.nix
     ../common/optional/thunar.nix
+    ../common/optional/xone.nix
     ../common/optional/xpadneo.nix
   ];
 

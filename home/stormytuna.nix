@@ -21,6 +21,7 @@
     ./features/programs/wofi.nix
     ./features/programs/zen-browser.nix
 
+    ./features/services/clear-downloads.nix
     ./features/services/dunst.nix
     #./features/services/swaync.nix
     ./features/services/wlsunset.nix
@@ -32,27 +33,27 @@
   };
 
   home.packages = with pkgs; [
-    lutris # Generic games library
-    prismlauncher # Minecraft launcher
-    r2modman # Thunderstore modeloader
+    stable.lutris # Generic games library
+    stable.prismlauncher # Minecraft launcher
+    stable.r2modman # Thunderstore modeloader
     sgdboop # Tool to apply assets automatically from SteamGridDB to games in steam library
 
     #jetbrains-toolbox # Was having issues with installing rider so installed it via the toolbox
     jetbrains.rider
 
     aseprite # Pixel art
-    gimp-with-plugins # Image editing
+    gimp3-with-plugins # Image editing
 
-    bitwarden # Passwords and secrets manager
-    pavucontrol # PulseAudio volume controller
-    qbittorrent # Torrenting software
+    stable.bitwarden # Passwords and secrets manager
+    stable.pavucontrol # PulseAudio volume controller
+    stable.qbittorrent # Torrenting software
     unityhub # Game engine
-    obs-studio # FOSS video recording and live streaming software
+    stable.obs-studio # FOSS video recording and live streaming software
     # stable because chromium takes years to build and frequently blocks builds when not in cache
     stable.chromium # Web browser for when zen is playing up
-    premid # Discord RP for browser based videos, music, etc
-    calibre # e-book software
-    ryujinx # Switch emulator
+    stable.premid # Discord RP for browser based videos, music, etc
+    stable.calibre # e-book software
+    stable.ryujinx # Switch emulator
 
     # PS4 emulator, overriding to use a modern version for FSR
     (shadps4.overrideAttrs (prev: {

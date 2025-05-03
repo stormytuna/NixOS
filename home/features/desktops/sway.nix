@@ -32,11 +32,9 @@
       terminal = "${pkgs.kitty}/bin/kitty";
       menu = "${pkgs.wofi}/bin/wofi";
 
-      bars = [
-        {command = "${pkgs.waybar}/bin/waybar";}
-      ];
-
       window.titlebar = false;
+
+      bars = [];
 
       output = {
         "DP-1" = {
@@ -58,7 +56,8 @@
         {command = "steam -silent";}
         {command = "${pkgs.blueman}/bin/blueman-applet";} # TODO: make this optional, use blueman package from option
         {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";} # TODO: optional
-        {command = "sleep 5 && ${pkgs.vesktop}/bin/vesktop";} # Sleep to prevent breaking on early startup TODO: optional
+        {command = "sleep 5 && ${pkgs.stable.vesktop}/bin/vesktop";} # Sleep to prevent breaking on early startup TODO: optional
+        {command = "sleep 3 && eww daemon && eww open main";}
       ];
 
       gaps = {

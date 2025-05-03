@@ -3,7 +3,10 @@
     enable = true;
     protontricks.enable = true;
 
-    extraCompatPackages = [pkgs.proton-ge-bin];
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+      gamescope
+    ];
 
     # Allow online play
     remotePlay.openFirewall = true;
