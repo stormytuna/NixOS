@@ -21,7 +21,7 @@
     ./features/programs/wofi.nix
     ./features/programs/zen-browser.nix
 
-    ./features/services/clear-downloads.nix
+    #./features/services/clear-downloads.nix
     ./features/services/dunst.nix
     #./features/services/swaync.nix
     ./features/services/wlsunset.nix
