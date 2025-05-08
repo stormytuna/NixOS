@@ -29,6 +29,12 @@
     config.allowUnfree = true;
   };
 
+  # Added for windsurf rider plugin
+  programs.nix-ld = {
+    enable = true;
+    libraries = [];
+  };
+
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;

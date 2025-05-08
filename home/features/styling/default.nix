@@ -6,15 +6,15 @@
   colours = config.lib.stylix.colors.withHashtag;
 in {
   gtk.iconTheme = {
-    package = pkgs.qogir-icon-theme;
-    name = "Qogir";
+    package = pkgs.papirus-icon-theme;
+    name = "Papirus";
   };
 
   stylix = {
     enable = true;
     autoEnable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-mirage.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-ocean.yaml";
 
     image = ./wallpapers/space-red.png;
 

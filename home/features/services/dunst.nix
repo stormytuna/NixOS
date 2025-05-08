@@ -13,6 +13,10 @@
         monitor = "DP-1"; # Left monitor
         corner_radius = 12;
         show_indicators = false;
+
+        mouse_left_click = "do_action";
+        mouse_middle_click = "none";
+        mouse_right_click = "close_all";
       };
 
       # TODO: Different sounds for different urgencies, maybe need to abstract this into a larger bash script that's passed the urgency and other info?

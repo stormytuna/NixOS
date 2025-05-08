@@ -1,10 +1,10 @@
 {pkgs}:
 pkgs.stdenv.mkDerivation rec {
-  name = "sgdboop.nix";
-  version = "1.2.8";
+  name = "sgdboop";
+  version = "1.3.1";
   src = pkgs.fetchurl {
     url = "https://github.com/SteamGridDB/SGDBoop/releases/download/v${version}/sgdboop-linux64.tar.gz";
-    sha256 = "sha256-LrP0qFg4kOhAicWtORfnW3TvIegvcJf/GiYTHcOeJK4=";
+    sha256 = "sha256-NRP5b/Idpiq54bAFNsNcsfNXECgqLp2i/lys0fqsLUo=";
   };
 
   sourceRoot = ".";
@@ -16,7 +16,6 @@ pkgs.stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
     install -m755 -D SGDBoop $out/bin/SGDBoop
-    install -m444 -D libiup.so $out/lib/libiup.so
     install -m444 -D com.steamgriddb.SGDBoop.desktop -t $out/share/applications/
     runHook postInstall
   '';

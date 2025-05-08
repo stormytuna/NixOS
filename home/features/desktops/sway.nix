@@ -96,8 +96,8 @@
         "Mod4+shift+l" = "move right";
 
         # Screenshots
-        "Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify savecopy area ~/Pictures/Screenshots/Area_$(date +'%Y-%m-%d_%H-%M-%S').png";
-        "shift+print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify savecopy output ~/Pictures/Screenshots/Output_$(date +'%Y-%m-%d_%H-%M-%S').png";
+        #"Print" = "exec flameshot gui";
+        "Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify savecopy area $XDG_PICTURES_DIR/screenshots/area_$(date +'%Y-%m-%d_%H-%M-%S').png";
 
         # Other stuff
         "Mod4+t" = "exec ${pkgs.kitty}/bin/kitty";
@@ -172,12 +172,6 @@
         clear = "#ffffff00";
       in {
         inherit background;
-        urgent = {
-          inherit background text;
-          indicator = urgent;
-          border = urgent;
-          childBorder = urgent;
-        };
         focused = {
           inherit background text;
           indicator = focused;
@@ -186,19 +180,25 @@
         };
         focusedInactive = {
           inherit background text;
-          indicator = unfocused;
+          indicator = clear;
           border = clear;
           childBorder = clear;
         };
         unfocused = {
           inherit background text;
-          indicator = unfocused;
+          indicator = clear;
           border = clear;
           childBorder = clear;
         };
+        urgent = {
+          inherit background text;
+          indicator = urgent;
+          border = urgent;
+          childBorder = urgent;
+        };
         placeholder = {
           inherit background text;
-          indicator = unfocused;
+          indicator = clear;
           border = clear;
           childBorder = clear;
         };

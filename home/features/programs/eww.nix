@@ -3,12 +3,16 @@
   pkgs,
   ...
 }: let
+  # EWW can't directly launch programs
+  launchPavucontrolScript = pkgs.writeShellScript "launch-pavucontrol" ''
+    pavucontrol
+  '';
+
   # WARN: Please see if you can actually make use of this script before copying it!
   gpuTempScript = pkgs.writeShellScript "eww-gputemp" ''
-    grep -rl /sys/class/hwmon/hwmon*/name -e 'amdgpu' \
-      | awk '{ print substr($1, 1, length($1) - 5) "/temp2_input" }' \
-      | xargs cat \
-      | awk '{ print substr($1, 1, length($1) - 3) }'
+    gpuDir=$(grep -rl /sys/class/hwmon/hwmon*/name -e 'amdgpu' | xargs dirname)
+    cat $gpuDir/temp*_input \
+      | awk '{s+=$1}END{printf "%.0f", s/NR/1000}'
   '';
 
   updateHomeScript = pkgs.writeShellScript "eww-updatehome" ''
@@ -86,6 +90,22 @@
     | ${pkgs.stable.cava}/bin/cava -p /dev/stdin \
     | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g; '
   '';
+
+  getSwayWorkspaceInfo = pkgs.writeShellScript "getswayworkspaceinfo" ''
+    swaymsg --raw --type get_workspaces \
+      | jq ".[] | {num, representation}" \
+      | sed 's/[]HV\[]//g' \
+      | jq -s 'map({ num, windowCount: (.representation | split(" ") | length) })'
+  '';
+
+  getSwayFocusedWorkspace = pkgs.writeShellScript "getswayfocusedworkspace" ''
+    swaymsg --type get_workspaces --pretty \
+      | sed -n "s/Workspace \([0-9]\) (focused)/\1/p"
+  '';
+
+  mkWorkspaceLabel = workspaceNumber: extraClass: ''
+    (label :class "widget ${extraClass} ''${swayworkspacefocused == ${workspaceNumber} ? 'focusedworkspace' : 'workspace'}" :text "[ ''${jq(swayworkspaceinfo, ".[] | select(.num==${workspaceNumber}) | .windowCount") ?: "0"} ]")
+  '';
 in {
   programs.eww.enable = true;
 
@@ -106,8 +126,10 @@ in {
           (powermenu)
           (mpris)
           (volumeslider)
-          (systray :class "widget"))
-        (testbox)
+          (systray :class "widget tray"))
+        (box :orientation "vertical" :space-evenly false :hexpand true
+          (testbox :vexpand true)
+          (swayworkspaces))
         (box :orientation "vertical" :space-evenly false
           (sys_info))))
 
@@ -138,13 +160,20 @@ in {
             (button :timeout "10m" :class "widget button pink" :onclick "${updateSystemScript.outPath}" (label :text "NUS"))))))
 
     (defwidget powermenu []
-      (box :orientation "horizontal"
-        (eventbox :cursor "pointer"
-          (button :class "widget button red" :onclick "poweroff" (label :text "PWR")))
-        (eventbox :cursor "pointer"
-          (button :class "widget button yellow" :onclick "reboot" (label :text "RBT")))
-        (eventbox :cursor "pointer"
-          (button :class "widget button orange" :onclick "systemctl restart --system-firmware" (label :text "EFI")))))
+      (stack :transition "slideright" :selected "''${powermenuindex}"
+        (box :orientation "horizontal"
+          (eventbox :cursor "pointer"
+            :onclick "''${powermenufunction == "pwr" ? "poweroff" : powermenufunction == "rbt" ? "reboot" : "systemctl restart --system-firmware"}"
+            :onhoverlost "eww update powermenuindex='1'"
+            (label :class "widget red" :text "[ CNFRM ]"))
+          (label :class "inactive" :text "UT ''${uptime}"))
+        (box :orientation "horizontal"
+          (eventbox :cursor "pointer"
+            (button :class "widget button red" :onclick "eww update powermenufunction='pwr' powermenuindex='0'" (label :text "PWR")))
+          (eventbox :cursor "pointer"
+            (button :class "widget button yellow" :onclick "eww update powermenufunction='rbt' powermenuindex='0'" (label :text "RBT")))
+          (eventbox :cursor "pointer"
+            (button :class "widget button orange" :onclick "eww update powermenufunction='efi' powermenuindex='0'" (label :text "EFI"))))))
 
     (defwidget mpris []
       (box :class "widget mpris" :orientation "vertical" :vexpand true
@@ -165,8 +194,20 @@ in {
         (label :unindent false :text " VOL ")
         (eventbox :class "pink"
           :onscroll "${changeVolumeScript.outPath} {}"
-          :onclick "${pkgs.stable.pamixer}/bin/pamixer --toggle-mute"
+          :onclick "${launchPavucontrolScript.outPath}"
+          :onrightclick "${pkgs.stable.pamixer}/bin/pamixer --toggle-mute"
           (ascii_bar :value volume))))
+
+    (defwidget swayworkspaces []
+      (box :orientation "vertical"
+        (box :orientation "horizontal"
+          ${mkWorkspaceLabel "4" "pink"}
+          ${mkWorkspaceLabel "5" "pink"}
+          ${mkWorkspaceLabel "6" "pink"})
+        (box :orientation "horizontal"
+          ${mkWorkspaceLabel "1" "blue"}
+          ${mkWorkspaceLabel "2" "pink"}
+          ${mkWorkspaceLabel "3" "green"})))
 
     (defwidget sys_info []
       (box :class "widget" :orientation "vertical"
@@ -209,6 +250,8 @@ in {
 
     (defvar quickactionslabel "")
     (defvar quickactionslabelcolour "")
+    (defvar powermenuindex 1)
+    (defvar powermenufunction "")
 
     (defpoll datetime :interval "1s" `date "+%a %d %b %Y | %H:%M:%S"`)
 
@@ -219,6 +262,12 @@ in {
     (defpoll vram_usage :interval "2s" `cat /sys/class/hwmon/hwmon*/device/mem_busy_percent`)
 
     (defpoll volume :interval "5s" `${pkgs.stable.pamixer}/bin/pamixer --get-volume`)
+
+    (defpoll uptime :interval "1s" `awk '{uptime=$1; hours=int(uptime/3600); minutes=int((uptime%3600)/60); seconds=uptime%60; printf "%02d:%02d:%02d\n", hours, minutes, seconds}' /proc/uptime`)
+
+    (defpoll swayworkspaceinfo :interval "1s" `${getSwayWorkspaceInfo.outPath}`)
+
+    (defpoll swayworkspacefocused :interval "2s" `${getSwayFocusedWorkspace.outPath}`)
 
     (deflisten mprisplayername :initial "" `${pkgs.stable.playerctl}/bin/playerctl metadata --follow --format "{{playerName}}"`)
 
@@ -298,6 +347,33 @@ in {
 
     .ascii-bar.veryhigh {
       color: ${base08};
+    }
+
+    .tray menu {
+      padding: 4px;
+      background-color: ${base00};
+      border-radius: 8px;
+
+      >menuitem {
+        padding: 0px 5px;
+
+        &:disabled {
+          color: ${base04};
+        }
+
+        &:hover {
+          background-color: ${base01};
+        }
+      }
+
+      separator {
+        background-color: ${base03};
+        padding-top: 2px;
+
+        &:last-child {
+          padding:unset;
+        }
+      }
     }
 
     .red {

@@ -5,7 +5,6 @@
 
     extraCompatPackages = with pkgs; [
       proton-ge-bin
-      gamescope
     ];
 
     # Allow online play

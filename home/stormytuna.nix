@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./global
 
@@ -14,6 +18,7 @@
     ./features/programs/kitty.nix
     ./features/programs/mangohud.nix
     ./features/programs/neovim.nix
+    ./features/programs/rider.nix
     ./features/programs/spotify.nix
     ./features/programs/vesktop.nix
     ./features/programs/vscode.nix
@@ -23,6 +28,7 @@
 
     #./features/services/clear-downloads.nix
     ./features/services/dunst.nix
+    #./features/services/flameshot.nix
     #./features/services/swaync.nix
     ./features/services/wlsunset.nix
   ];
@@ -32,14 +38,35 @@
     homeDirectory = "/home/stormytuna";
   };
 
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+
+    pictures = "media/images";
+    videos = "media/videos";
+    download = "downloads";
+    documents = "docs";
+    desktop = "desktop";
+
+    extraConfig = {
+      XDG_WORKSPACE_DIR = "${config.home.homeDirectory}/ws";
+      XDG_CODE_DIR = "${config.home.homeDirectory}/ws/src";
+      XDG_SEED_DIR = "${config.home.homeDirectory}/.seed";
+    };
+
+    templates = null;
+    publicShare = null;
+    music = null;
+  };
+  programs.bash.enable = true; # Required for xdg env vars to link properly
+
+  home.file."games".source = config.lib.file.mkOutOfStoreSymlink "/mnt/Games";
+
   home.packages = with pkgs; [
     stable.lutris # Generic games library
     stable.prismlauncher # Minecraft launcher
-    stable.r2modman # Thunderstore modeloader
+    stable.r2modman # Thunderstore modloader
     sgdboop # Tool to apply assets automatically from SteamGridDB to games in steam library
-
-    #jetbrains-toolbox # Was having issues with installing rider so installed it via the toolbox
-    jetbrains.rider
 
     aseprite # Pixel art
     gimp3-with-plugins # Image editing
