@@ -125,13 +125,13 @@ in {
           (quickactions)
           (powermenu)
           (mpris)
-          (volumeslider)
-          (systray :class "widget tray"))
+          (volumeslider))
         (box :orientation "vertical" :space-evenly false :hexpand true
-          (testbox :vexpand true)
-          (swayworkspaces))
+          (box :vexpand true (swayworkspaces true))
+          (box :class "widget" (ram_info)))
         (box :orientation "vertical" :space-evenly false
-          (sys_info))))
+          (sys_info)
+          (systray :class "widget tray" :vexpand true :icon-size 24))))
 
     (defwindow test_blank
       :monitor "DP-1"
@@ -212,8 +212,7 @@ in {
     (defwidget sys_info []
       (box :class "widget" :orientation "vertical"
         (cpu_info)
-        (gpu_info)
-        (ram_info)))
+        (gpu_info)))
 
     (defwidget cpu_info []
       (usagemeters :header "CPU" :label1 "LOAD" :value1 "''${round(EWW_CPU.avg, 0)}" :label2 "TEMP" :value2 "''${round(EWW_TEMPS.ACPITZ_TEMP1, 0)}"))
