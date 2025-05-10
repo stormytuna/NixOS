@@ -16,7 +16,7 @@ in {
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-ocean.yaml";
 
-    image = ./wallpapers/space-red.png;
+    image = ./wallpapers/miku-stars.jpg;
 
     polarity = "dark";
 

@@ -147,8 +147,12 @@
 
       window.commands = [
         {
-          command = "opacity 0.85";
+          command = "opacity 0.9";
           criteria = {app_id = "kitty";};
+        }
+        {
+          command = "opacity 0.9";
+          criteria = {class = "jetbrains-rider";};
         }
       ];
 
@@ -208,7 +212,7 @@
     # SwayFX config here as above modules aren't configured to take any random attribute set
     extraConfig = ''
       blur enable
-      blur_passes 3
+      blur_passes 4
       blur_radius 1
 
       corner_radius 10
