@@ -22,7 +22,7 @@
     ./features/programs/spotify.nix
     ./features/programs/vesktop.nix
     ./features/programs/vscode.nix
-    ./features/programs/waybar.nix
+    #./features/programs/waybar.nix
     ./features/programs/wofi.nix
     ./features/programs/zen-browser.nix
 
@@ -30,6 +30,7 @@
     ./features/services/dunst.nix
     #./features/services/flameshot.nix
     #./features/services/swaync.nix
+    ./features/services/syncthing.nix
     ./features/services/wlsunset.nix
   ];
 
@@ -68,6 +69,7 @@
     stable.r2modman # Thunderstore modloader
     sgdboop # Tool to apply assets automatically from SteamGridDB to games in steam library
 
+    obsidian # Note taking software
     aseprite # Pixel art
     gimp3-with-plugins # Image editing
 

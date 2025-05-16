@@ -53,7 +53,7 @@
       };
 
       startup = [
-        {command = "steam -silent";}
+        {command = "steam -silent -forcedesktopscaling=1.75";}
         {command = "${pkgs.blueman}/bin/blueman-applet";} # TODO: make this optional, use blueman package from option
         {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";} # TODO: optional
         {command = "sleep 5 && ${pkgs.stable.vesktop}/bin/vesktop";} # Sleep to prevent breaking on early startup TODO: optional
@@ -105,8 +105,6 @@
         "Mod4+q" = "kill";
         "Mod4+g" = "fullscreen toggle";
         "Mod4+b" = "floating toggle";
-        "Mod4+alt+control+shift+x" = "${pkgs.wlogout}/bin/wlogout";
-        "Mod4+alt+control+shift+c" = "exec pkill waybar || ${pkgs.waybar}/bin/waybar";
       };
 
       workspaceOutputAssign = [
@@ -212,7 +210,7 @@
     # SwayFX config here as above modules aren't configured to take any random attribute set
     extraConfig = ''
       blur enable
-      blur_passes 4
+      blur_passes 5
       blur_radius 1
 
       corner_radius 10

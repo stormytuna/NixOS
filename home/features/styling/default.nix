@@ -16,7 +16,7 @@ in {
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-ocean.yaml";
 
-    image = ./wallpapers/miku-stars.jpg;
+    image = ./wallpapers/miku-sky.jpg;
 
     polarity = "dark";
 
@@ -59,6 +59,7 @@ in {
 
   # Application specific config
   # Waybar
+  # TODO: optional
   stylix.targets.waybar.enable = false; # Stylix has awful waybar styles by default
   home.file.".config/waybar/colors.css".text = ''
     @define-color base00 ${colours.base00};
