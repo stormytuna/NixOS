@@ -2,7 +2,7 @@
   description = "flakeytuna";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=master";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05"; # TODO: revert to master when hm updates to 25.11
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11";
 
     home-manager.url = "github:nix-community/home-manager/master";
@@ -55,7 +55,7 @@
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [
           ./home/stormytuna.nix
-          inputs.stylix.homeManagerModules.stylix
+          inputs.stylix.homeModules.stylix
           inputs.nvf.homeManagerModules.default
           inputs.spicetify-nix.homeManagerModules.default
         ];

@@ -73,7 +73,6 @@
     aseprite # Pixel art
     gimp3-with-plugins # Image editing
 
-    stable.bitwarden # Passwords and secrets manager
     stable.pavucontrol # PulseAudio volume controller
     stable.qbittorrent # Torrenting software
     unityhub # Game engine
