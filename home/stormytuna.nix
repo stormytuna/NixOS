@@ -72,6 +72,9 @@
     obsidian # Note taking software
     aseprite # Pixel art
     gimp3-with-plugins # Image editing
+    audacity # Audio editing software
+    davinci-resolve # Video editing software
+    spotdl # Spotify audio downloader
 
     stable.pavucontrol # PulseAudio volume controller
     stable.qbittorrent # Torrenting software

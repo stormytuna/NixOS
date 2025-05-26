@@ -2,7 +2,7 @@
   description = "flakeytuna";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05"; # TODO: revert to master when hm updates to 25.11
+    nixpkgs.url = "github:nixos/nixpkgs?ref=master";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-24.11";
 
     home-manager.url = "github:nix-community/home-manager/master";
