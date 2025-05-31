@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./git.nix
+    ./gitui.nix
     ./nushell.nix
     ./starship.nix
   ];
