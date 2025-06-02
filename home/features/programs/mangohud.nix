@@ -18,7 +18,7 @@
     font_size=26
     text_color=FFFFFF
     position=top-left
-    toggle_hud=Shift_L+F7
+    toggle_hud=F7
     pci_dev=0:03:00.0
     table_columns=3
 
