@@ -14,16 +14,16 @@ in {
     enable = true;
     autoEnable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-ocean.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
 
-    image = ./wallpapers/miku-sky.jpg;
+    image = ./wallpapers/eldenring-siofra.jpg;
 
     polarity = "dark";
 
     cursor = {
-      package = pkgs.quintom-cursor-theme;
-      name = "Quintom_Ink";
-      size = 24;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 32;
     };
 
     fonts = {
@@ -37,8 +37,12 @@ in {
         package = pkgs.noto-fonts;
       };
       monospace = {
+        /*
         name = "Hasklug Nerd Font";
         package = pkgs.nerd-fonts.hasklug;
+        */
+        name = "Pixel Code";
+        package = pkgs.pixel-code;
       };
       emoji = {
         name = "Noto Color Emoji";

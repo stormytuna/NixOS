@@ -107,6 +107,9 @@
     (label :class "widget ${extraClass} ''${swayworkspacefocused == ${workspaceNumber} ? 'focusedworkspace' : 'workspace'}" :text "[ ''${jq(swayworkspaceinfo, ".[] | select(.num==${workspaceNumber}) | .windowCount") ?: "0"} ]")
   '';
 in {
+  # Pixel Code font ruined my pretty dashboard :(
+  home.packages = [pkgs.nerd-fonts.hasklug];
+
   programs.eww.enable = true;
 
   home.file.".config/eww/eww.yuck".text = ''
@@ -281,7 +284,7 @@ in {
     * {
       all: unset;
 
-      font-family: "${config.stylix.fonts.monospace.name}";
+      font-family: "Hasklug Nerd Font";
     }
 
     .container {
