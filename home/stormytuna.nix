@@ -78,7 +78,7 @@
 
     stable.pavucontrol # PulseAudio volume controller
     stable.qbittorrent # Torrenting software
-    unityhub # Game engine
+    stable.unityhub # Game engine
     stable.obs-studio # FOSS video recording and live streaming software
     # stable because chromium takes years to build and frequently blocks builds when not in cache
     stable.chromium # Web browser for when zen is playing up
