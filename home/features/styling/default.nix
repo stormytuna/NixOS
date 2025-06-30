@@ -16,7 +16,7 @@ in {
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
 
-    image = ./wallpapers/eldenring-siofra.jpg;
+    image = ./wallpapers/space-blue.png;
 
     polarity = "dark";
 
