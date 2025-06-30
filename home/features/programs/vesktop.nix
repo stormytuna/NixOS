@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.stable.vesktop];
+  home.packages = [pkgs.vesktop];
 
   stylix.targets.vesktop.enable = true;
 

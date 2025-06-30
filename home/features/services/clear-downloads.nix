@@ -11,9 +11,8 @@
 
     Service = {
       Type = "oneshot";
-      Environment = "HOME=${config.home.homeDirectory}";
       ExecStart = ''
-        ${pkgs.findutils}/bin/find "$HOME/Downloads" -mtime +7 \\( -type f -o -type d \\) -delete
+        ${pkgs.fd}/bin/fd --unrestricted --type file --type directory --changed-before 7d --base-directory /home/stormytuna/downloads --exec print {} \+
       '';
     };
 
@@ -28,7 +27,7 @@
     };
 
     Timer = {
-      OnCalendar = "weekly";
+      OnCalendar = "daily";
       Persistent = true;
       RandomizedDelaySec = 60;
     };

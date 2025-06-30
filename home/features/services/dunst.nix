@@ -19,8 +19,6 @@
         mouse_right_click = "close_all";
       };
 
-      # TODO: Different sounds for different urgencies, maybe need to abstract this into a larger bash script that's passed the urgency and other info?
-      # TODO: Change left click to perform action and right click to dismiss
       # TODO: Change to negative comparison when https://github.com/dunst-project/dunst/issues/1040 is resolved
       play_sound = let
         playSoundScript = pkgs.writeShellScript "dunst_playsound" ''

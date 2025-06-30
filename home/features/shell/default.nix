@@ -19,8 +19,8 @@
     tldr # Short summaries of commands
     vulkan-tools # Tools to aid Vulkan graphics API development and testing
     # https://github.com/NixOS/nixpkgs/issues/397271
-    stable.wineWowPackages.waylandFull # Windows compatibility layer
-    stable.winetricks
+    wineWowPackages.waylandFull # Windows compatibility layer
+    winetricks
 
     (unp.override {extraBackends = [unrar-free p7zip];}) # Archive unpacking tool
   ];

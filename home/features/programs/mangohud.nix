@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.mangohud = {
     enable = true;
-    package = pkgs.stable.mangohud;
+    package = pkgs.mangohud;
     enableSessionWide = true;
   };
 

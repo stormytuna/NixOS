@@ -87,7 +87,7 @@
       raw_target = /dev/stdout\n
       data_format = ascii\n
       ascii_max_range = 7\n" \
-    | ${pkgs.stable.cava}/bin/cava -p /dev/stdin \
+    | ${pkgs.cava}/bin/cava -p /dev/stdin \
     | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g; '
   '';
 
@@ -188,9 +188,9 @@ in {
               (label :text "[ ''${mprisstatus?:"PAUSED"} ]")
               (box :orientation "horizontal" :space-evenly false
                 (label :text "''${cava}")
-                (button :class "widget button" :hexpand true :onclick "${pkgs.stable.playerctl}/bin/playerctl previous" (label :class "small-label" :text "󰒮"))
-                (button :class "widget button" :hexpand true :onclick "${pkgs.stable.playerctl}/bin/playerctl play-pause" (label :class "small-label" :text "󰐎"))
-                (button :class "widget button" :hexpand true :onclick "${pkgs.stable.playerctl}/bin/playerctl next" (label :class "small-label" :text "󰒭"))))))))
+                (button :class "widget button" :hexpand true :onclick "${pkgs.playerctl}/bin/playerctl previous" (label :class "small-label" :text "󰒮"))
+                (button :class "widget button" :hexpand true :onclick "${pkgs.playerctl}/bin/playerctl play-pause" (label :class "small-label" :text "󰐎"))
+                (button :class "widget button" :hexpand true :onclick "${pkgs.playerctl}/bin/playerctl next" (label :class "small-label" :text "󰒭"))))))))
 
     (defwidget volumeslider []
       (box :class "widget" :orientation "horizontal" :space-evenly false
@@ -198,7 +198,7 @@ in {
         (eventbox :class "pink"
           :onscroll "${changeVolumeScript.outPath} {}"
           :onclick "${launchPavucontrolScript.outPath}"
-          :onrightclick "${pkgs.stable.pamixer}/bin/pamixer --toggle-mute"
+          :onrightclick "${pkgs.pamixer}/bin/pamixer --toggle-mute"
           (ascii_bar :value volume))))
 
     (defwidget swayworkspaces []
@@ -263,7 +263,7 @@ in {
 
     (defpoll vram_usage :interval "2s" `cat /sys/class/hwmon/hwmon*/device/mem_busy_percent`)
 
-    (defpoll volume :interval "5s" `${pkgs.stable.pamixer}/bin/pamixer --get-volume`)
+    (defpoll volume :interval "5s" `${pkgs.pamixer}/bin/pamixer --get-volume`)
 
     (defpoll uptime :interval "1s" `awk '{uptime=$1; hours=int(uptime/3600); minutes=int((uptime%3600)/60); seconds=uptime%60; printf "%02d:%02d:%02d\n", hours, minutes, seconds}' /proc/uptime`)
 
@@ -271,11 +271,11 @@ in {
 
     (defpoll swayworkspacefocused :interval "2s" `${getSwayFocusedWorkspace.outPath}`)
 
-    (deflisten mprisplayername :initial "" `${pkgs.stable.playerctl}/bin/playerctl metadata --follow --format "{{playerName}}"`)
+    (deflisten mprisplayername :initial "" `${pkgs.playerctl}/bin/playerctl metadata --follow --format "{{playerName}}"`)
 
-    (deflisten mprisstatus :initial "" `${pkgs.stable.playerctl}/bin/playerctl metadata --follow --format "{{uc(status)}}"`)
+    (deflisten mprisstatus :initial "" `${pkgs.playerctl}/bin/playerctl metadata --follow --format "{{uc(status)}}"`)
 
-    (deflisten mprisplaytime :initial "" `${pkgs.stable.playerctl}/bin/playerctl metadata --follow --format "{{duration(position)}} / {{duration(mpris:length)}}"`)
+    (deflisten mprisplaytime :initial "" `${pkgs.playerctl}/bin/playerctl metadata --follow --format "{{duration(position)}} / {{duration(mpris:length)}}"`)
 
     (deflisten cava :initial "" `${cavaScript.outPath}`)
   '';

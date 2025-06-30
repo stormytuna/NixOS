@@ -52,13 +52,22 @@
         };
       };
 
-      startup = [
-        {command = "steam -silent -forcedesktopscaling=1.75";}
-        {command = "${pkgs.blueman}/bin/blueman-applet";} # TODO: make this optional, use blueman package from option
-        {command = "${pkgs.networkmanagerapplet}/bin/nm-applet";} # TODO: optional
-        {command = "sleep 5 && ${pkgs.stable.vesktop}/bin/vesktop";} # Sleep to prevent breaking on early startup TODO: optional
-        {command = "sleep 3 && eww daemon && eww open main";}
-      ];
+      startup =
+        [
+          # Should always be on path, but defined in system so can't do these optionally
+          {command = "blueman-applet";}
+          {command = "nm-applet";}
+        ]
+        # Using whatever is on path
+        ++ lib.optional config.programs.steam.enable [
+          {command = "steam -silent -forcedesktopscaling=1.75";}
+        ]
+        ++ lib.optional config.programs.vesktop.enable [
+          {command = "sleep 5 && vesktop";}
+        ]
+        ++ lib.optional config.programs.eww.enable [
+          {command = "sleep 3 && eww daemon && eww open main";}
+        ];
 
       gaps = {
         outer = 12;

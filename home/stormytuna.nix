@@ -64,9 +64,9 @@
   home.file."games".source = config.lib.file.mkOutOfStoreSymlink "/mnt/Games";
 
   home.packages = with pkgs; [
-    stable.lutris # Generic games library
-    stable.prismlauncher # Minecraft launcher
-    stable.r2modman # Thunderstore modloader
+    lutris # Generic games library
+    prismlauncher # Minecraft launcher
+    r2modman # Thunderstore modloader
     sgdboop # Tool to apply assets automatically from SteamGridDB to games in steam library
 
     obsidian # Note taking software
@@ -76,15 +76,15 @@
     davinci-resolve # Video editing software
     spotdl # Spotify audio downloader
 
-    stable.pavucontrol # PulseAudio volume controller
-    stable.qbittorrent # Torrenting software
-    stable.unityhub # Game engine
-    stable.obs-studio # FOSS video recording and live streaming software
-    # stable because chromium takes years to build and frequently blocks builds when not in cache
-    stable.chromium # Web browser for when zen is playing up
-    stable.premid # Discord RP for browser based videos, music, etc
-    stable.calibre # e-book software
-    stable.ryujinx # Switch emulator
+    pavucontrol # PulseAudio volume controller
+    qbittorrent # Torrenting software
+    unityhub # Game engine
+    obs-studio # FOSS video recording and live streaming software
+    # because chromium takes years to build and frequently blocks builds when not in cache
+    chromium # Web browser for when zen is playing up
+    premid # Discord RP for browser based videos, music, etc
+    calibre # e-book software
+    ryujinx # Switch emulator
 
     # PS4 emulator, overriding to use a modern version for FSR
     (shadps4.overrideAttrs (prev: {
