@@ -48,18 +48,18 @@
       def update-system [] {
         cd ~/.nixos
         git add .
-        nh os switch . -- --max-jobs 3
+        nh os switch . -- --max-jobs 3 --accept-flake-config
         cd -
       }
 
       def update-home [] {
         cd ~/.nixos
         git add .
-        nh home switch . -- --max-jobs 3
+        nh home switch . -- --max-jobs 3 --accept-flake-config
       }
 
-      def update-flake [] { sudo nix flake update --flake ~/.nixos }
-      def update-all [] { update-flake; update-system; update-home }
+      def update-all [] { update-system; update-home }
+      def update-flake [] { sudo nix flake update --flake ~/.nixos; update-all }
 
       # git
       alias gs = git status

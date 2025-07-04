@@ -8,10 +8,13 @@
 
     ../common/optional/amd-graphics.nix
     ../common/optional/bluetooth.nix
+    #../common/optional/cosmic.nix
     ../common/optional/gamemode.nix
     ../common/optional/gamescope.nix
     #../common/optional/hyprland.nix
     ../common/optional/pipewire.nix
+    #../common/optional/plasma.nix
+    #../common/optional/sddm.nix
     ../common/optional/steam.nix
     ../common/optional/sway.nix
     ../common/optional/thunar.nix

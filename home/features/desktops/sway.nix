@@ -52,22 +52,23 @@
         };
       };
 
-      startup =
-        [
-          # Should always be on path, but defined in system so can't do these optionally
-          {command = "blueman-applet";}
-          {command = "nm-applet";}
-        ]
-        # Using whatever is on path
-        ++ lib.optional config.programs.steam.enable [
-          {command = "steam -silent -forcedesktopscaling=1.75";}
-        ]
-        ++ lib.optional config.programs.vesktop.enable [
-          {command = "sleep 5 && vesktop";}
-        ]
-        ++ lib.optional config.programs.eww.enable [
-          {command = "sleep 3 && eww daemon && eww open main";}
-        ];
+      startup = [
+        # Should always be on path, but defined in system so can't do these optionally
+        {command = "blueman-applet";}
+        {command = "nm-applet";}
+        {command = "steam -silent -forcedesktopscaling=1.75";}
+        {command = "sleep 5 && vesktop";}
+        {command = "sleep 3 && eww daemon && eww open main";}
+      ];
+      # Using whatever is on path
+      /*
+      ++ lib.optional config.programs.vesktop.enable [
+        {command = "sleep 5 && vesktop";}
+      ]
+      ++ lib.optional config.programs.eww.enable [
+        {command = "sleep 3 && eww daemon && eww open main";}
+      ];
+      */
 
       gaps = {
         outer = 12;

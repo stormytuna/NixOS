@@ -4,9 +4,13 @@
 
   services.greetd = {
     enable = true;
-    settings = {
+    settings = rec {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd sway";
+        user = "stormytuna";
+      };
+      initial_session = {
+        command = "sway";
         user = "stormytuna";
       };
     };

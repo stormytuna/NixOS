@@ -10,6 +10,7 @@
     ./features/styling
 
     #./features/desktops/hyprland.nix
+    #./features/desktops/plasma.nix
     ./features/desktops/sway.nix
 
     ./features/development/csharp.nix

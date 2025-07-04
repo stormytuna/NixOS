@@ -3,6 +3,7 @@
     isNormalUser = true;
     extraGroups = [
       "wheel" # Admin
+      "gamemode" # Lets me use gamemoded commands properly
     ];
     shell = pkgs.nushell;
   };

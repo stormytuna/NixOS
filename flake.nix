@@ -1,6 +1,17 @@
 {
   description = "flakeytuna";
 
+  nixConfig = {
+    extra-trusted-substituters = [
+      "https://nix-community.cachix.org"
+      "https://cosmic.cachix.org/"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+    ];
+  };
+
   inputs = {
     #nixpkgs.url = "github:nixos/nixpkgs?ref=master";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
@@ -22,6 +33,7 @@
     #stylix.url = "github:danth/stylix";
     stylix.url = "github:danth/stylix/release-25.05";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = {
@@ -48,6 +60,7 @@
           ./hosts/eva-unit-01
           inputs.stylix.nixosModules.stylix
           inputs.chaotic.nixosModules.default
+          inputs.nixos-cosmic.nixosModules.default
         ];
       };
     };
