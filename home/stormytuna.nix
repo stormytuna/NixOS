@@ -16,6 +16,7 @@
     ./features/development/csharp.nix
 
     ./features/programs/eww.nix
+    ./features/programs/fuzzel.nix
     ./features/programs/kitty.nix
     ./features/programs/mangohud.nix
     ./features/programs/neovim.nix
@@ -24,8 +25,8 @@
     ./features/programs/vesktop.nix
     ./features/programs/vscode.nix
     #./features/programs/waybar.nix
-    ./features/programs/wofi.nix
-    ./features/programs/zen-browser.nix
+    #./features/programs/wofi.nix
+    #./features/programs/zen-browser.nix
 
     #./features/services/clear-downloads.nix
     ./features/services/dunst.nix
@@ -65,30 +66,28 @@
   home.file."games".source = config.lib.file.mkOutOfStoreSymlink "/mnt/Games";
 
   home.packages = with pkgs; [
-    lutris # Generic games library
-    prismlauncher # Minecraft launcher
-    r2modman # Thunderstore modloader
+    stable.lutris # Generic games library
+    stable.prismlauncher # Minecraft launcher
+    stable.r2modman # Thunderstore modloader
     sgdboop # Tool to apply assets automatically from SteamGridDB to games in steam library
 
     obsidian # Note taking software
     aseprite # Pixel art
-    gimp3-with-plugins # Image editing
-    audacity # Audio editing software
-    davinci-resolve # Video editing software
+    stable.gimp3-with-plugins # Image editing
+    stable.audacity # Audio editing software
+    stable.davinci-resolve # Video editing software
     spotdl # Spotify audio downloader
 
     pavucontrol # PulseAudio volume controller
-    qbittorrent # Torrenting software
-    unityhub # Game engine
-    obs-studio # FOSS video recording and live streaming software
-    # because chromium takes years to build and frequently blocks builds when not in cache
-    chromium # Web browser for when zen is playing up
+    stable.qbittorrent # Torrenting software
+    stable.unityhub # Game engine
+    stable.obs-studio # FOSS video recording and live streaming software
+    stable.chromium # Web browser for when zen is playing up
     premid # Discord RP for browser based videos, music, etc
-    calibre # e-book software
-    ryujinx # Switch emulator
+    stable.ryujinx # Switch emulator
 
     # PS4 emulator, overriding to use a modern version for FSR
-    (shadps4.overrideAttrs (prev: {
+    (stable.shadps4.overrideAttrs (prev: {
       version = "git";
       src = fetchFromGitHub {
         owner = "shadps4-emu";

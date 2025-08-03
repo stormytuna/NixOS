@@ -21,8 +21,9 @@
     # https://github.com/NixOS/nixpkgs/issues/397271
     wineWowPackages.waylandFull # Windows compatibility layer
     winetricks
+    linuxKernel.packages.linux_6_6.cpupower # Allows modifying cpu frequency mode
 
-    (unp.override {extraBackends = [unrar-free p7zip];}) # Archive unpacking tool
+    (unp.override {extraBackends = [unrar p7zip];}) # Archive unpacking tool
   ];
 
   programs = {

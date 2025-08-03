@@ -4,10 +4,14 @@
   pkgs,
   ...
 }: {
-  xdg.portal = {
+  xdg.portal = rec {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-wlr];
-    configPackages = [pkgs.xdg-desktop-portal-wlr];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+    configPackages = extraPortals;
   };
 
   home.packages = with pkgs; [
@@ -30,7 +34,7 @@
       modifier = "Mod4";
 
       terminal = "${pkgs.kitty}/bin/kitty";
-      menu = "${pkgs.wofi}/bin/wofi";
+      menu = "fuzzel";
 
       window.titlebar = false;
 
@@ -60,15 +64,6 @@
         {command = "sleep 5 && vesktop";}
         {command = "sleep 3 && eww daemon && eww open main";}
       ];
-      # Using whatever is on path
-      /*
-      ++ lib.optional config.programs.vesktop.enable [
-        {command = "sleep 5 && vesktop";}
-      ]
-      ++ lib.optional config.programs.eww.enable [
-        {command = "sleep 3 && eww daemon && eww open main";}
-      ];
-      */
 
       gaps = {
         outer = 12;
@@ -111,7 +106,7 @@
 
         # Other stuff
         "Mod4+t" = "exec ${pkgs.kitty}/bin/kitty";
-        "Mod4+r" = "exec pkill wofi || ${pkgs.wofi}/bin/wofi --show drun --allow-images";
+        "Mod4+r" = "exec pkill fuzzel || fuzzel";
         "Mod4+q" = "kill";
         "Mod4+g" = "fullscreen toggle";
         "Mod4+b" = "floating toggle";
@@ -161,6 +156,10 @@
         {
           command = "opacity 0.9";
           criteria = {class = "jetbrains-rider";};
+        }
+        {
+          command = "border pixel 0, floating enable, fullscreen disable, move absolute position 0 0";
+          criteria = {app_id = "flameshot";};
         }
       ];
 

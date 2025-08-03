@@ -55,11 +55,11 @@
         enableTreesitter = true;
         enableExtraDiagnostics = true;
 
+        clang.enable = true;
+        csharp.enable = true;
+        markdown.enable = true;
         nix.enable = true;
         nix.extraDiagnostics.types = []; # Remove annoying deadnix warnings
-        markdown.enable = true;
-        csharp.enable = true;
-        clang.enable = true;
         nu.enable = true;
       };
 

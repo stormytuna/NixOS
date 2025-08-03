@@ -49,6 +49,13 @@
         cd ~/.nixos
         git add .
         nh os switch . -- --max-jobs 3 --accept-flake-config
+
+        if ($env.LAST_EXIT_CODE == 0) {
+          notify-send "System updated!" --urgency "LOW"
+        } else {
+          notify-send "System update failed" --urgency "CRITICAL"
+        }
+
         cd -
       }
 
@@ -56,10 +63,21 @@
         cd ~/.nixos
         git add .
         nh home switch . -- --max-jobs 3 --accept-flake-config
+
+        if ($env.LAST_EXIT_CODE == 0) {
+          notify-send "Home updated!" --urgency "LOW"
+        } else {
+          notify-send "Home update failed" --urgency "CRITICAL"
+        }
       }
 
       def update-all [] { update-system; update-home }
       def update-flake [] { sudo nix flake update --flake ~/.nixos; update-all }
+
+      alias us = update-system
+      alias aa = update-all
+      alias uh = update-home
+      alias uf = update-flake
 
       # git
       alias gs = git status

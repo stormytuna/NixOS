@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.jetbrains.rider];
+  home.packages = [pkgs.stable.jetbrains.rider];
 
   home.file.".ideavimrc".text = ''
     let mapleader = " "

@@ -4,6 +4,7 @@
     extraGroups = [
       "wheel" # Admin
       "gamemode" # Lets me use gamemoded commands properly
+      "foundryvtt"
     ];
     shell = pkgs.nushell;
   };

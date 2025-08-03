@@ -9,6 +9,8 @@
     ../common/optional/amd-graphics.nix
     ../common/optional/bluetooth.nix
     #../common/optional/cosmic.nix
+    ../common/optional/flatpak.nix
+    ../common/optional/foundry-vtt.nix
     ../common/optional/gamemode.nix
     ../common/optional/gamescope.nix
     #../common/optional/hyprland.nix
@@ -27,7 +29,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.scripts
-      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
     ];
     config.allowUnfree = true;
   };
@@ -49,7 +51,8 @@
     firewall = {
       enable = true;
       # 25565 - Minecraft servers
-      allowedTCPPorts = [25565];
+      # 30000 - Foundry VTT server
+      allowedTCPPorts = [25565 30000];
       allowedUDPPorts = [25565];
     };
   };

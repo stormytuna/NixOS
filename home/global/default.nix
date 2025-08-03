@@ -8,7 +8,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.scripts
-      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
       inputs.nur.overlays.default
     ];
     config = {

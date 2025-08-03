@@ -5,6 +5,11 @@
 
     extraPackages = with pkgs; [
       rocmPackages.clr.icd # Required for davinci resolve
+      amdvlk
+    ];
+
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
     ];
   };
 }
