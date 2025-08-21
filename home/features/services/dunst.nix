@@ -19,7 +19,6 @@
         mouse_right_click = "close_all";
       };
 
-      # TODO: Change to negative comparison when https://github.com/dunst-project/dunst/issues/1040 is resolved
       play_sound = let
         playSoundScript = pkgs.writeShellScript "dunst_playsound" ''
           if [ "$DUNST_CATEGORY" == "SILENT" ]

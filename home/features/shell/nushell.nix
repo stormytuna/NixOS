@@ -75,7 +75,7 @@
       def update-flake [] { sudo nix flake update --flake ~/.nixos; update-all }
 
       alias us = update-system
-      alias aa = update-all
+      alias ua = update-all
       alias uh = update-home
       alias uf = update-flake
 

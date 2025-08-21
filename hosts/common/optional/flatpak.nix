@@ -9,4 +9,6 @@
       }
     ];
   };
+
+  xdg.portal.enable = true; # Required for flatpak
 }

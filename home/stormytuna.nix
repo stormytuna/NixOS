@@ -17,6 +17,7 @@
 
     ./features/programs/eww.nix
     ./features/programs/fuzzel.nix
+    ./features/programs/imv.nix
     ./features/programs/kitty.nix
     ./features/programs/mangohud.nix
     ./features/programs/neovim.nix
@@ -80,7 +81,8 @@
 
     pavucontrol # PulseAudio volume controller
     stable.qbittorrent # Torrenting software
-    stable.unityhub # Game engine
+    unityhub # Game engine
+    blender # 3D modelling software
     stable.obs-studio # FOSS video recording and live streaming software
     stable.chromium # Web browser for when zen is playing up
     premid # Discord RP for browser based videos, music, etc

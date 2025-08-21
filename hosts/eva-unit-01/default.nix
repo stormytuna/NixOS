@@ -18,6 +18,7 @@
     #../common/optional/plasma.nix
     #../common/optional/sddm.nix
     ../common/optional/steam.nix
+    ../common/optional/swap.nix
     ../common/optional/sway.nix
     ../common/optional/thunar.nix
     ../common/optional/xone.nix

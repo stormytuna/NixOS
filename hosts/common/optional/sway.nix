@@ -6,7 +6,7 @@
     enable = true;
     settings = rec {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd sway";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd sway";
         user = "stormytuna";
       };
       initial_session = {
