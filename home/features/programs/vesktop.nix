@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.vesktop];
+  home.packages = [pkgs.stable.vesktop];
 
   home.file.".config/vesktop/settings/quickCss.css".text = ''
     @import url("https://minidiscordthemes.github.io/Snippets/ChannelListWidth/main.css");
@@ -30,6 +30,11 @@
         drop-shadow(1px -1px 0px black)
         drop-shadow(-1px 1px 0px black)
         drop-shadow(1px 1px 0px black);
+    }
+
+    /* Silent typing icon strikethrough fix */
+    div.expression-picker-chat-input-button.buttonContainer__74017.vc-chatbar-button > button > div > div > svg > path:nth-child(3) {
+      fill: currentColor;
     }
 
     /* Horizontal server list */

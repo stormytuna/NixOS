@@ -63,6 +63,7 @@
         {command = "steam -silent -forcedesktopscaling=1.75";}
         {command = "sleep 5 && vesktop";}
         {command = "sleep 3 && eww daemon && eww open main";}
+        {command = "syncthing server";} # Not sure why but syncthing stopped starting its service automatically
       ];
 
       gaps = {

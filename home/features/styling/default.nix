@@ -8,9 +8,9 @@
     enable = true;
     autoEnable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/spaceduck.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 
-    image = ./wallpapers/space-blue.png;
+    image = ./wallpapers/miku-stars.jpg;
 
     polarity = "dark";
 
@@ -35,8 +35,8 @@
         name = "Hasklug Nerd Font";
         package = pkgs.nerd-fonts.hasklug;
         */
-        name = "Pixel Code";
-        package = pkgs.pixel-code;
+        name = "FiraCode";
+        package = pkgs.nerd-fonts.fira-code;
       };
       emoji = {
         name = "Noto Color Emoji";

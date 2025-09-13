@@ -15,6 +15,7 @@
         expandtab = true;
         shiftwidth = 2;
         clipboard = "unnamedplus";
+        scrolloff = 10;
       };
 
       lsp = {
@@ -55,11 +56,22 @@
         enableTreesitter = true;
         enableExtraDiagnostics = true;
 
-        clang.enable = true;
-        csharp.enable = true;
-        markdown.enable = true;
         nix.enable = true;
         nix.extraDiagnostics.types = []; # Remove annoying deadnix warnings
+
+        csharp = {
+          enable = true;
+          lsp.enable = true;
+          lsp.server = "omnisharp";
+        };
+
+        zig = {
+          enable = true;
+          lsp.enable = true;
+        };
+
+        clang.enable = true;
+        markdown.enable = true;
         nu.enable = true;
       };
 

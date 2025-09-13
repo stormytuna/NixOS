@@ -1,5 +1,5 @@
 {...}: {
-  programs.gitui = {
+  programs.obs-studio = {
     enable = true;
   };
 }
