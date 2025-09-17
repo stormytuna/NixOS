@@ -35,7 +35,7 @@
         name = "Hasklug Nerd Font";
         package = pkgs.nerd-fonts.hasklug;
         */
-        name = "FiraCode";
+        name = "Fira Code Nerd Font";
         package = pkgs.nerd-fonts.fira-code;
       };
       emoji = {

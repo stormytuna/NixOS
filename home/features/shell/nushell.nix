@@ -1,4 +1,8 @@
-{...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.nushell = {
     # TODO: is it possible to show past few commands when searching history with up arrow?
     enable = true;
@@ -39,6 +43,9 @@
       }
 
       $env.CARAPACE_MATCH = 1 # Makes carapace completions case insentitive
+
+      # Fixes README.md files having yellow backgrounds
+      $env.LS_COLORS = (${pkgs.vivid}/bin/vivid generate tokyonight-night | str trim)
     '';
 
     # Using extraConfig to insert aliases at end of config
@@ -99,6 +106,9 @@
         # double reverse as we want the duplicate entries to appear lower at the list
         history | get command | reverse | uniq | reverse | drop $count | save ~/.config/nushell/history.txt --force
       }
+
+      # tweak stylix color, hint sometimes unreadable depending on theme
+      $env.config.color_config.hints = "${config.lib.stylix.colors.withHashtag.base03}"
     '';
   };
 }

@@ -29,6 +29,11 @@
     fsType = "btrfs";
   };
 
+  fileSystems."/var/lib/foundryvtt/Data/assets" = {
+    device = "/home/stormytuna/ws/dnd/cos";
+    options = ["bind"];
+  };
+
   swapDevices = [];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
