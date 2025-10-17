@@ -5,10 +5,12 @@
     extra-trusted-substituters = [
       "https://nix-community.cachix.org"
       "https://cosmic.cachix.org/"
+      "https://hyprland.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
 
@@ -16,7 +18,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=master";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
 
-    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.url = "github:nix-community/home-manager?ref=master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
@@ -25,10 +27,11 @@
     nvf.url = "github:notashelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
 
+    hyprland.url = "github:hyprwm/Hyprland";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix?ref=master";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     foundry-vtt.url = "github:reckenrode/nix-foundryvtt";

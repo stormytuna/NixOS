@@ -4,7 +4,7 @@
     extraGroups = [
       "wheel" # Admin
       "gamemode" # Lets me use gamemoded commands properly
-      "foundryvtt"
+      "foundryvtt" # Grants access to foundryvtt dir used by service
     ];
     shell = pkgs.nushell;
   };

@@ -16,7 +16,7 @@
     ./features/development/csharp.nix
     ./features/development/zig.nix
 
-    ./features/programs/eww.nix
+    #./features/programs/eww.nix
     ./features/programs/fuzzel.nix
     ./features/programs/imv.nix
     ./features/programs/kitty.nix
@@ -27,7 +27,8 @@
     ./features/programs/spotify.nix
     ./features/programs/vesktop.nix
     ./features/programs/vscode.nix
-    #./features/programs/waybar.nix
+    ./features/programs/waybar.nix
+    ./features/programs/wlogout.nix
     #./features/programs/wofi.nix
     #./features/programs/zen-browser.nix
 
@@ -84,7 +85,7 @@
     sgdboop # Tool to apply assets automatically from SteamGridDB to games in steam library
 
     stable.obsidian # Note taking software
-    aseprite # Pixel art
+    stable.aseprite # Pixel art
     stable.gimp3-with-plugins # Image editing
     stable.audacity # Audio editing software
     stable.davinci-resolve # Video editing software

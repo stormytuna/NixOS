@@ -10,7 +10,7 @@
 
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 
-    image = ./wallpapers/eldenring-melina.jpg;
+    image = ./wallpapers/space-red.png;
 
     polarity = "dark";
 

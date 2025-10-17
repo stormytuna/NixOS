@@ -1,11 +1,27 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     wl-clipboard # neovim won't use system clipboard otherwise
   ];
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
     settings = {
       "$mainMod" = "SUPER";
@@ -13,16 +29,17 @@
 
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "waybar" # TODO: optional
-        "${pkgs.clipse}/bin/clipse --listen"
-        "${pkgs.blueman}/bin/blueman-applet" # TODO: optional
-        "${pkgs.networkmanagerapplet}/bin/nm-applet" # TODO: optional
+        "blueman-applet" # TODO: optional
+        "nm-applet" # TODO: optional
+        "steam -silent -forcedesktopscaling=1.75" # TODO: optional
         "sleep 5; ${pkgs.vesktop}/bin/vesktop" # TODO: optional
-        "steam --silent" # TODO: optional
+        #"sleep 3 && eww daemon && eww open main" # TODO: optional
+        "waybar"
+        "syncthing server --allow-newer-config"
       ];
 
       monitor = [
-        "HDMI-A-1, 3840x2160@119.88, 1080x0, 1, bitdepth, 10"
+        "HDMI-A-1, 3840x2160@119.88, 1080x0, 1"
         "DP-1, 1920x1080@144.0, 0x240, 1"
         "DP-1, transform, 1"
         "DP-3, 2560x1440@120.02, 4920x361, 1"
@@ -70,16 +87,12 @@
         ", Print, exec, ${pkgs.hyprshot}/bin/hyprshot --mode region --output-folder ~/Pictures/Screenshots"
         "SHIFT, Print, exec, ${pkgs.hyprshot}/bin/hyprshot --mode output --output-folder ~/Pictures/Screenshots"
 
-        # Emoji picker
-        "CTRL SHIFT, E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji"
-
         "$mainMod, T, exec, $spawnTerminal"
         "$mainMod, Q, exec, hyprctl dispatch killactive"
         "$mainMod, B, togglefloating"
         "$mainMod, G, fullscreen"
         "$mainMod, W, togglesplit"
-        "$mainMod, A, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -t -s"
-        "$mainMod, R, exec, pkill wofi || ${pkgs.wofi}/bin/wofi --show drun --allow-images"
+        "$mainMod, R, exec, pkill fuzzel || fuzzel"
         "$mainMod ALT SHIFT, X, exit"
       ];
 
@@ -106,11 +119,10 @@
 
       general = {
         border_size = 2;
+        resize_on_border = true;
       };
 
       decoration = {
-        rounding = 5;
-
         blur = {
           size = 3;
           passes = 3;
@@ -124,11 +136,15 @@
       };
 
       animations = {
-        bezier = ["easeOutExpo, 0.16, 1, 0.3, 1"];
+        bezier = [
+          "easeOutExpo, 0.16, 1, 0.3, 1"
+          "easeOutFast, 0, 0.98, 0.05, 0.96"
+        ];
         animation = [
-          "windows, 1, 6, easeOutExpo, gnomed"
-          "layers, 1, 4, easeOutExpo, slide"
-          "workspaces, 1, 3, easeOutExpo, slidevert"
+          "windows, 1, 4, easeOutExpo, gnomed"
+          "workspaces, 1, 4, easeOutExpo, slidevert"
+          "border, 1, 10, easeOutExpo"
+          "fade, 1, 4, easeOutFast"
         ];
       };
     };

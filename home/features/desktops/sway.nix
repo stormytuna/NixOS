@@ -62,7 +62,8 @@
         {command = "nm-applet";}
         {command = "steam -silent -forcedesktopscaling=1.75";}
         {command = "sleep 5 && vesktop";}
-        {command = "sleep 3 && eww daemon && eww open main";}
+        #{command = "sleep 3 && eww daemon && eww open main";}
+        {command = "waybar";}
         {command = "syncthing server";} # Not sure why but syncthing stopped starting its service automatically
       ];
 
@@ -108,9 +109,25 @@
         # Other stuff
         "Mod4+t" = "exec ${pkgs.kitty}/bin/kitty";
         "Mod4+r" = "exec pkill fuzzel || fuzzel";
+        "Mod4+e" = "exec thunar";
         "Mod4+q" = "kill";
         "Mod4+g" = "fullscreen toggle";
-        "Mod4+b" = "floating toggle";
+        "Mod4+alt+ctrl+shift+x" = "focus output HDMI-A-1 ; exec wlogout --protocol layer-shell --buttons-per-row 4";
+
+        "Mod4+b" = let
+          script = pkgs.writeShellScriptBin "toggleMaximised" ''
+            id=$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true).id')
+            floating_state=$(swaymsg -t get_tree | jq -r --argjson id "$id" '.. | select(.id? == $id).floating')
+
+            swaymsg floating toggle
+
+            if [ "$floating_state" = "auto_off" ]; then
+              swaymsg move position center
+              swaymsg resize set width 90ppt
+              swaymsg resize set height 90ppt
+            fi
+          '';
+        in "exec ${script.outPath}/bin/toggleMaximised";
       };
 
       workspaceOutputAssign = [
@@ -152,15 +169,19 @@
       window.commands = [
         {
           command = "opacity 0.9";
-          criteria = {app_id = "kitty";};
+          criteria = {app_id = "^kitty$";};
         }
         {
           command = "opacity 0.9";
-          criteria = {class = "jetbrains-rider";};
+          criteria = {app_id = "^zen$";};
         }
         {
-          command = "border pixel 0, floating enable, fullscreen disable, move absolute position 0 0";
-          criteria = {app_id = "flameshot";};
+          command = "opacity 0.9";
+          criteria = {app_id = "^vesktop$";};
+        }
+        {
+          command = "opacity 0.9";
+          criteria = {class = "^jetbrains-rider$";};
         }
       ];
 
@@ -192,15 +213,15 @@
         };
         focusedInactive = {
           inherit background text;
-          indicator = clear;
-          border = clear;
-          childBorder = clear;
+          indicator = unfocused;
+          border = unfocused;
+          childBorder = unfocused;
         };
         unfocused = {
           inherit background text;
-          indicator = clear;
-          border = clear;
-          childBorder = clear;
+          indicator = unfocused;
+          border = unfocused;
+          childBorder = unfocused;
         };
         urgent = {
           inherit background text;
@@ -210,9 +231,9 @@
         };
         placeholder = {
           inherit background text;
-          indicator = clear;
-          border = clear;
-          childBorder = clear;
+          indicator = unfocused;
+          border = unfocused;
+          childBorder = unfocused;
         };
       });
     };
@@ -223,10 +244,11 @@
       blur_passes 5
       blur_radius 1
 
-      corner_radius 10
-
       shadows enable
       shadow_blur_radius 40
+
+      layer_effects "logout_dialog" blur enable
+      layer_effects "waybar" blur enable
     '';
   };
 }

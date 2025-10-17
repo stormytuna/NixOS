@@ -122,9 +122,15 @@
         setupOpts.filesystem.hijack_netrw_behavior = "disabled"; # Don't open when launching nvim with directory
       };
 
-      maps.normal."\\" = {
-        desc = "Toggle Neotree";
-        action = "<cmd>Neotree toggle reveal<cr>";
+      maps = {
+        normal."\\" = {
+          desc = "Toggle Neotree";
+          action = "<cmd>Neotree toggle reveal<cr>";
+        };
+        normal."<esc>" = {
+          desc = "Remove highlight on ESC";
+          action = "<esc> :noh<cr> :helpclose<cr>";
+        };
       };
 
       projects.project-nvim = {
