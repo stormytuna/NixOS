@@ -37,10 +37,10 @@
   };
 
   # Allow access to stable packages
-  stable-packages = final: prev: {
-    stable = import inputs.nixpkgs-stable {
+  unstable-packages = final: prev: {
+    unstable = import inputs.nixpkgs-unstable {
       system = final.system;
-      config.allowUnfree = true;
+      config = final.config;
     };
   };
 }

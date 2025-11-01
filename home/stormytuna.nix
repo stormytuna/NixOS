@@ -24,6 +24,7 @@
     ./features/programs/neovim.nix
     ./features/programs/obs-studio.nix
     ./features/programs/rider.nix
+    ./features/programs/satty.nix
     ./features/programs/spotify.nix
     ./features/programs/vesktop.nix
     ./features/programs/vscode.nix
@@ -79,28 +80,27 @@
   ];
 
   home.packages = with pkgs; [
-    stable.lutris # Generic games library
-    stable.prismlauncher # Minecraft launcher
+    lutris # Generic games library
+    prismlauncher # Minecraft launcher
     r2modman # Thunderstore modloader
     sgdboop # Tool to apply assets automatically from SteamGridDB to games in steam library
 
-    stable.obsidian # Note taking software
-    stable.aseprite # Pixel art
-    stable.gimp3-with-plugins # Image editing
-    stable.audacity # Audio editing software
-    stable.davinci-resolve # Video editing software
+    obsidian # Note taking software
+    aseprite # Pixel art
+    gimp3-with-plugins # Image editing
+    audacity # Audio editing software
+    davinci-resolve # Video editing software
     spotdl # Spotify audio downloader
 
     pavucontrol # PulseAudio volume controller
-    stable.qbittorrent # Torrenting software
+    qbittorrent # Torrenting software
     unityhub # Game engine
-    stable.blender # 3D modelling software
-    stable.chromium # Web browser for when zen is playing up
-    premid # Discord RP for browser based videos, music, etc
-    stable.ryujinx # Switch emulator
+    blender # 3D modelling software
+    chromium # Web browser for when zen is playing up
+    ryujinx # Switch emulator
 
     # PS4 emulator, overriding to use a modern version for FSR
-    (stable.shadps4.overrideAttrs (prev: {
+    (shadps4.overrideAttrs (prev: {
       version = "git";
       src = fetchFromGitHub {
         owner = "shadps4-emu";

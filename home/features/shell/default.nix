@@ -11,7 +11,7 @@
     comma # `nix-shell` wrapper for quickly running things without installing them
     fd # `find` but better
     ffmpeg # Video editing tool
-    stable.ffmpeg-normalize # Audio normalisation tool
+    ffmpeg-normalize # Audio normalisation tool
     fzf # General purpose fuzzy finder
     nix-output-monitor # More detailed output for `nix-build` commands
     jq # JSON manipulation

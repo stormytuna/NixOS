@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  pkgs,
   ...
 }: {
   nixpkgs = {
@@ -8,7 +9,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.scripts
-      outputs.overlays.stable-packages
+      outputs.overlays.unstable-packages
       inputs.nur.overlays.default
     ];
     config = {
@@ -23,6 +24,8 @@
         "dotnet-sdk-7.0.410"
 
         "libxml2-2.13.8" # Unity Hub
+
+        "mbedtls-2.28.10"
       ];
     };
   };

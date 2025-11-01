@@ -8,9 +8,9 @@
     enable = true;
     autoEnable = true;
 
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/da-one-ocean.yaml";
 
-    image = ./wallpapers/space-red.png;
+    image = ./wallpapers/orbit.jpg;
 
     polarity = "dark";
 
@@ -40,7 +40,7 @@
       };
       emoji = {
         name = "Noto Color Emoji";
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
       };
 
       # Font sizes

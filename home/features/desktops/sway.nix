@@ -15,8 +15,20 @@
   };
 
   home.packages = with pkgs; [
+    grim
+    killall
+    slurp
+    swww
+    wayfreeze
     wl-clipboard
+    rofi
   ];
+
+  # Handling wallpaper ourselves
+  # TODO: Figure out later
+  stylix.targets.sway.useWallpaper = false;
+  home.file.".config/sway/fallback-wallpaper".source = config.stylix.image;
+  home.file.".config/sway/wallpapers".source = ../styling/wallpapers;
 
   wayland.windowManager.sway = {
     enable = true;
@@ -64,7 +76,8 @@
         {command = "sleep 5 && vesktop";}
         #{command = "sleep 3 && eww daemon && eww open main";}
         {command = "waybar";}
-        {command = "syncthing server";} # Not sure why but syncthing stopped starting its service automatically
+        {command = "syncthing server --allow-newer-config";} # Not sure why but syncthing stopped starting its service automatically
+        {command = "swww-daemon && swww img ./current-wallpaper";}
       ];
 
       gaps = {
@@ -92,19 +105,33 @@
 
         # Move focus
         "Mod4+h" = "focus left";
-        "Mod4+j" = "focus down";
-        "Mod4+k" = "focus up";
-        "Mod4+l" = "focus right";
+        "Mod4+m" = "focus down";
+        "Mod4+u" = "focus up";
+        "Mod4+j" = "focus right";
 
         # Move windows
-        "Mod4+shift+h" = "move left";
-        "Mod4+shift+j" = "move down";
-        "Mod4+shift+k" = "move up";
-        "Mod4+shift+l" = "move right";
+        "Mod4+alt+h" = "move left";
+        "Mod4+alt+m" = "move down";
+        "Mod4+alt+u" = "move up";
+        "Mod4+alt+j" = "move right";
+
+        # Resize windows
+        "Mod4+alt+ctrl+h" = "resize grow width";
+        "Mod4+alt+ctrl+j" = "resize shring width";
+        "Mod4+alt+ctrl+u" = "resize grow height";
+        "Mod4+alt+ctrl+m" = "resize shrink height";
 
         # Screenshots
-        #"Print" = "exec flameshot gui";
-        "Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify savecopy area $XDG_PICTURES_DIR/screenshots/area_$(date +'%Y-%m-%d_%H-%M-%S').png";
+        # TODO: freeze with wayfreeze
+        "Mod4+comma" = let
+          script = pkgs.writeShellScriptBin "simpleScreenshot" ''
+            grim -g "$(slurp -o -c '#ff0000ff')" -t png - | wl-copy -t image/png
+            notify-send "Copied to clipboard"
+          '';
+        in "exec ${script.outPath}/bin/simpleScreenshot";
+        "Mod4+alt+comma" = ''
+          exec grim -g "$(slurp -o -c '#ff0000ff')" -t ppm - | satty --filename -
+        '';
 
         # Other stuff
         "Mod4+t" = "exec ${pkgs.kitty}/bin/kitty";
@@ -114,6 +141,51 @@
         "Mod4+g" = "fullscreen toggle";
         "Mod4+alt+ctrl+shift+x" = "focus output HDMI-A-1 ; exec wlogout --protocol layer-shell --buttons-per-row 4";
 
+        "Mod4+alt+ctrl+shift+w" = let
+          css = pkgs.writeText "css.rasi" ''
+            // Global
+            * {
+                background-color: transparent;
+            }
+
+            // Window
+            window {
+                background-color: rgba(0,0,0,0.76);
+                fullscreen: true;
+            }
+
+            // Main Box
+            mainbox {
+                children: [listview];
+                padding: 25% 0%;
+            }
+
+            // Listview
+            listview {
+                padding: 0px 10px; spacing: 10px;
+                columns: 7;
+                flow: horizontal;
+                children: [element-icon];
+            }
+            element.selected {
+                border-color: white;
+            }
+            element-icon {
+                size: 229px 540px;
+                /*bg-size: contain;*/
+                horizontal-align: 0;
+            }
+          '';
+          script = pkgs.writeShellScriptBin "changeWallpaper" ''
+            chosenWallpaper=$(for wallpaper in ~/.config/sway/wallpapers/*
+              do echo -en "$wallpaper\0icon\x1f$wallpaper\n"
+            done | rofi -dmenu -show-icons -config ${css})
+
+            cp -f "$chosenWallpaper" ~/.config/sway/current-wallpaper
+            swww img ~/.config/sway/current-wallpaper --transition-type wipe --transition-angle 30 --transition-step 90
+          '';
+        in "exec ${script.outPath}/bin/changeWallpaper";
+
         "Mod4+b" = let
           script = pkgs.writeShellScriptBin "toggleMaximised" ''
             id=$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true).id')
@@ -122,9 +194,8 @@
             swaymsg floating toggle
 
             if [ "$floating_state" = "auto_off" ]; then
-              swaymsg move position center
-              swaymsg resize set width 90ppt
-              swaymsg resize set height 90ppt
+              swaymsg move position center && \
+              swaymsg resize set 90ppt 90ppt
             fi
           '';
         in "exec ${script.outPath}/bin/toggleMaximised";
@@ -173,15 +244,35 @@
         }
         {
           command = "opacity 0.9";
-          criteria = {app_id = "^zen$";};
+          criteria = {app_id = "^thunar$";};
         }
         {
           command = "opacity 0.9";
-          criteria = {app_id = "^vesktop$";};
+          criteria = {class = "^vesktop$";};
+        }
+        {
+          command = "opacity 0.9";
+          criteria = {class = "^Spotify$";};
+        }
+        {
+          command = "opacity 0.9";
+          criteria = {class = "^steam$";};
+        }
+        {
+          command = "opacity 0.9";
+          criteria = {class = "^obsidian$";};
         }
         {
           command = "opacity 0.9";
           criteria = {class = "^jetbrains-rider$";};
+        }
+        {
+          command = "floating enable ; move position center ; resize set 90ppt 90ppt";
+          criteria = {app_id = "^com.gabm.satty$";};
+        }
+        {
+          command = "fullscreen enable";
+          criteria = {app_id = "^gamescope$";};
         }
       ];
 

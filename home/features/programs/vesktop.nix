@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.stable.vesktop];
+  home.packages = [pkgs.vesktop];
 
   home.file.".config/vesktop/settings/quickCss.css".text = ''
     @import url("https://minidiscordthemes.github.io/Snippets/ChannelListWidth/main.css");

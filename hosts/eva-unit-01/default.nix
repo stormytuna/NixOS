@@ -30,7 +30,7 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.scripts
-      outputs.overlays.stable-packages
+      outputs.overlays.unstable-packages
     ];
     config.allowUnfree = true;
   };

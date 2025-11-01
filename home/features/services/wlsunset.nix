@@ -7,7 +7,7 @@
 
   services.wlsunset = {
     enable = true;
-    package = pkgs.stable.wlsunset;
+    package = pkgs.wlsunset;
     latitude = 53.8;
     longitude = 1.5;
     temperature = {

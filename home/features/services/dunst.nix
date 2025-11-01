@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = [pkgs.libnotify]; # Nice to have on path
+  home.packages = [pkgs.libnotify pkgs.enchanted-sound-theme]; # Nice to have on path
 
   services.dunst = {
     enable = true;
