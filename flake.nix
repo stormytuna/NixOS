@@ -14,6 +14,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -24,7 +25,10 @@
           inputs.nix-flatpak.nixosModules.nix-flatpak
           inputs.spicetify-nix.nixosModules.default
         ];
-        specialArgs = {inherit inputs;};
+        specialArgs = {
+	  inherit inputs;
+	  pkgs-unstable = import nixpkgs-unstable { system = "x86_64-linux"; };
+        };
       };
     };
   };

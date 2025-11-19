@@ -26,12 +26,13 @@
     ../../features/programs/starship.nix
     ../../features/programs/steam.nix
     ../../features/programs/thunar.nix
+    #../../features/programs/zsh.nix
 
     ../../features/services/flatpak.nix
     ../../features/services/foundry-vtt.nix
     ../../features/services/gnome-keyring.nix
     ../../features/services/sddm.nix
-    ../../features/services/syncthing.nix
+    #../../features/services/syncthing.nix
   ];
 
   # TODO: Is there a better way to apply overlays?
@@ -46,27 +47,54 @@
   };
 
   environment.systemPackages = with pkgs; [
-    #sgdboop
+    # Programs
     aseprite
     audacity
-    comma
     davinci-resolve
-    flavours
     gimp3-with-plugins
     jetbrains.rider
-    libnotify
+	lmms
     lutris
     mangohud
     neovim
     nushell
     obsidian
-    obsidian
     pavucontrol
     qbittorrent
     r2modman
-    spotdl
     vesktop
+
+    # Shell utils
+    bat
+    btop
+    carapace
+    comma
+	delta
+    fd
+    ffmpeg
+    ffmpeg-normalize
+    flavours
+    fzf
+    glib
+	imagemagick
+    jq
+    libnotify
+    linuxKernel.packages.linux_6_6.cpupower
+    nix-output-monitor
+    ripgrep
+    spotdl
+    starship
+    tldr
+    (unp.override {extraBackends = [unrar p7zip];})
+    vulkan-tools
+    wine
+    wineWowPackages.waylandFull
+    winetricks
     zoxide
+     
+    # Other stuff
+    adw-gtk3
+    papirus-icon-theme
 
     # ShadPS4 branch with patches necessary for bloodborne
     (shadps4.overrideAttrs (prev: {

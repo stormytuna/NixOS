@@ -6,6 +6,8 @@
   services.greetd = let
     sway-launcher = pkgs.writeScript "sway-launcher.sh" ''
       export GTK_USE_PORTAL=1
+      export XCURSOR_SIZE=28
+      export XCURSOR_THEME="Bibata Modern Ice"
       exec sway
     '';
   in {
@@ -50,6 +52,7 @@
     fuzzel # App launcher
     satty # Screenshot editing tool
     slurp # Area selection tool
+    syncthing # File syncing service
     swww # Wallpaper daemon
     waybar # Status bar
     wayfreeze # Screen freezer

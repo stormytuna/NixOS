@@ -6,7 +6,7 @@
       "gamemode" # Allows use of gamemoded commands
       "foundryvtt"
     ];
-    shell = pkgs.nushell; # TODO: Switch to bash? zsh?
+    shell = pkgs.nushell;
   };
 
   # Remove need to type password for `sudo`

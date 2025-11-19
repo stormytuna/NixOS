@@ -13,5 +13,8 @@
       hidePodcasts
       shuffle
     ];
+    enabledCustomApps = with spicetifyPkgs.apps; [
+      lyricsPlus
+    ];
   };
 }
