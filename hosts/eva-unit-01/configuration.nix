@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, pkgs-unstable, ...}: {
   # TODO: Imports and organise that stuff and port all home manager stuff
   imports = [
     ./hardware-configuration.nix
@@ -82,7 +82,7 @@
     linuxKernel.packages.linux_6_6.cpupower
     nix-output-monitor
     ripgrep
-    spotdl
+    pkgs-unstable.spotdl
     starship
     tldr
     (unp.override {extraBackends = [unrar p7zip];})
