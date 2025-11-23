@@ -53,7 +53,7 @@
     davinci-resolve
     gimp3-with-plugins
     jetbrains.rider
-	lmms
+    lmms
     lutris
     mangohud
     neovim
@@ -69,14 +69,14 @@
     btop
     carapace
     comma
-	delta
+    delta
     fd
     ffmpeg
     ffmpeg-normalize
     flavours
     fzf
     glib
-	imagemagick
+    imagemagick
     jq
     libnotify
     linuxKernel.packages.linux_6_6.cpupower
@@ -87,10 +87,15 @@
     tldr
     (unp.override {extraBackends = [unrar p7zip];})
     vulkan-tools
-    wine
     wineWowPackages.waylandFull
     winetricks
     zoxide
+
+    # Development, LSPs, etc
+    dotnet-sdk
+    omnisharp-roslyn
+    lua-language-server
+    nil
      
     # Other stuff
     adw-gtk3
