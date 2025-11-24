@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
-    # TODO: Pass unstable packages and actually use them
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     foundry-vtt.url = "github:reckenrode/nix-foundryvtt";
