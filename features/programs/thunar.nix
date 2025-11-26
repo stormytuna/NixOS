@@ -7,7 +7,10 @@
     ];
   };
 
-  programs.file-roller.enable = true; # Allows unpacking archives
+  environment.systemPackages = with pkgs; [
+	file-roller # Allows unpacking archives
+  ];
+
   programs.xfconf.enable = true; # Allows saving preferences
 
   services = {

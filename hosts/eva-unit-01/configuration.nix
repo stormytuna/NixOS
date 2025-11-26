@@ -1,4 +1,4 @@
-{pkgs, pkgs-unstable, ...}: {
+{pkgs, pkgs-stable, ...}: {
   # TODO: Imports and organise that stuff and port all home manager stuff
   imports = [
     ./hardware-configuration.nix
@@ -50,7 +50,7 @@
     # Programs
     aseprite
     audacity
-    davinci-resolve
+    pkgs-stable.davinci-resolve
     gimp3-with-plugins
     jetbrains.rider
     lmms
@@ -82,7 +82,7 @@
     linuxKernel.packages.linux_6_6.cpupower
     nix-output-monitor
     ripgrep
-    pkgs-unstable.spotdl
+    spotdl
     starship
     tldr
     (unp.override {extraBackends = [unrar p7zip];})
@@ -100,18 +100,6 @@
     # Other stuff
     adw-gtk3
     papirus-icon-theme
-
-    # ShadPS4 branch with patches necessary for bloodborne
-    (shadps4.overrideAttrs (prev: {
-      version = "git";
-      src = fetchFromGitHub {
-        owner = "shadps4-emu";
-        repo = "shadPS4";
-        rev = "aa8dab5371777105a3112498faa821d79aa3cab4";
-        hash = "sha256-TfxHdBFeEdhXkkShAGcHObDP0bQzvitNjFs4JfX1yaI=";
-        fetchSubmodules = true;
-      };
-    }))
   ];
 
   boot.loader = {

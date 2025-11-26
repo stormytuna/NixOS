@@ -2,8 +2,8 @@
   description = "flakeytuna";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
 
     foundry-vtt.url = "github:reckenrode/nix-foundryvtt";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
@@ -13,7 +13,7 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-unstable,
+    nixpkgs-stable,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -26,7 +26,10 @@
         ];
         specialArgs = {
 	  inherit inputs;
-	  pkgs-unstable = import nixpkgs-unstable { system = "x86_64-linux"; };
+	  pkgs-stable = import nixpkgs-stable { 
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
         };
       };
     };

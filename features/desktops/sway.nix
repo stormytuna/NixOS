@@ -3,22 +3,15 @@
   programs.dconf.enable = true;
 
   # Autologin
-  services.greetd = let
-    sway-launcher = pkgs.writeScript "sway-launcher.sh" ''
-      export GTK_USE_PORTAL=1
-      export XCURSOR_SIZE=28
-      export XCURSOR_THEME="Bibata Modern Ice"
-      exec sway
-    '';
-  in {
+  services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd ${sway-launcher}";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd sway";
         user = "stormytuna";
       };
       initial_session = {
-        command = "${sway-launcher}";
+        command = "sway";
         user = "stormytuna";
       };
     };
@@ -39,6 +32,12 @@
     enable = true;
     package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
+
+	extraSessionCommands = ''
+      export GTK_USE_PORTAL=1
+      export XCURSOR_SIZE=28
+      export XCURSOR_THEME="Bibata Modern Ice"
+	'';
   };
 
   environment.systemPackages = with pkgs; [
