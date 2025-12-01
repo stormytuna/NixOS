@@ -92,8 +92,11 @@
     zoxide
 
     # Development, LSPs, etc
-    dotnet-sdk
-    omnisharp-roslyn
+    (dotnetCorePackages.combinePackages [
+      dotnetCorePackages.sdk_8_0
+      dotnetCorePackages.sdk_9_0 # Required for roslyn LSP
+    ])
+    roslyn-ls
     lua-language-server
     nil
      
