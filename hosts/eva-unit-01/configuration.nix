@@ -50,6 +50,7 @@
     # Programs
     aseprite
     audacity
+    avalonia-ilspy
     pkgs-stable.davinci-resolve
     gimp3-with-plugins
     jetbrains.rider
