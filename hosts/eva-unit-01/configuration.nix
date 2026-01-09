@@ -92,14 +92,24 @@
     winetricks
     zoxide
 
-    # Development, LSPs, etc
+    # Development, LSPs, etc 
+    # TODO: Cleanup
     (dotnetCorePackages.combinePackages [
       dotnetCorePackages.sdk_8_0
       dotnetCorePackages.sdk_9_0 # Required for roslyn LSP
+      dotnetCorePackages.sdk_10_0-bin # Required for csharp-ls
     ])
+    netcoredbg # C# debugger
+    nodejs
     roslyn-ls
+    omnisharp-roslyn
+    csharp-ls
     lua-language-server
     nil
+    godot_4
+    jdk8_headless
+    maven
+    jdt-language-server
      
     # Other stuff
     adw-gtk3

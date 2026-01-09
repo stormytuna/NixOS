@@ -2,7 +2,7 @@
   description = "flakeytuna";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=master"; #nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
 
     foundry-vtt.url = "github:reckenrode/nix-foundryvtt";
