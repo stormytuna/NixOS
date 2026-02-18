@@ -51,6 +51,7 @@
     aseprite
     audacity
     avalonia-ilspy
+    chromium
     pkgs-stable.davinci-resolve
     gimp3-with-plugins
     jetbrains.rider
@@ -88,7 +89,7 @@
     tldr
     (unp.override {extraBackends = [unrar p7zip];})
     vulkan-tools
-    wineWowPackages.waylandFull
+    pkgs-stable.wineWowPackages.waylandFull
     winetricks
     zoxide
 
