@@ -77,6 +77,7 @@
     ffmpeg-normalize
     flavours
     fzf
+    gcc
     glib
     imagemagick
     jq
@@ -111,6 +112,7 @@
     jdk8_headless
     maven
     jdt-language-server
+    vscode-langservers-extracted
      
     # Other stuff
     adw-gtk3
@@ -128,8 +130,8 @@
     firewall = {
       enable = true;
       # 25565 - Minecraft servers
-      # 30000 - Foundry VTT server
-      allowedTCPPorts = [25565 30000];
+      # 30000/31000 - Foundry VTT server
+      allowedTCPPorts = [25565 30000 31000];
       allowedUDPPorts = [25565];
     };
   };
