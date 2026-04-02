@@ -12,6 +12,10 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+  boot.kernel.sysctl = {
+    # Fix obsidian sometimes reporting too many watchers on vaults
+    "fs.inotify.max_user_watches" =  524288;
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/ad08bcc9-40a2-42dd-a7d1-a0cd8a944b93";

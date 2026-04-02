@@ -41,6 +41,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    awww # Wallpaper daemon
     bibata-cursors # Cursor theme
     dunst # Notification daemon
     sox # Used in some scripts
@@ -52,11 +53,11 @@
     satty # Screenshot editing tool
     slurp # Area selection tool
     syncthing # File syncing service
-    swww # Wallpaper daemon
     waybar # Status bar
     wayfreeze # Screen freezer
     wl-clipboard # Clipboard management
     wlsunset # Screen orange-ifier
     wlogout # Logout screen
+    wtype # xdotool for wayland
   ];
 }

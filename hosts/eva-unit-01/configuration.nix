@@ -58,6 +58,7 @@
     lmms
     lutris
     mangohud
+    mpv
     neovim
     nushell
     obsidian
@@ -85,6 +86,7 @@
     linuxKernel.packages.linux_6_6.cpupower
     nix-output-monitor
     ripgrep
+    sgdboop
     spotdl
     starship
     tldr
@@ -102,6 +104,8 @@
       dotnetCorePackages.sdk_10_0-bin # Required for csharp-ls
     ])
     netcoredbg # C# debugger
+    raylib
+    libx11 # Xlib, required for running raylib projects
     nodejs
     roslyn-ls
     omnisharp-roslyn
@@ -113,6 +117,7 @@
     maven
     jdt-language-server
     vscode-langservers-extracted
+    zls
      
     # Other stuff
     adw-gtk3
@@ -140,6 +145,7 @@
     pkgs.nerd-fonts.noto
     pkgs.nerd-fonts.fira-code
     pkgs.noto-fonts-color-emoji
+    pkgs.noto-fonts-cjk-sans
   ];
 
   time.timeZone = "Europe/London";
