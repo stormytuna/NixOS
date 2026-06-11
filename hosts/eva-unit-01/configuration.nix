@@ -43,8 +43,16 @@
       #outputs.overlays.scripts
       #outputs.overlays.unstable-packages
     ];
-    config.allowUnfree = true;
+    config = {
+     allowUnfree = true;
+     permittedInsecurePackages = [
+       "xpdf-4.06"
+     ];
+    };
   };
+
+  # Allow running unpatched dynamic libraries
+  programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
     # Programs
@@ -52,22 +60,44 @@
     audacity
     avalonia-ilspy
     chromium
-    pkgs-stable.davinci-resolve
+    davinci-resolve
     gimp3-with-plugins
     jetbrains.rider
     lmms
-    lutris
+
+    # https://github.com/NixOS/nixpkgs/issues/513245
+    (pkgs.lutris.override {
+# Intercept buildFHSEnv to modify target packages
+     buildFHSEnv = args: pkgs.buildFHSEnv (args // {
+         multiPkgs = envPkgs:
+         let
+# Fetch original package list
+         originalPkgs = args.multiPkgs envPkgs;
+
+# Disable tests for openldap
+         customLdap = envPkgs.openldap.overrideAttrs (_: { doCheck = false; });
+         in
+# Replace broken openldap with the custom one
+         builtins.filter (p: (p.pname or "") != "openldap") originalPkgs ++ [ customLdap ];
+         });
+     })
+
     mangohud
-    mpv
     neovim
     nushell
     obsidian
     pavucontrol
-    qbittorrent
-    r2modman
+    pcsx2
+    pkgs-stable.qbittorrent
+    pkgs-stable.r2modman
+    retroarch-full
+    smplayer
     vesktop
+    xpdf
+    zed-editor
 
     # Shell utils
+    android-tools
     bat
     btop
     carapace
@@ -84,6 +114,7 @@
     jq
     libnotify
     linuxKernel.packages.linux_6_6.cpupower
+    mpv
     nix-output-monitor
     ripgrep
     sgdboop
@@ -92,7 +123,7 @@
     tldr
     (unp.override {extraBackends = [unrar p7zip];})
     vulkan-tools
-    pkgs-stable.wineWowPackages.waylandFull
+    wineWow64Packages.waylandFull
     winetricks
     zoxide
 
@@ -122,7 +153,13 @@
     # Other stuff
     adw-gtk3
     papirus-icon-theme
+    icu # Needed for elden ring reworked of all things
   ];
+
+  environment.variables = {
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
+    DOTNET_ROOT_X64 = "${pkgs.dotnet-sdk_10}/share/dotnet";
+  };
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -146,6 +183,7 @@
     pkgs.nerd-fonts.fira-code
     pkgs.noto-fonts-color-emoji
     pkgs.noto-fonts-cjk-sans
+    pkgs.font-awesome
   ];
 
   time.timeZone = "Europe/London";

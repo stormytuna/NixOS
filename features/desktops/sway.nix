@@ -1,4 +1,4 @@
-{lib, pkgs, ...}: {
+{pkgs, ...}: {
   security.polkit.enable = true;
   programs.dconf.enable = true;
 
@@ -21,10 +21,10 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [
+    extraPortals = with pkgs; [
       # Required for gtk apps
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
     ];
   };
 
@@ -33,11 +33,11 @@
     package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
 
-	extraSessionCommands = ''
+    extraSessionCommands = ''
       export GTK_USE_PORTAL=1
       export XCURSOR_SIZE=28
       export XCURSOR_THEME="Bibata Modern Ice"
-	'';
+    '';
   };
 
   environment.systemPackages = with pkgs; [

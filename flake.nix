@@ -3,9 +3,11 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-26.05";
 
-    foundry-vtt.url = "github:reckenrode/nix-foundryvtt";
+    foundry-vtt.url = "github:nix-foundryvtt/nix-foundryvtt";
+    #foundry-vtt.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
@@ -25,8 +27,8 @@
           inputs.spicetify-nix.nixosModules.default
         ];
         specialArgs = {
-	  inherit inputs;
-	  pkgs-stable = import nixpkgs-stable { 
+          inherit inputs;
+          pkgs-stable = import nixpkgs-stable { 
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
