@@ -47,6 +47,8 @@
      allowUnfree = true;
      permittedInsecurePackages = [
        "xpdf-4.06"
+       "pnpm-10.29.2"
+       "electron-40.10.5"
      ];
     };
   };
@@ -58,7 +60,6 @@
     # Programs
     aseprite
     audacity
-    avalonia-ilspy
     chromium
     davinci-resolve
     gimp3-with-plugins
@@ -93,6 +94,7 @@
     retroarch-full
     smplayer
     vesktop
+    vscode.fhs
     xpdf
     zed-editor
 
@@ -149,6 +151,11 @@
     jdt-language-server
     vscode-langservers-extracted
     zls
+
+    # FNA development stuff
+    fna3d
+    sdl3
+    faudio
      
     # Other stuff
     adw-gtk3
