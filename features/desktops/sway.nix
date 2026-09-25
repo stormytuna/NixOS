@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   security.polkit.enable = true;
   programs.dconf.enable = true;
 
@@ -26,6 +26,11 @@
       xdg-desktop-portal-gtk
       xdg-desktop-portal-wlr
     ];
+
+    config = {
+      common.default = [ "gtk" ];
+      sway.default = lib.mkForce [ "wlr" "gtk" ];
+    };
   };
 
   programs.sway = {
