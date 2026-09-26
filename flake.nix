@@ -34,6 +34,19 @@
           };
         };
       };
+      eva-unit-02 = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/eva-unit-02/configuration.nix
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+        ];
+        specialArgs = {
+          inherit inputs;
+          pkgs-stable = import nixpkgs-stable { 
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+      };
     };
   };
 }
