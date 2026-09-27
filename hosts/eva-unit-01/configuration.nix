@@ -96,6 +96,7 @@
     glib
     imagemagick
     jq
+    lazygit
     libnotify
     linuxKernel.packages.linux_6_6.cpupower
     mpv

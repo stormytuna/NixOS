@@ -62,6 +62,7 @@
     gcc
     glib
     jq
+    lazygit
     libnotify
     nix-output-monitor
     ripgrep
