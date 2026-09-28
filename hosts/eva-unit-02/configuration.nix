@@ -1,6 +1,8 @@
 {pkgs, pkgs-stable, ...}: {
   # TODO: Imports and organise that stuff and port all home manager stuff
   imports = [
+    ./hardware-configuration.nix
+
     # Users
     ../../users/stormytuna.nix
 
@@ -54,6 +56,7 @@
     bat
     btop
     carapace
+    chezmoi
     comma
     delta
     fd
@@ -61,6 +64,7 @@
     fzf
     gcc
     glib
+    gh
     jq
     lazygit
     libnotify
