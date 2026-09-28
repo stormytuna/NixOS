@@ -36,6 +36,7 @@
      allowUnfree = true;
      permittedInsecurePackages = [
        "electron-40.10.5"
+       "pnpm-10.29.2"
      ];
     };
   };
@@ -51,6 +52,7 @@
     nushell
     obsidian
     pavucontrol
+    slack
 
     # Shell utils
     bat
@@ -69,6 +71,7 @@
     lazygit
     libnotify
     nix-output-monitor
+    pnpm
     ripgrep
     starship
     tlrc

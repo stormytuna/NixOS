@@ -57,6 +57,7 @@
     fuzzel # App launcher
     satty # Screenshot editing tool
     slurp # Area selection tool
+    swaylock # Screen locking
     syncthing # File syncing service
     waybar # Status bar
     wayfreeze # Screen freezer
