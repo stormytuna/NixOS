@@ -53,6 +53,7 @@
     obsidian
     pavucontrol
     slack
+    pkgs-stable.smplayer
 
     # Shell utils
     bat
