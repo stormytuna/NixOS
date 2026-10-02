@@ -90,6 +90,7 @@
     lua-language-server
     typescript-language-server
     nil
+    angular-language-server
     #jdk8_headless
     #maven
     #jdt-language-server
