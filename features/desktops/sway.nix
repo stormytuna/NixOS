@@ -48,6 +48,7 @@
   environment.systemPackages = with pkgs; [
     awww # Wallpaper daemon
     bibata-cursors # Cursor theme
+    cliphist # Clipboard manager
     dunst # Notification daemon
     sox # Used in some scripts
     grim # Screenshot tool
@@ -61,7 +62,7 @@
     syncthing # File syncing service
     waybar # Status bar
     wayfreeze # Screen freezer
-    wl-clipboard # Clipboard management
+    wl-clipboard # Copy and paste functionality
     wlsunset # Screen orange-ifier
     wlogout # Logout screen
     wtype # xdotool for wayland
