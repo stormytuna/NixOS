@@ -62,6 +62,7 @@
     pkgs-stable.davinci-resolve
     (discord.override {withVencord = true;})
     gimp3-with-plugins
+    keepass
     lmms
     lutris
     mangohud
@@ -73,7 +74,7 @@
     pkgs-stable.qbittorrent
     pkgs-stable.r2modman
     retroarch-full
-    smplayer
+    pkgs-stable.smplayer
     unityhub
     vscode.fhs
     xpdf
