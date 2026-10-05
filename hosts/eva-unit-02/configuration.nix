@@ -59,6 +59,7 @@
     bat
     btop
     carapace
+    carbon-now-cli
     chezmoi
     comma
     delta
