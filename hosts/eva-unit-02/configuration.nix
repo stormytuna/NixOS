@@ -71,6 +71,7 @@
     jq
     lazygit
     libnotify
+    mpv
     nix-output-monitor
     pnpm
     ripgrep
