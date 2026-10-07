@@ -42,7 +42,39 @@
   };
 
   # Allow running unpatched dynamic libraries
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+
+    libraries = with pkgs; [
+      # Required for Chromium Headless
+      glib
+      gtk3
+      nss
+      nspr
+      atk
+      at-spi2-atk
+      cups
+      dbus
+      expat
+      libdrm
+      libgbm
+      libxkbcommon
+      mesa
+      pango
+      cairo
+      alsa-lib
+      xorg.libX11
+      xorg.libXcomposite
+      xorg.libXdamage
+      xorg.libXext
+      xorg.libXfixes
+      xorg.libXrandr
+      xorg.libXrender
+      xorg.libxcb
+      xorg.libXi
+      xorg.libxshmfence
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     # Programs
