@@ -114,6 +114,7 @@
     vulkan-tools
     wineWow64Packages.waylandFull
     winetricks
+    yt-dlp
     zoxide
 
     # Development, LSPs, etc 
