@@ -75,19 +75,6 @@
     pkgs-stable.qbittorrent
     pkgs-stable.r2modman
     retroarch-full
-
-    # PS4 emulator, overriding to use a modern version for FSR
-    (shadps4.overrideAttrs (prev: {
-      version = "git";
-      src = fetchFromGitHub {
-        owner = "shadps4-emu";
-        repo = "shadPS4";
-        rev = "aa8dab5371777105a3112498faa821d79aa3cab4";
-        hash = "sha256-TfxHdBFeEdhXkkShAGcHObDP0bQzvitNjFs4JfX1yaI=";
-        fetchSubmodules = true;
-      };
-    }))
-
     pkgs-stable.smplayer
     unityhub
     vscode.fhs
