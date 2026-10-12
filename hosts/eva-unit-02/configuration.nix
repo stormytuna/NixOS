@@ -63,16 +63,16 @@
       pango
       cairo
       alsa-lib
-      xorg.libX11
-      xorg.libXcomposite
-      xorg.libXdamage
-      xorg.libXext
-      xorg.libXfixes
-      xorg.libXrandr
-      xorg.libXrender
-      xorg.libxcb
-      xorg.libXi
-      xorg.libxshmfence
+      libx11
+      libxcomposite
+      libxdamage
+      libxext
+      libxfixes
+      libxrandr
+      libxrender
+      libxcb
+      libxi
+      libxshmfence
     ];
   };
 
