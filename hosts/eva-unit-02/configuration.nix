@@ -109,6 +109,7 @@
     pnpm
     ripgrep
     starship
+    systemctl-tui
     tlrc
     (unp.override {extraBackends = [unrar p7zip];})
     zoxide

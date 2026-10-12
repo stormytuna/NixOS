@@ -122,6 +122,7 @@
     sgdboop
     spotdl
     starship
+    systemctl-tui
     tldr
     (unp.override {extraBackends = [unrar p7zip];})
     vulkan-tools
