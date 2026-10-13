@@ -120,7 +120,7 @@
     nodejs
     omnisharp-roslyn
     lua-language-server
-    typescript-language-server
+    pkgs-stable.typescript-language-server
     nil
     angular-language-server
     #jdk8_headless
