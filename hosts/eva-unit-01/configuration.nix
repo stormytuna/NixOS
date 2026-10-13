@@ -134,7 +134,7 @@
     omnisharp-roslyn
     csharp-ls
     lua-language-server
-    typescript-language-server
+    pkgs-stable.typescript-language-server
     nil
     godot_4
     jdk8_headless
