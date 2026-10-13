@@ -115,10 +115,7 @@
     zoxide
 
     # Development, LSPs, etc 
-    # TODO: Cleanup
-    (dotnetCorePackages.combinePackages [
-      dotnetCorePackages.sdk_8_0
-    ])
+    dotnet-sdk_10
     netcoredbg # C# debugger
     nodejs
     omnisharp-roslyn
