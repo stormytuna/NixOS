@@ -1,0 +1,63 @@
+{pkgs, lib, ...}: {
+  security.polkit.enable = true;
+  programs.dconf.enable = true;
+
+  # Autologin
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd start-hyprland";
+        user = "stormytuna";
+      };
+      initial_session = {
+        command = "start-hyprland";
+        user = "stormytuna";
+      };
+    };
+  };
+
+  services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with pkgs; [
+      # Required for gtk apps
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+
+    config = {
+      common.default = [ "gtk" ];
+      sway.default = lib.mkForce [ "wlr" "gtk" ];
+    };
+  };
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    awww # Wallpaper daemon
+    bibata-cursors # Cursor theme
+    cliphist # Clipboard manager
+    dunst # Notification daemon
+    sox # Used in some scripts
+    grim # Screenshot tool
+    killall # Used in some scripts
+    kitty # Terminal emulator
+    rofi # Menu tool
+    fuzzel # App launcher
+    satty # Screenshot editing tool
+    slurp # Area selection tool
+    swaylock # Screen locking
+    syncthing # File syncing service
+    waybar # Status bar
+    wayfreeze # Screen freezer
+    wl-clipboard # Copy and paste functionality
+    wlsunset # Screen orange-ifier
+    wlogout # Logout screen
+    wtype # xdotool for wayland
+  ];
+}

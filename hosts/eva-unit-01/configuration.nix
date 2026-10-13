@@ -8,6 +8,7 @@
 
     # Features
     ../../features/desktops/sway.nix
+    #../../features/desktops/hyprland.nix
     #../../features/desktops/cosmic.nix
 
     ../../features/hardware/amd-graphics.nix
