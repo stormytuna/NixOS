@@ -75,7 +75,6 @@
     #pcsx2
     pkgs-stable.qbittorrent
     pkgs-stable.r2modman
-    retroarch-full
     pkgs-stable.smplayer
     unityhub
     vscode.fhs
