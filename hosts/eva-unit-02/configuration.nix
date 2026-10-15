@@ -103,6 +103,7 @@
     gcc
     glib
     gh
+    go
     jq
     jx
     kubectl
