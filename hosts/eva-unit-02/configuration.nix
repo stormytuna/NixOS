@@ -93,6 +93,7 @@
     carapace
     carbon-now-cli
     chezmoi
+    claude-code # i promise i'm not a meat proxy
     comma
     delta
     fd
