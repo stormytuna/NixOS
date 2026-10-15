@@ -88,6 +88,7 @@
     pkgs-stable.smplayer
 
     # Shell utils
+    azure-cli
     bat
     btop
     carapace
@@ -103,6 +104,8 @@
     glib
     gh
     jq
+    jx
+    kubectl
     lazygit
     libnotify
     mpv
