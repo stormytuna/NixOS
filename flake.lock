@@ -50,6 +50,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1792143566,
+        "narHash": "sha256-4xm000aligAp4jN0zQ6iC8oBkqN/q6S5SBA0Lc7epd0=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "7ebdcccba2021cdf9d92b7f572e1a0176b889227",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1792030654,
@@ -100,6 +116,7 @@
         "foundry-vtt": "foundry-vtt",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-stable": "nixpkgs-stable",
         "spicetify-nix": "spicetify-nix"
       }
