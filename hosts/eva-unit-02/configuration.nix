@@ -107,7 +107,9 @@
     jq
     jx
     kubectl
+    kubelogin
     lazygit
+    lens
     libnotify
     mpv
     nix-output-monitor
