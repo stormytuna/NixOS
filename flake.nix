@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-26.05";
+    nixpkgs-master.url = "github:nixos/nixpkgs?ref=master";
 
     foundry-vtt.url = "github:nix-foundryvtt/nix-foundryvtt";
     #foundry-vtt.inputs.nixpkgs.follows = "nixpkgs";
@@ -16,6 +17,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    nixpkgs-master,
     ...
   } @ inputs: {
     nixosConfigurations = {
@@ -32,6 +34,10 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
+          pkgs-master = import nixpkgs-master { 
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
         };
       };
       eva-unit-02 = nixpkgs.lib.nixosSystem {
@@ -42,6 +48,10 @@
         specialArgs = {
           inherit inputs;
           pkgs-stable = import nixpkgs-stable { 
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+          pkgs-master = import nixpkgs-master { 
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
