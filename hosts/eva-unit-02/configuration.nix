@@ -1,4 +1,4 @@
-{pkgs, pkgs-stable, ...}: {
+{pkgs, pkgs-stable, pkgs-master, ...}: {
   # TODO: Imports and organise that stuff and port all home manager stuff
   imports = [
     ./hardware-configuration.nix
@@ -103,6 +103,7 @@
     gcc
     glib
     gh
+    gnumake
     go
     jq
     jx
@@ -114,11 +115,13 @@
     mpv
     nix-output-monitor
     pnpm
+    podman
     ripgrep
     starship
     systemctl-tui
     tlrc
     (unp.override {extraBackends = [unrar p7zip];})
+    yq-go
     zoxide
 
     # Development, LSPs, etc 
@@ -130,6 +133,7 @@
     pkgs-stable.typescript-language-server
     nil
     angular-language-server
+    gopls
     #jdk8_headless
     #maven
     #jdt-language-server
@@ -137,6 +141,12 @@
     # Other stuff
     adw-gtk3
     papirus-icon-theme
+
+    # go service deps
+    # todo: maybe want to move this into a dev flake in projects?
+    pkgs-master.go-mockery
+    go-swag
+    golangci-lint
   ];
 
   environment.variables = {
