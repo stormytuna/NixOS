@@ -46,33 +46,37 @@
     enable = true;
 
     libraries = with pkgs; [
-      # Required for Chromium Headless
-      glib
-      gtk3
-      nss
-      nspr
-      atk
+      alsa-lib
       at-spi2-atk
+      atk
+      cairo
       cups
       dbus
       expat
+      fontconfig
+      freetype
+      gdk-pixbuf
+      glib
+      gtk3
       libdrm
       libgbm
-      libxkbcommon
-      mesa
-      pango
-      cairo
-      alsa-lib
       libx11
+      libxcb
       libxcomposite
+      libxcursor
       libxdamage
       libxext
       libxfixes
+      libxi
+      libxkbcommon
       libxrandr
       libxrender
-      libxcb
-      libxi
       libxshmfence
+      mesa
+      nspr
+      nss
+      pango
+      stdenv.cc.cc.lib
     ];
   };
 
