@@ -116,7 +116,6 @@
     lazygit
     lens
     libnotify
-    #pkgs-stable.mongodb-compass
     mpv
     nix-output-monitor
     pnpm
@@ -126,6 +125,7 @@
     systemctl-tui
     tlrc
     (unp.override {extraBackends = [unrar p7zip];})
+    vi-mongo
     yq-go
     zoxide
 
