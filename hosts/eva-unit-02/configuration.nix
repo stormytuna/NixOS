@@ -116,6 +116,7 @@
     lazygit
     lens
     libnotify
+    mongodb-compass
     mpv
     nix-output-monitor
     pnpm
