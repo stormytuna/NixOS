@@ -92,13 +92,13 @@
     pkgs-stable.smplayer
 
     # Shell utils
-    azure-cli
+    pkgs-stable.azure-cli
     bat
     btop
     carapace
     carbon-now-cli
     chezmoi
-    claude-code # i promise i'm not a meat proxy
+    pkgs-stable.claude-code # i promise i'm not a meat proxy
     comma
     delta
     fd
