@@ -120,11 +120,13 @@
     nix-output-monitor
     pnpm
     podman
+    python3
     ripgrep
     starship
     systemctl-tui
     tlrc
     (unp.override {extraBackends = [unrar p7zip];})
+    uv
     vi-mongo
     yq-go
     zoxide
