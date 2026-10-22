@@ -2,8 +2,8 @@
   description = "flakeytuna";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs?ref=nixos-26.05";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs?ref=master";
 
     foundry-vtt.url = "github:nix-foundryvtt/nix-foundryvtt";
@@ -16,7 +16,7 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-stable,
+    nixpkgs-unstable,
     nixpkgs-master,
     ...
   } @ inputs: {
@@ -30,7 +30,7 @@
         ];
         specialArgs = {
           inherit inputs;
-          pkgs-stable = import nixpkgs-stable { 
+          pkgs-unstable = import nixpkgs-unstable { 
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
@@ -47,7 +47,7 @@
         ];
         specialArgs = {
           inherit inputs;
-          pkgs-stable = import nixpkgs-stable { 
+          pkgs-unstable = import nixpkgs-unstable { 
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
