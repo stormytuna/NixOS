@@ -7,8 +7,7 @@
     nixpkgs-master.url = "github:nixos/nixpkgs?ref=master";
 
     foundry-vtt.url = "github:nix-foundryvtt/nix-foundryvtt";
-    #foundry-vtt.inputs.nixpkgs.follows = "nixpkgs";
-
+    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
