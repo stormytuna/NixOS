@@ -1,4 +1,4 @@
-{pkgs, pkgs-stable, pkgs-master, ...}: {
+{pkgs, pkgs-unstable, pkgs-master, ...}: {
   # TODO: Imports and organise that stuff and port all home manager stuff
   imports = [
     ./hardware-configuration.nix
@@ -80,35 +80,50 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    # Programs
+  environment.systemPackages = (with pkgs; [
+    # info: stable packages
+    # add anything that doesn't *need* to be up-to-date for daily usage
+
+    # programs
     chromium
     (discord.override {withVencord = true;})
-    neovim
     nushell
     obsidian
     pavucontrol
     slack
-    pkgs-stable.smplayer
+    smplayer
 
-    # Shell utils
-    pkgs-stable.azure-cli
+    # shell utils
+    azure-cli
+    claude-code # i promise i'm not a meat proxy
+
+    # other stuff
+    # warn: updating these is not enough to apply the change
+    # they are set in the desktop environment's config
+    adw-gtk3
+    papirus-icon-theme
+
+  ]) ++ (with pkgs-unstable; [
+    # info: unstable packages
+    # add anything that should be latest "stable" version
+    #   stable is very loose here, packages may need to be moved to the above array instead
+
+    # programs
+    neovim
+
+    # shell utils
     bat
     btop
     carapace
     carbon-now-cli
     chezmoi
-    pkgs-stable.claude-code # i promise i'm not a meat proxy
     comma
     delta
     fd
     flavours
     fzf
-    gcc
-    glib
     gh
     gnumake
-    go
     jq
     jx
     kubectl
@@ -131,30 +146,33 @@
     yq-go
     zoxide
 
-    # Development, LSPs, etc 
+    # go service deps
+    go-swag
+    golangci-lint
+
+    # development
     dotnet-sdk_10
-    netcoredbg # C# debugger
+    gcc
+    glib
+    go
+    netcoredbg
     nodejs
+
+    # lsps
     omnisharp-roslyn
     lua-language-server
-    pkgs-stable.typescript-language-server
+    typescript-language-server
     nil
     angular-language-server
     gopls
-    #jdk8_headless
-    #maven
-    #jdt-language-server
-     
-    # Other stuff
-    adw-gtk3
-    papirus-icon-theme
-
-    # go service deps
-    # todo: maybe want to move this into a dev flake in projects?
-    pkgs-master.go-mockery
-    go-swag
-    golangci-lint
-  ];
+  ]) ++ (with pkgs-master; [
+    # info: packages directly served from the master branch
+    # anything here should only be here temporary
+    # this is a stop-gap solution for if a package really needs to be up-to-date and
+    #   i can't wait for it to enter unstable
+    
+    go-mockery
+  ]);
 
   environment.variables = {
     DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
