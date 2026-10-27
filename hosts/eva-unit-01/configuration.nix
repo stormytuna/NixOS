@@ -128,6 +128,7 @@
 
     # lsps
     omnisharp-roslyn
+    csharp-ls
     lua-language-server
     typescript-language-server
     nil
