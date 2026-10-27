@@ -136,6 +136,7 @@
     pnpm
     podman
     python3
+    qmk
     ripgrep
     starship
     systemctl-tui

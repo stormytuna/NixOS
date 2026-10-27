@@ -102,6 +102,7 @@
     mpv
     nix-output-monitor
     pnpm
+    qmk
     ripgrep
     sgdboop
     spotdl
