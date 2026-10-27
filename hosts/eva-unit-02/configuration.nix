@@ -126,6 +126,7 @@
     gnumake
     jq
     jx
+    kanshi
     kubectl
     kubelogin
     lazygit
