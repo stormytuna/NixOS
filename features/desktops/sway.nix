@@ -49,7 +49,6 @@
     awww # Wallpaper daemon
     bibata-cursors # Cursor theme
     cliphist # Clipboard manager
-    dunst # Notification daemon
     sox # Used in some scripts
     grim # Screenshot tool
     killall # Used in some scripts
@@ -59,6 +58,7 @@
     satty # Screenshot editing tool
     slurp # Area selection tool
     swaylock # Screen locking
+    swaynotificationcenter # Notification daemon
     syncthing # File syncing service
     waybar # Status bar
     wayfreeze # Screen freezer
