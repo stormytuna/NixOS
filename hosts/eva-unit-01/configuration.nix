@@ -95,6 +95,7 @@
     flavours
     fzf
     gcc
+    gh
     glib
     imagemagick
     jq
@@ -115,6 +116,7 @@
     wineWow64Packages.waylandFull
     winetricks
     yt-dlp
+    yq
     zoxide
 
     # go service deps
@@ -125,6 +127,7 @@
     dotnet-sdk_10
     gcc
     glib
+    gnumake
     go
     jdk8_headless
     maven
