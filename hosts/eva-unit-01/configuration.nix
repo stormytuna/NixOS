@@ -44,7 +44,43 @@
   };
 
   # allow running unpatched dynamic libraries
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+
+    libraries = with pkgs; [
+      alsa-lib
+      at-spi2-atk
+      atk
+      cairo
+      cups
+      dbus
+      expat
+      fontconfig
+      freetype
+      gdk-pixbuf
+      glib
+      gtk3
+      libdrm
+      libgbm
+      libx11
+      libxcb
+      libxcomposite
+      libxcursor
+      libxdamage
+      libxext
+      libxfixes
+      libxi
+      libxkbcommon
+      libxrandr
+      libxrender
+      libxshmfence
+      mesa
+      nspr
+      nss
+      pango
+      stdenv.cc.cc.lib
+    ];
+  };
 
   environment.systemPackages = (with pkgs; [
     # info: stable packages
@@ -116,7 +152,7 @@
     wineWow64Packages.waylandFull
     winetricks
     yt-dlp
-    yq
+    yq-go
     zoxide
 
     # go service deps
