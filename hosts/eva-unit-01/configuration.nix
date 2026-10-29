@@ -144,7 +144,7 @@
     zls
   ]) ++ (with pkgs-master; [
     # info: packages directly served from the master branch
-    # anything here should only be here temporary
+    # anything here should only be here temporarily
     # this is a stop-gap solution for if a package really needs to be up-to-date and
     #   i can't wait for it to enter unstable
 
