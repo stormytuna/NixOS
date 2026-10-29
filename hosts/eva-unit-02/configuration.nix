@@ -123,7 +123,6 @@
     flavours
     fzf
     gh
-    gnumake
     jq
     jx
     kanshi
@@ -156,6 +155,7 @@
     dotnet-sdk_10
     gcc
     glib
+    gnumake
     go
     netcoredbg
     nodejs
