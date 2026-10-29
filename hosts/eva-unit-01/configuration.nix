@@ -123,6 +123,7 @@
     btop
     carapace
     chezmoi
+    claude-code # i promise i'm not a meat proxy
     comma
     delta
     fd
