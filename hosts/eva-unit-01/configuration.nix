@@ -64,6 +64,7 @@
     qbittorrent
     qutebrowser
     r2modman
+    slack
     smplayer
 
     # other stuff
@@ -116,23 +117,29 @@
     yt-dlp
     zoxide
 
+    # go service deps
+    go-swag
+    golangci-lint
+
     # development
-    (dotnetCorePackages.combinePackages [
-      dotnetCorePackages.sdk_8_0
-      dotnetCorePackages.sdk_10_0-bin
-    ])
-    netcoredbg
-    nodejs
+    dotnet-sdk_10
+    gcc
+    glib
+    go
     jdk8_headless
     maven
+    netcoredbg
+    nodejs
 
     # lsps
-    omnisharp-roslyn
+    angular-language-server
     csharp-ls
-    lua-language-server
-    typescript-language-server
-    nil
+    gopls
     jdt-language-server
+    lua-language-server
+    nil
+    omnisharp-roslyn
+    typescript-language-server
     vscode-langservers-extracted
     zls
   ]) ++ (with pkgs-master; [
@@ -140,6 +147,8 @@
     # anything here should only be here temporary
     # this is a stop-gap solution for if a package really needs to be up-to-date and
     #   i can't wait for it to enter unstable
+
+    go-mockery
   ]);
 
   environment.variables = {
