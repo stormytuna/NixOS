@@ -37,6 +37,10 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
+          pkgs-custom = import ./packages (import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          });
         };
       };
       eva-unit-02 = nixpkgs.lib.nixosSystem {
@@ -54,6 +58,10 @@
             system = "x86_64-linux";
             config.allowUnfree = true;
           };
+          pkgs-custom = import ./packages (import nixpkgs {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          });
         };
       };
     };

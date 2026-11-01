@@ -1,4 +1,4 @@
-{pkgs, pkgs-unstable, pkgs-master, ...}: {
+{pkgs, pkgs-unstable, pkgs-master, pkgs-custom, ...}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -189,6 +189,10 @@
     #   i can't wait for it to enter unstable
 
     go-mockery
+  ]) ++ (with pkgs-custom; [
+    # info: packages defined in the packages folder of this flake
+    # generally only used to serve packages not inside the nixpkgs repo or that don't provide a flake to consume
+    #   but it is also used for more complicated modifications to existing packages
   ]);
 
   environment.variables = {
