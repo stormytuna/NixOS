@@ -152,7 +152,10 @@
     golangci-lint
 
     # development
-    dotnet-sdk_10
+    (with dotnetCorePackages; combinePackages [ 
+      dotnet-sdk_9
+      dotnet-sdk_10
+    ])
     gcc
     glib
     gnumake
