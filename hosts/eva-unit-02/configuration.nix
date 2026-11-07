@@ -86,7 +86,6 @@
 
     # programs
     chromium
-    (discord.override {withVencord = true;})
     nushell
     obsidian
     pavucontrol
@@ -109,6 +108,7 @@
     #   stable is very loose here, packages may need to be moved to the above array instead
 
     # programs
+    (discord.override {withVencord = true;})
     neovim
 
     # shell utils

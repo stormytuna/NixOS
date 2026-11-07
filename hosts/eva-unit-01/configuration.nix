@@ -91,7 +91,6 @@
     audacity
     chromium
     davinci-resolve
-    (discord.override {withVencord = true;})
     gimp3-with-plugins
     lmms
     lutris
@@ -114,9 +113,11 @@
     #   stable is very loose here, packages may need to be moved to the above array instead
 
     # programs
+    (discord.override {withVencord = true;})
     neovim
     nushell
     obsidian
+    vesktop
 
     # shell utils
     bat
@@ -189,6 +190,7 @@
     #   i can't wait for it to enter unstable
 
     go-mockery
+
   ]) ++ (with pkgs-custom; [
     # info: packages defined in the packages folder of this flake
     # generally only used to serve packages not inside the nixpkgs repo or that don't provide a flake to consume
