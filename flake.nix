@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs?ref=master";
+    nixpkgs-master.url = "github:nixos/nixpkgs/c341e3cd2171";
 
     foundry-vtt.url = "github:nix-foundryvtt/nix-foundryvtt";
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";

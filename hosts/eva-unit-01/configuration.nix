@@ -116,7 +116,6 @@
     (discord.override {withVencord = true;})
     neovim
     nushell
-    obsidian
     vesktop
 
     # shell utils
@@ -190,6 +189,11 @@
     #   i can't wait for it to enter unstable
 
     go-mockery
+
+    # info: 1.15.0 bundles electron 43.8.4; nixpkgs default electron is 43.8.3,
+    #   which is missing a webFrame API the app calls -> blank screen.
+    #   remove this override once nixpkgs electron >= 43.8.4
+    (obsidian.override { electron = electron_44; })
 
   ]) ++ (with pkgs-custom; [
     # info: packages defined in the packages folder of this flake
