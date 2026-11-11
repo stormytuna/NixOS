@@ -8,4 +8,5 @@ I use NixOS instead of other solutions as it's the easiest to tinker with withou
 
 - `features` contains chunks of Nix configuration to be reused across multiple hosts
 - `hosts` contains machine-specific configuration
+- `packages` contains custom packages declared and consumed by `hosts`
 - `users` contains user configuration to be reused across multiple hosts
