@@ -86,6 +86,7 @@
 
     # programs
     chromium
+    lutris
     nushell
     obsidian
     pavucontrol
