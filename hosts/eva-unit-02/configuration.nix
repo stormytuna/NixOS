@@ -145,6 +145,8 @@
     (unp.override {extraBackends = [unrar p7zip];})
     uv
     vi-mongo
+    wineWow64Packages.waylandFull
+    winetricks
     yq-go
     zoxide
 
