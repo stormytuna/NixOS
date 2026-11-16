@@ -124,7 +124,6 @@
     fzf
     gh
     jq
-    jx
     kanshi
     kubectl
     kubelogin
@@ -178,6 +177,7 @@
     #   i can't wait for it to enter unstable
     
     go-mockery
+    jx
   ]);
 
   environment.variables = {
