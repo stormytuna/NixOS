@@ -110,6 +110,7 @@
     # programs
     (discord.override {withVencord = true;})
     neovim
+    vesktop
 
     # shell utils
     bat
