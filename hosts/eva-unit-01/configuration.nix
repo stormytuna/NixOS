@@ -39,6 +39,7 @@
      permittedInsecurePackages = [
        "pnpm-10.29.2"
        "electron-40.10.5"
+       "qutebrowser-3.7.0"
      ];
     };
   };
