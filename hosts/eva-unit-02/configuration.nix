@@ -87,7 +87,6 @@
     # programs
     chromium
     lutris
-    nushell
     obsidian
     pavucontrol
     slack
@@ -102,7 +101,6 @@
     # they are set in the desktop environment's config
     adw-gtk3
     papirus-icon-theme
-
   ]) ++ (with pkgs-unstable; [
     # info: unstable packages
     # add anything that should be latest "stable" version
@@ -112,6 +110,7 @@
     (discord.override {withVencord = true;})
     neovim
     vesktop
+    nushell
 
     # shell utils
     bat
