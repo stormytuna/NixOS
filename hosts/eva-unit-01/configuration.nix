@@ -132,9 +132,7 @@
     ffmpeg-normalize
     flavours
     fzf
-    gcc
     gh
-    glib
     imagemagick
     jq
     lazygit
