@@ -103,6 +103,9 @@
     slack
     smplayer
 
+    # shell utils
+    azure-cli
+
     # other stuff
     # warn: updating these is not enough to apply the change
     # they are set in the desktop environment's config
@@ -140,6 +143,7 @@
     mpv
     nix-output-monitor
     pnpm
+    podman
     qmk
     ripgrep
     sgdboop
