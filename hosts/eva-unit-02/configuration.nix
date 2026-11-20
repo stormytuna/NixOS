@@ -168,6 +168,7 @@
     # lsps
     omnisharp-roslyn
     csharp-ls
+    jdt-language-server
     lua-language-server
     typescript-language-server
     nil
