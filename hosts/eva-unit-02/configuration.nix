@@ -155,6 +155,7 @@
 
     # development
     (with dotnetCorePackages; combinePackages [ 
+      dotnet-sdk
       dotnet-sdk_9
       dotnet-sdk_10
     ])
